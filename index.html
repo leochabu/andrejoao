@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>André & João — 12 de Dezembro de 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=IM+Fell+English:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --forest: #1E3A22;
+      --palm:   #4A6E3F;
+      --sage:   #7B9E6D;
+      --sand:   #F0E6CC;
+      --cream:  #FAFAF5;
+      --gold:   #C4924A;
+      --ocean:  #4A8FA0;
+      --white:  #FFFFFF;
+      --text:   #2A2A1E;
+      --muted:  #6B6B55;
+      --border: #DDD8C4;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--text); overflow-x:hidden; }
+
+    /* ── REVEAL ── */
+    .rv { opacity:0; transform:translateY(22px); transition:opacity .8s ease,transform .8s ease; }
+    .rv.on { opacity:1; transform:none; }
+    .d1{transition-delay:.12s} .d2{transition-delay:.24s} .d3{transition-delay:.36s} .d4{transition-delay:.48s}
+
+    /* ────────────────────────────────────
+       NAV
+    ──────────────────────────────────── */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:200;
+      height:64px;
+      display:flex; align-items:center; justify-content:center; gap:44px;
+      transition:background .35s, box-shadow .35s;
+    }
+    nav.over { background:transparent; }
+    nav.solid {
+      background:rgba(250,250,245,.96);
+      backdrop-filter:blur(14px);
+      box-shadow:0 1px 20px rgba(30,58,34,.07);
+    }
+    .nav-link {
+      font-size:.68rem; letter-spacing:.18em; text-transform:uppercase;
+      font-weight:500; text-decoration:none; transition:opacity .2s;
+    }
+    nav.over  .nav-link { color:rgba(255,255,255,.82); }
+    nav.over  .nav-link:hover { color:#fff; opacity:1; }
+    nav.solid .nav-link { color:var(--muted); }
+    nav.solid .nav-link:hover { color:var(--forest); }
+    .nav-burger {
+      display:none; background:none; border:none; cursor:pointer;
+      position:absolute; right:5%;
+    }
+    nav.over  .nav-burger { color:#fff; }
+    nav.solid .nav-burger { color:var(--forest); }
+    .nav-drawer {
+      display:none; position:fixed; top:64px; left:0; right:0; z-index:199;
+      background:var(--cream); border-bottom:1px solid var(--border);
+      padding:24px 6%; flex-direction:column; gap:18px;
+    }
+    .nav-drawer.open { display:flex; }
+    .nav-drawer a {
+      font-size:.78rem; letter-spacing:.15em; text-transform:uppercase;
+      font-weight:500; color:var(--muted); text-decoration:none;
+    }
+
+    /* ────────────────────────────────────
+       HERO — full-bleed couple photo
+    ──────────────────────────────────── */
+    .hero {
+      height:100vh; min-height:640px;
+      position:relative; display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
+    }
+    .hero-img {
+      position:absolute; inset:0; width:100%; height:100%;
+      object-fit:cover; object-position:center 25%;
+    }
+    .hero-overlay {
+      position:absolute; inset:0;
+      background:
+        radial-gradient(ellipse at 50% 40%, rgba(18,34,20,.05) 0%, rgba(18,34,20,.5) 100%),
+        linear-gradient(to bottom, rgba(18,34,20,.5) 0%, rgba(18,34,20,.1) 40%, rgba(18,34,20,.7) 100%);
+    }
+    /* Botanical corners */
+    .bot { position:absolute; pointer-events:none; }
+    .bot-tl { top:0; left:0; }
+    .bot-tr { top:0; right:0; transform:scaleX(-1); }
+    .hero-body {
+      position:relative; z-index:1;
+      display:flex; flex-direction:column; align-items:center; text-align:center;
+      color:#fff; padding:0 24px;
+    }
+    .hero-logo-wrap {
+      position:relative; margin-bottom:24px;
+      display:flex; justify-content:center;
+    }
+    .hero-logo-wrap::before {
+      content:''; position:absolute; inset:-30px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(196,146,74,.2) 0%, transparent 70%);
+      pointer-events:none;
+    }
+    .hero-logo-img {
+      height:160px; width:auto;
+      mix-blend-mode:screen;
+      filter:brightness(1.3) contrast(1.05) saturate(1.1);
+      position:relative; z-index:1;
+    }
+    .hero-eyebrow {
+      font-family:'IM Fell English',serif; font-style:italic;
+      font-size:1.1rem; color:rgba(255,255,255,.9);
+      text-shadow:0 1px 14px rgba(0,0,0,.6);
+      margin-bottom:14px; letter-spacing:.06em;
+    }
+    .hero-name {
+      font-family:'Cinzel Decorative',serif;
+      font-size:clamp(2.2rem,6.5vw,5.5rem);
+      font-weight:400; letter-spacing:.16em; line-height:1.05;
+      text-shadow:0 2px 24px rgba(0,0,0,.6), 0 0 60px rgba(0,0,0,.2);
+    }
+    .hero-rule {
+      display:flex; align-items:center; gap:18px; margin:14px 0;
+    }
+    .hero-rule-line { height:1px; width:56px; background:rgba(255,255,255,.45); }
+    .hero-rule-text {
+      font-family:'IM Fell English',serif; font-style:italic;
+      font-size:1.2rem; color:rgba(255,255,255,.9);
+      text-shadow:0 1px 10px rgba(0,0,0,.55);
+    }
+    .hero-tagline {
+      font-family:'IM Fell English',serif; font-style:italic;
+      font-size:1.05rem; color:rgba(255,255,255,.85);
+      text-shadow:0 1px 10px rgba(0,0,0,.55);
+      margin:14px 0 20px; letter-spacing:.04em;
+    }
+    .hero-date {
+      font-size:.7rem; letter-spacing:.3em; text-transform:uppercase;
+      color:rgba(255,255,255,.9); text-shadow:0 1px 8px rgba(0,0,0,.5);
+    }
+    .hero-venue {
+      font-size:.65rem; letter-spacing:.18em; text-transform:uppercase;
+      color:rgba(255,255,255,.62); text-shadow:0 1px 8px rgba(0,0,0,.5);
+      margin-top:6px;
+    }
+    .hero-scroll {
+      position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+      z-index:1; display:flex; flex-direction:column; align-items:center; gap:7px;
+    }
+    .hero-scroll span { font-size:.55rem; letter-spacing:.24em; text-transform:uppercase; color:rgba(255,255,255,.35); }
+    .scroll-line {
+      width:1px; height:34px;
+      background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);
+      animation:sline 2.2s ease-in-out infinite;
+    }
+    @keyframes sline {
+      0%,100%{opacity:.4;transform:scaleY(1)}
+      50%{opacity:.75;transform:scaleY(1.15);transform-origin:top}
+    }
+
+    /* ────────────────────────────────────
+       INVITATION BLOCK — like a printed card
+    ──────────────────────────────────── */
+    .invite {
+      background:var(--cream);
+      padding:96px 6%;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    /* Subtle watercolor palm silhouette in bg */
+    .invite::before {
+      content:'';
+      position:absolute; bottom:0; right:0;
+      width:360px; height:360px;
+      background:url('refs/915e42c54640fe470f154d758f247f71.jpg') center/contain no-repeat;
+      opacity:.04;
+      pointer-events:none;
+    }
+    .invite-card {
+      display:inline-block;
+      max-width:580px;
+      border:1px solid var(--border);
+      padding:60px 64px;
+      position:relative;
+      background:var(--white);
+      box-shadow:0 4px 40px rgba(30,58,34,.06);
+    }
+    /* Corner ticks */
+    .invite-card::before, .invite-card::after {
+      content:''; position:absolute;
+      width:20px; height:20px;
+    }
+    .invite-card::before {
+      top:-1px; left:-1px;
+      border-top:2px solid var(--gold); border-left:2px solid var(--gold);
+    }
+    .invite-card::after {
+      bottom:-1px; right:-1px;
+      border-bottom:2px solid var(--gold); border-right:2px solid var(--gold);
+    }
+    .invite-corner-tr {
+      position:absolute; top:-1px; right:-1px;
+      width:20px; height:20px;
+      border-top:2px solid var(--gold); border-right:2px solid var(--gold);
+    }
+    .invite-corner-bl {
+      position:absolute; bottom:-1px; left:-1px;
+      width:20px; height:20px;
+      border-bottom:2px solid var(--gold); border-left:2px solid var(--gold);
+    }
+    .invite-logo {
+      height:110px; width:auto;
+      mix-blend-mode:multiply;
+      filter:brightness(.88) saturate(1.2) contrast(1.1);
+      margin-bottom:20px;
+    }
+    .invite-opener {
+      font-family:'IM Fell English',serif; font-style:italic;
+      font-size:.9rem; color:var(--muted); letter-spacing:.06em;
+      margin-bottom:20px;
+    }
+    .invite-divider {
+      display:flex; align-items:center; justify-content:center; gap:14px;
+      margin:16px 0;
+    }
+    .invite-divider-line { height:1px; flex:1; background:var(--border); }
+    .invite-names {
+      font-family:'Cinzel',serif;
+      font-size:clamp(1.5rem,3vw,2.2rem);
+      color:var(--forest); letter-spacing:.12em;
+      line-height:1.3; font-weight:400;
+    }
+    .invite-names span { color:var(--gold); }
+    .invite-body {
+      font-family:'IM Fell English',serif; font-style:italic;
+      font-size:.95rem; color:var(--muted);
+      margin:18px 0; line-height:1.75; letter-spacing:.03em;
+    }
+    .invite-date {
+      font-family:'Cinzel',serif;
+      font-size:.85rem; letter-spacing:.22em;
+      color:var(--forest); margin-bottom:6px;
+    }
+    .invite-place {
+      font-size:.75rem; letter-spacing:.14em; text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    /* ────────────────────────────────────
+       COUNTDOWN — over aerial beach photo
+    ──────────────────────────────────── */
+    .countdown {
+      position:relative;
+      padding:88px 6%;
+      text-align:center;
+      overflow:hidden;
+    }
+    .countdown-photo {
+      position:absolute; inset:0;
+      background:url('refs/56c53e08-f638-451f-9f10-ff6bc6577fbd.jpg') center/cover no-repeat;
+      background-attachment:fixed;
+    }
+    .countdown-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to bottom, rgba(18,34,20,.72) 0%, rgba(18,34,20,.58) 100%);
+    }
+    .countdown-inner { position:relative; z-index:1; }
+    .sec-label-light {
+      display:inline-block; font-size:.67rem; letter-spacing:.26em;
+      text-transform:uppercase; color:rgba(255,255,255,.45); font-weight:600; margin-bottom:10px;
+    }
+    .sec-title-light {
+      font-family:'Cinzel',serif;
+      font-size:clamp(1.6rem,3vw,2.3rem);
+      color:#fff; letter-spacing:.04em; margin-bottom:52px;
+      font-weight:400;
+    }
+    .cd-grid {
+      display:flex; justify-content:center; align-items:flex-start;
+      gap:clamp(12px,4vw,56px); flex-wrap:wrap;
+    }
+    .cd-unit { text-align:center; }
+    .cd-num {
+      display:block;
+      font-family:'Cinzel',serif;
+      font-size:clamp(3rem,8vw,5.5rem);
+      font-weight:400; color:#fff; line-height:1; letter-spacing:.04em;
+    }
+    .cd-lbl {
+      font-size:.6rem; letter-spacing:.24em; text-transform:uppercase;
+      color:rgba(255,255,255,.4); margin-top:10px; display:block;
+    }
+    .cd-sep {
+      font-family:'Cinzel',serif; font-size:3rem;
+      color:rgba(255,255,255,.18); align-self:flex-start; margin-top:8px; line-height:1;
+    }
+
+    /* ────────────────────────────────────
+       NOSSA HISTÓRIA — timeline + side photo
+    ──────────────────────────────────── */
+    .history {
+      background:var(--cream);
+      padding:96px 0;
+    }
+    .history-inner {
+      display:grid;
+      grid-template-columns:1fr 520px;
+      max-width:1200px;
+      margin:0 auto;
+      gap:0;
+    }
+    .history-photo-col {
+      position:relative;
+      overflow:hidden;
+      min-height:600px;
+    }
+    .history-photo-col img {
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover; object-position:center;
+    }
+    .history-photo-col::after {
+      content:'';
+      position:absolute; inset:0;
+      background:linear-gradient(to right, transparent 70%, var(--cream) 100%);
+    }
+    .history-content {
+      padding:72px 6% 72px 48px;
+    }
+    .history-hdr { margin-bottom:52px; }
+    .sec-label {
+      display:inline-block; font-size:.67rem; letter-spacing:.26em;
+      text-transform:uppercase; color:var(--sage); font-weight:600; margin-bottom:10px;
+    }
+    .sec-title {
+      font-family:'Cinzel',serif;
+      font-size:clamp(1.5rem,2.5vw,2.2rem);
+      color:var(--forest); letter-spacing:.02em; margin-bottom:0;
+      font-weight:400;
+    }
+    /* Timeline */
+    .tl { position:relative; }
+    .tl::before {
+      content:''; position:absolute;
+      left:0; top:8px; bottom:8px;
+      width:1px; background:var(--border);
+    }
+    .tl-row { padding-left:28px; margin-bottom:40px; position:relative; }
+    .tl-row:last-child { margin-bottom:0; }
+    .tl-dot {
+      position:absolute; left:-5px; top:5px;
+      width:11px; height:11px; border-radius:50%;
+      background:var(--cream); border:2px solid var(--sage);
+      transition:all .3s;
+    }
+    .tl-row:hover .tl-dot { background:var(--sage); transform:scale(1.3); }
+    .tl-yr {
+      font-size:.63rem; letter-spacing:.18em; text-transform:uppercase;
+      color:var(--gold); margin-bottom:4px;
+    }
+    .tl-ev {
+      font-family:'Cinzel',serif; font-size:.97rem;
+      color:var(--forest); margin-bottom:5px; font-weight:400;
+    }
+    .tl-ds { font-size:.84rem; color:var(--muted); line-height:1.65; }
+
+    /* ────────────────────────────────────
+       LOCAL — editorial full-width panels
+    ──────────────────────────────────── */
+    .local { background:var(--forest); }
+
+    .local-hdr {
+      padding:72px 6% 56px;
+      text-align:center;
+    }
+    .local-hdr .sec-label { color:rgba(255,255,255,.38); }
+    .local-hdr .sec-title { color:#fff; font-size:clamp(1.6rem,2.8vw,2.3rem); }
+    .local-hdr .sec-sub {
+      color:rgba(255,255,255,.5); font-size:.95rem;
+      max-width:480px; margin:0 auto; line-height:1.75;
+    }
+
+    /* Three stacked full-width panels */
+    .local-panels { display:flex; flex-direction:column; }
+    .local-panel {
+      position:relative; height:55vh; min-height:320px;
+      overflow:hidden; cursor:pointer;
+    }
+    .local-panel img {
+      width:100%; height:100%; object-fit:cover;
+      transition:transform .6s ease;
+      object-position:center;
+    }
+    .local-panel:hover img { transform:scale(1.03); }
+    .local-panel-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to right, rgba(18,34,20,.7) 0%, rgba(18,34,20,.1) 60%);
+    }
+    .local-panel-content {
+      position:absolute; top:50%; left:7%;
+      transform:translateY(-50%);
+      color:#fff; max-width:380px;
+    }
+    .local-panel-num {
+      font-family:'Cinzel',serif; font-size:.62rem;
+      letter-spacing:.3em; text-transform:uppercase;
+      color:var(--gold); opacity:.8; margin-bottom:10px;
+    }
+    .local-panel-title {
+      font-family:'Cinzel',serif;
+      font-size:clamp(1.4rem,2.5vw,2rem);
+      font-weight:400; letter-spacing:.06em;
+      margin-bottom:8px;
+      text-shadow:0 2px 16px rgba(0,0,0,.4);
+    }
+    .local-panel-desc {
+      font-size:.86rem; color:rgba(255,255,255,.7);
+      line-height:1.65;
+    }
+    .local-map-row {
+      padding:40px 6%;
+      display:flex; justify-content:center;
+    }
+    .btn-map {
+      display:inline-flex; align-items:center; gap:9px;
+      padding:12px 28px;
+      border:1px solid rgba(255,255,255,.25);
+      border-radius:2px;
+      font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
+      font-weight:500; color:rgba(255,255,255,.75); text-decoration:none;
+      transition:all .2s;
+    }
+    .btn-map:hover { border-color:var(--gold); color:var(--gold); }
+
+    /* ────────────────────────────────────
+       RSVP — split: photo / form
+    ──────────────────────────────────── */
+    .rsvp { display:grid; grid-template-columns:1fr 1fr; min-height:700px; }
+
+    .rsvp-photo {
+      position:relative; overflow:hidden;
+    }
+    .rsvp-photo img {
+      width:100%; height:100%; object-fit:cover; object-position:center;
+    }
+    .rsvp-photo-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to bottom, rgba(18,34,20,.2), rgba(18,34,20,.5));
+    }
+    .rsvp-photo-caption {
+      position:absolute; bottom:40px; left:40px; right:40px;
+      color:#fff;
+    }
+    .rsvp-photo-caption h3 {
+      font-family:'Cinzel',serif; font-size:1.4rem;
+      font-weight:400; letter-spacing:.1em;
+      text-shadow:0 2px 16px rgba(0,0,0,.5); margin-bottom:6px;
+    }
+    .rsvp-photo-caption p {
+      font-size:.75rem; letter-spacing:.12em; text-transform:uppercase;
+      color:rgba(255,255,255,.6);
+    }
+
+    .rsvp-form-side {
+      background:var(--white);
+      padding:72px 56px;
+      display:flex; flex-direction:column; justify-content:center;
+    }
+    .rsvp-hdr { margin-bottom:36px; }
+
+    .fg { margin-bottom:16px; }
+    .fg-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .flabel {
+      display:block; font-size:.68rem; letter-spacing:.12em;
+      text-transform:uppercase; font-weight:600; color:var(--forest); margin-bottom:6px;
+    }
+    .finput,.fsel,.ftxt {
+      width:100%; padding:11px 14px;
+      border:1.5px solid var(--border); border-radius:2px;
+      background:var(--cream); font-family:'DM Sans',sans-serif;
+      font-size:.88rem; color:var(--text); outline:none;
+      transition:border-color .2s; appearance:none;
+    }
+    .finput:focus,.fsel:focus,.ftxt:focus { border-color:var(--sage); }
+    .ftxt { resize:vertical; min-height:80px; }
+    .sel-wrap { position:relative; }
+    .sel-wrap::after {
+      content:''; position:absolute; right:13px; top:50%;
+      transform:translateY(-50%);
+      border:4px solid transparent; border-top-color:var(--muted); pointer-events:none;
+    }
+    .rsvp-choices { display:flex; gap:10px; }
+    .rc { flex:1; cursor:pointer; }
+    .rc input { display:none; }
+    .rc-lbl {
+      display:flex; align-items:center; justify-content:center; gap:7px;
+      padding:11px; border:1.5px solid var(--border); border-radius:2px;
+      font-size:.84rem; color:var(--muted); background:var(--cream);
+      cursor:pointer; transition:all .2s; user-select:none;
+    }
+    .rc input:checked+.rc-lbl {
+      border-color:var(--sage);
+      background:rgba(123,158,109,.08);
+      color:var(--forest);
+    }
+    .btn-sub {
+      width:100%; padding:14px; background:var(--forest); color:#fff;
+      border:none; border-radius:2px; font-family:'DM Sans',sans-serif;
+      font-size:.78rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+      cursor:pointer; margin-top:8px; transition:background .2s;
+    }
+    .btn-sub:hover { background:var(--palm); }
+    .rsvp-ok { display:none; text-align:center; padding:20px 0; }
+    .rsvp-ok-icon {
+      width:56px; height:56px; border-radius:50%;
+      background:rgba(123,158,109,.15);
+      display:flex; align-items:center; justify-content:center; margin:0 auto 14px;
+    }
+    .rsvp-ok h3 {
+      font-family:'Cinzel',serif; font-size:1.5rem;
+      color:var(--forest); margin-bottom:8px; font-weight:400;
+    }
+    .rsvp-ok p { font-size:.88rem; color:var(--muted); }
+
+    /* ────────────────────────────────────
+       PRESENTES
+    ──────────────────────────────────── */
+    .gifts { background:var(--cream); padding:96px 6%; }
+    .gifts-hdr { text-align:center; margin-bottom:10px; }
+    .gifts-intro {
+      text-align:center; max-width:440px; margin:0 auto 48px;
+      font-size:.92rem; color:var(--muted); line-height:1.75;
+    }
+    .gifts-grid {
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+      gap:18px; max-width:1100px; margin:0 auto 36px;
+    }
+    .gc {
+      background:var(--white); border:1px solid var(--border);
+      border-radius:4px; overflow:hidden; transition:all .3s;
+    }
+    .gc:hover { transform:translateY(-4px); box-shadow:0 10px 32px rgba(30,58,34,.10); }
+    .gc-img {
+      height:130px; display:flex; align-items:center;
+      justify-content:center; font-size:2.6rem; position:relative;
+    }
+    .gc:nth-child(1) .gc-img{background:#EDF5EA}
+    .gc:nth-child(2) .gc-img{background:#FBF4E8}
+    .gc:nth-child(3) .gc-img{background:#E8F3F5}
+    .gc:nth-child(4) .gc-img{background:#F5EBE0}
+    .gc:nth-child(5) .gc-img{background:#EEF0F5}
+    .gc:nth-child(6) .gc-img{background:#F5EEE0}
+    .gc-sold {
+      position:absolute; top:9px; right:9px; background:var(--sage); color:#fff;
+      font-size:.6rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      padding:3px 9px; border-radius:20px;
+    }
+    .gc-body { padding:16px 18px 18px; }
+    .gc-name { font-family:'Cinzel',serif; font-size:.92rem; color:var(--forest); margin-bottom:3px; font-weight:400; }
+    .gc-desc { font-size:.78rem; color:var(--muted); line-height:1.55; margin-bottom:12px; }
+    .gc-foot { display:flex; align-items:center; justify-content:space-between; }
+    .gc-price { font-size:1rem; font-weight:700; color:var(--forest); }
+    .gc-price span { font-size:.68rem; font-weight:400; color:var(--muted); }
+    .btn-gift {
+      padding:7px 16px; background:var(--palm); color:#fff; border:none;
+      border-radius:2px; font-size:.75rem; font-weight:600; cursor:pointer; transition:background .2s;
+    }
+    .btn-gift:hover { background:var(--forest); }
+    .btn-gift:disabled { background:var(--border); color:var(--muted); cursor:not-allowed; }
+
+    .pix-box {
+      max-width:500px; margin:0 auto;
+      background:var(--white); border:1.5px solid var(--border);
+      border-radius:4px; padding:30px 36px; text-align:center;
+    }
+    .pix-box h3 { font-family:'Cinzel',serif; font-size:1.1rem; color:var(--forest); margin-bottom:7px; font-weight:400; }
+    .pix-box p { font-size:.84rem; color:var(--muted); line-height:1.7; margin-bottom:18px; }
+    .pix-row {
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; background:var(--cream); border:1px solid var(--border);
+      border-radius:2px; padding:11px 14px;
+    }
+    .pix-key { font-size:.88rem; font-weight:700; color:var(--forest); font-family:monospace; }
+    .btn-copy {
+      background:none; border:1.5px solid var(--border); border-radius:2px;
+      padding:5px 11px; font-size:.7rem; font-weight:600; color:var(--muted);
+      cursor:pointer; transition:all .2s; white-space:nowrap; font-family:'DM Sans',sans-serif;
+    }
+    .btn-copy:hover,.btn-copy.ok { border-color:var(--sage); color:var(--palm); }
+
+    /* ────────────────────────────────────
+       FOOTER
+    ──────────────────────────────────── */
+    footer {
+      background:var(--forest); padding:64px 6% 40px; text-align:center;
+      position:relative;
+    }
+    footer::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:1px;
+      background:linear-gradient(90deg, transparent, rgba(196,146,74,.4), transparent);
+    }
+    .ft-palm { margin-bottom:18px; display:flex; justify-content:center; }
+    .ft-logo-img {
+      height:88px; width:auto;
+      mix-blend-mode:screen;
+      filter:brightness(1.15) saturate(1.1);
+    }
+    .ft-names {
+      font-family:'Cinzel',serif; font-size:1.8rem;
+      font-weight:400; color:#fff; letter-spacing:.14em;
+    }
+    .ft-names span { color:rgba(196,146,74,.85); }
+    .ft-date {
+      font-size:.67rem; letter-spacing:.28em; text-transform:uppercase;
+      color:rgba(255,255,255,.28); margin-bottom:32px; margin-top:6px;
+    }
+    .ft-hr { width:50px; height:1px; background:rgba(255,255,255,.09); margin:0 auto 22px; }
+    .ft-copy { font-size:.72rem; color:rgba(255,255,255,.2); }
+
+    /* ────────────────────────────────────
+       MODAL
+    ──────────────────────────────────── */
+    .modal-ov {
+      position:fixed; inset:0; background:rgba(18,34,20,.65);
+      backdrop-filter:blur(5px); z-index:500;
+      display:flex; align-items:center; justify-content:center; padding:20px;
+      opacity:0; pointer-events:none; transition:opacity .25s;
+    }
+    .modal-ov.open { opacity:1; pointer-events:all; }
+    .modal {
+      background:var(--white); border-radius:8px; padding:38px 42px;
+      max-width:400px; width:100%; text-align:center;
+      transform:scale(.96); transition:transform .25s;
+    }
+    .modal-ov.open .modal { transform:scale(1); }
+    .modal-em { font-size:2.6rem; margin-bottom:12px; }
+    .modal h3 { font-family:'Cinzel',serif; font-size:1.3rem; color:var(--forest); margin-bottom:7px; font-weight:400; }
+    .modal p { font-size:.85rem; color:var(--muted); line-height:1.65; margin-bottom:22px; }
+    .modal-pix { background:var(--cream); border:1px solid var(--border); border-radius:4px; padding:13px 15px; margin-bottom:20px; }
+    .modal-pix-lbl { font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+    .modal-pix-key { font-size:.9rem; font-weight:700; color:var(--forest); font-family:monospace; }
+    .btn-mclose {
+      padding:11px 28px; background:var(--forest); color:#fff; border:none;
+      border-radius:2px; font-family:'DM Sans',sans-serif; font-size:.8rem;
+      font-weight:600; cursor:pointer; transition:background .2s;
+    }
+    .btn-mclose:hover { background:var(--palm); }
+
+    /* ────────────────────────────────────
+       RESPONSIVE
+    ──────────────────────────────────── */
+    @media(max-width:1024px){
+      .history-inner { grid-template-columns:1fr; }
+      .history-photo-col { height:300px; min-height:unset; }
+      .history-photo-col::after { background:linear-gradient(to bottom, transparent 70%, var(--cream) 100%); }
+      .history-content { padding:48px 6%; }
+    }
+    @media(max-width:768px){
+      nav { justify-content:flex-start; padding-left:5%; }
+      .nav-link { display:none; }
+      .nav-burger { display:flex; }
+      .invite-card { padding:40px 28px; }
+      .rsvp { grid-template-columns:1fr; }
+      .rsvp-photo { height:260px; min-height:unset; }
+      .rsvp-form-side { padding:48px 6%; }
+      .fg-row { grid-template-columns:1fr; }
+      .countdown-photo { background-attachment:scroll; }
+      .local-panel { height:65vw; min-height:260px; }
+    }
+    @media(max-width:480px){
+      .hero-logo-img { height:120px; }
+      .invite-card { padding:32px 20px; }
+      .modal { padding:28px 20px; }
+      .pix-box { padding:22px 18px; }
+      .cd-sep { display:none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════ NAV ═══════ -->
+<nav id="nav" class="over">
+  <a href="#historia" class="nav-link">Nossa História</a>
+  <a href="#local"    class="nav-link">Local</a>
+  <a href="#rsvp"     class="nav-link">Confirmação</a>
+  <a href="#presentes" class="nav-link">Presentes</a>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+      <path d="M0 1h20M0 7h20M0 13h20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+    </svg>
+  </button>
+</nav>
+<div class="nav-drawer" id="drawer">
+  <a href="#historia">Nossa História</a>
+  <a href="#local">Local</a>
+  <a href="#rsvp">Confirmação</a>
+  <a href="#presentes">Presentes</a>
+</div>
+
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero" id="hero">
+  <img class="hero-img" src="refs/e6f12e22-b2d2-4aa5-9ce9-66421a412758.jpg" alt="André e João" />
+  <div class="hero-overlay"></div>
+
+  <div class="bot bot-tl">
+    <svg width="180" height="200" viewBox="0 0 180 200" fill="none" opacity=".2">
+      <path d="M6 192C6 138 34 88 70 50C106 12 154 1 174 7" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <path d="M70 50C60 32 63 13 73 0" stroke="white" stroke-width=".85" fill="none" stroke-linecap="round"/>
+      <path d="M70 50C48 46 28 50 8 58" stroke="white" stroke-width=".85" fill="none" stroke-linecap="round"/>
+      <path d="M112 28C108 15 110 4 118 0" stroke="white" stroke-width=".75" fill="none" stroke-linecap="round" opacity=".7"/>
+      <circle cx="70" cy="50" r="2.8" fill="white" opacity=".5"/>
+      <circle cx="112" cy="28" r="2" fill="white" opacity=".4"/>
+    </svg>
+  </div>
+  <div class="bot bot-tr">
+    <svg width="180" height="200" viewBox="0 0 180 200" fill="none" opacity=".2">
+      <path d="M6 192C6 138 34 88 70 50C106 12 154 1 174 7" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <path d="M70 50C60 32 63 13 73 0" stroke="white" stroke-width=".85" fill="none" stroke-linecap="round"/>
+      <path d="M70 50C48 46 28 50 8 58" stroke="white" stroke-width=".85" fill="none" stroke-linecap="round"/>
+      <circle cx="70" cy="50" r="2.8" fill="white" opacity=".5"/>
+    </svg>
+  </div>
+
+  <div class="hero-body">
+    <div class="hero-logo-wrap">
+      <img src="refs/logo.png" alt="André & João" class="hero-logo-img" />
+    </div>
+    <p class="hero-eyebrow">um convite especial</p>
+    <h1 class="hero-name">ANDRÉ</h1>
+    <div class="hero-rule">
+      <span class="hero-rule-line"></span>
+      <span class="hero-rule-text">e</span>
+      <span class="hero-rule-line"></span>
+    </div>
+    <h1 class="hero-name">JOÃO</h1>
+    <p class="hero-tagline">convidam você para celebrar o amor deles</p>
+    <p class="hero-date">12 · Dezembro · 2026</p>
+    <p class="hero-venue">Vilarejo das Palmeiras · Costa dos Coqueiros, Bahia</p>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Rolar</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+
+<!-- ═══════ INVITATION BLOCK ═══════ -->
+<section class="invite" id="invite">
+  <div class="invite-card rv">
+    <div class="invite-corner-tr"></div>
+    <div class="invite-corner-bl"></div>
+    <img src="refs/logo.png" alt="André & João" class="invite-logo" />
+    <p class="invite-opener">têm a honra de convidar você para</p>
+    <div class="invite-divider">
+      <span class="invite-divider-line"></span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M7 1l1.2 2.4 2.7.4-2 1.9.5 2.7L7 7.2 4.6 8.4l.5-2.7-2-1.9 2.7-.4z" fill="#C4924A"/>
+      </svg>
+      <span class="invite-divider-line"></span>
+    </div>
+    <h2 class="invite-names">André <span>&</span> João</h2>
+    <p class="invite-body">
+      a celebração do seu casamento<br>
+      rodeados das pessoas que mais amam
+    </p>
+    <div class="invite-divider" style="margin:20px 0 16px">
+      <span class="invite-divider-line"></span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M7 1l1.2 2.4 2.7.4-2 1.9.5 2.7L7 7.2 4.6 8.4l.5-2.7-2-1.9 2.7-.4z" fill="#C4924A"/>
+      </svg>
+      <span class="invite-divider-line"></span>
+    </div>
+    <p class="invite-date">Sábado, 12 de Dezembro de 2026</p>
+    <p class="invite-place">Vilarejo das Palmeiras · Costa dos Coqueiros, Bahia</p>
+  </div>
+</section>
+
+
+<!-- ═══════ COUNTDOWN ═══════ -->
+<section class="countdown" id="countdown">
+  <div class="countdown-photo"></div>
+  <div class="countdown-overlay"></div>
+  <div class="countdown-inner">
+    <p class="sec-label-light rv">Faltam apenas</p>
+    <h2 class="sec-title-light rv d1">Para o grande dia</h2>
+    <div class="cd-grid rv d2">
+      <div class="cd-unit"><span class="cd-num" id="cdD">--</span><span class="cd-lbl">Dias</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cdH">--</span><span class="cd-lbl">Horas</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cdM">--</span><span class="cd-lbl">Minutos</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cdS">--</span><span class="cd-lbl">Segundos</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════ NOSSA HISTÓRIA ═══════ -->
+<section class="history" id="historia">
+  <div class="history-inner">
+
+    <div class="history-photo-col rv">
+      <img src="refs/e6f12e22-b2d2-4aa5-9ce9-66421a412758.jpg" alt="André e João" />
+    </div>
+
+    <div class="history-content">
+      <div class="history-hdr">
+        <p class="sec-label rv">Nossa história</p>
+        <h2 class="sec-title rv d1">Como tudo<br>começou</h2>
+      </div>
+
+      <div class="tl">
+        <div class="tl-row rv">
+          <div class="tl-dot"></div>
+          <p class="tl-yr">Março de 2019</p>
+          <h3 class="tl-ev">O primeiro encontro</h3>
+          <p class="tl-ds">Nos conhecemos numa festa de amigos. Conversamos a noite toda e combinamos de tomar café na semana seguinte.</p>
+        </div>
+        <div class="tl-row rv d1">
+          <div class="tl-dot"></div>
+          <p class="tl-yr">Julho de 2019</p>
+          <h3 class="tl-ev">O primeiro "sim"</h3>
+          <p class="tl-ds">Após meses de encontros e descobertas, ficamos oficialmente juntos. A partir dali, inseparáveis.</p>
+        </div>
+        <div class="tl-row rv d1">
+          <div class="tl-dot"></div>
+          <p class="tl-yr">Janeiro de 2022</p>
+          <h3 class="tl-ev">A primeira viagem juntos</h3>
+          <p class="tl-ds">Viemos pela primeira vez à Bahia — amor à primeira vista com o mar, os coqueiros e a brisa quente. Prometemos voltar.</p>
+        </div>
+        <div class="tl-row rv d2">
+          <div class="tl-dot"></div>
+          <p class="tl-yr">Junho de 2023</p>
+          <h3 class="tl-ev">O pedido</h3>
+          <p class="tl-ds">À beira do mar, com o pôr do sol ao fundo, veio o pedido entre lágrimas e risos.</p>
+        </div>
+        <div class="tl-row rv d2">
+          <div class="tl-dot" style="background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 4px rgba(196,146,74,.2)"></div>
+          <p class="tl-yr">12 de Dezembro de 2026</p>
+          <h3 class="tl-ev" style="color:var(--gold)">O grande dia</h3>
+          <p class="tl-ds">Voltamos à Bahia para celebrar rodeados de todos que amamos. Seja bem-vindo à nossa história.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════ LOCAL ═══════ -->
+<section class="local" id="local">
+  <div class="local-hdr">
+    <p class="sec-label rv" style="color:rgba(255,255,255,.38)">Onde vamos celebrar</p>
+    <h2 class="sec-title rv d1" style="color:#fff;font-family:'Cinzel',serif;font-size:clamp(1.6rem,2.8vw,2.3rem);font-weight:400">Vilarejo das Palmeiras</h2>
+    <p class="sec-sub rv d2" style="color:rgba(255,255,255,.5);font-size:.95rem;max-width:480px;margin:12px auto 0;line-height:1.75">Costa dos Coqueiros, Bahia — um paraíso entre coqueiros centenários, areia branca e o azul infinito do Atlântico.</p>
+  </div>
+
+  <div class="local-panels">
+    <div class="local-panel rv">
+      <img src="refs/56c53e08-f638-451f-9f10-ff6bc6577fbd.jpg" alt="Vista aérea" />
+      <div class="local-panel-overlay"></div>
+      <div class="local-panel-content">
+        <p class="local-panel-num">01 · Chegada</p>
+        <h3 class="local-panel-title">Vista Aérea</h3>
+        <p class="local-panel-desc">Quilômetros de coqueirais encontrando a areia branca — o cenário perfeito para um casamento inesquecível.</p>
+      </div>
+    </div>
+    <div class="local-panel rv d1">
+      <img src="refs/b22b8554-b46a-4da7-82fa-3fbb044fae96.jpg" alt="A praia" style="object-position:center 40%" />
+      <div class="local-panel-overlay"></div>
+      <div class="local-panel-content">
+        <p class="local-panel-num">02 · Cerimônia</p>
+        <h3 class="local-panel-title">A Praia</h3>
+        <p class="local-panel-desc">Mar turquesa, brisa suave e o som das ondas como trilha sonora do nosso sim.</p>
+      </div>
+    </div>
+    <div class="local-panel rv d2">
+      <img src="refs/cfb989eb-27a7-4dc0-8ac7-2ae5d8e62a7e.jpg" alt="O resort" />
+      <div class="local-panel-overlay"></div>
+      <div class="local-panel-content">
+        <p class="local-panel-num">03 · Recepção</p>
+        <h3 class="local-panel-title">O Resort</h3>
+        <p class="local-panel-desc">Piscina, gastronomia à beira-mar e hospedagem para os convidados que vierem de longe.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="local-map-row rv">
+    <a href="https://maps.google.com" target="_blank" class="btn-map">
+      <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+        <path d="M6 .5C3.5.5 1.5 2.5 1.5 5c0 3.75 4.5 8.5 4.5 8.5S10.5 8.75 10.5 5C10.5 2.5 8.5.5 6 .5z" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        <circle cx="6" cy="5" r="1.5" stroke="currentColor" stroke-width="1.1"/>
+      </svg>
+      Como chegar
+    </a>
+  </div>
+</section>
+
+
+<!-- ═══════ RSVP ═══════ -->
+<section class="rsvp" id="rsvp">
+  <div class="rsvp-photo">
+    <img src="refs/b22b8554-b46a-4da7-82fa-3fbb044fae96.jpg" alt="Praia" />
+    <div class="rsvp-photo-overlay"></div>
+    <div class="rsvp-photo-caption">
+      <h3>Você vai<br>estar lá?</h3>
+      <p>Confirme até 15 de nov. de 2026</p>
+    </div>
+  </div>
+
+  <div class="rsvp-form-side">
+    <div class="rsvp-hdr rv">
+      <p class="sec-label">Confirmação de presença</p>
+      <h2 class="sec-title" style="font-size:1.8rem">Reservar meu lugar</h2>
+    </div>
+
+    <form id="rsvpForm" novalidate>
+      <div class="fg-row rv d1">
+        <div class="fg">
+          <label class="flabel" for="fname">Nome</label>
+          <input class="finput" type="text" id="fname" placeholder="Seu nome" required />
+        </div>
+        <div class="fg">
+          <label class="flabel" for="lname">Sobrenome</label>
+          <input class="finput" type="text" id="lname" placeholder="Seu sobrenome" />
+        </div>
+      </div>
+      <div class="fg rv d1">
+        <label class="flabel">Confirmação</label>
+        <div class="rsvp-choices">
+          <label class="rc"><input type="radio" name="att" value="yes" checked />
+            <span class="rc-lbl">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Sim, estarei lá!
+            </span>
+          </label>
+          <label class="rc"><input type="radio" name="att" value="no" />
+            <span class="rc-lbl">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M3 3l7 7M10 3l-7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+              Não poderei ir
+            </span>
+          </label>
+        </div>
+      </div>
+      <div class="fg-row rv d2">
+        <div class="fg">
+          <label class="flabel" for="guests">Acompanhantes</label>
+          <div class="sel-wrap">
+            <select class="fsel" id="guests">
+              <option value="0">Apenas eu</option>
+              <option value="1">+ 1 pessoa</option>
+              <option value="2">+ 2 pessoas</option>
+              <option value="3">+ 3 pessoas</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg">
+          <label class="flabel" for="diet">Restrição alimentar</label>
+          <div class="sel-wrap">
+            <select class="fsel" id="diet">
+              <option>Nenhuma</option>
+              <option>Vegetariano</option>
+              <option>Vegano</option>
+              <option>Sem glúten</option>
+              <option>Sem lactose</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="fg rv d2">
+        <label class="flabel" for="msg">Mensagem <em style="font-weight:300;text-transform:none;letter-spacing:0">(opcional)</em></label>
+        <textarea class="ftxt" id="msg" placeholder="Uma mensagem para André e João…"></textarea>
+      </div>
+      <button type="submit" class="btn-sub rv d3">Confirmar Presença</button>
+    </form>
+
+    <div class="rsvp-ok" id="rsvpOk">
+      <div class="rsvp-ok-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M4 12l5 5 11-11" stroke="#4A6E3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>Presença confirmada!</h3>
+      <p>Obrigado, <strong id="okName"></strong>! Estamos felizes em ter você com a gente.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════ PRESENTES ═══════ -->
+<section class="gifts" id="presentes">
+  <div class="gifts-hdr">
+    <p class="sec-label rv">Lista de presentes</p>
+    <h2 class="sec-title rv d1" style="font-size:clamp(1.5rem,2.5vw,2.1rem)">Presenteie com amor</h2>
+  </div>
+  <p class="gifts-intro rv d2">Sua presença já é o maior presente. Mas se quiser nos presentear, escolhemos itens especiais para o nosso novo lar.</p>
+
+  <div class="gifts-grid">
+    <div class="gc rv">
+      <div class="gc-img">🍳</div>
+      <div class="gc-body">
+        <h3 class="gc-name">Panela Le Creuset</h3>
+        <p class="gc-desc">Caçarola redonda 28cm, esmalte vermelho cereja.</p>
+        <div class="gc-foot"><div class="gc-price">R$ 980<span>/unid.</span></div>
+          <button class="btn-gift" onclick="openModal('Panela Le Creuset','🍳','R$ 980')">Presentear</button></div>
+      </div>
+    </div>
+    <div class="gc rv d1">
+      <div class="gc-img">🛏</div>
+      <div class="gc-body">
+        <h3 class="gc-name">Jogo de Cama Karsten</h3>
+        <p class="gc-desc">King 300 fios, cor off-white. Algodão egípcio.</p>
+        <div class="gc-foot"><div class="gc-price">R$ 640<span>/unid.</span></div>
+          <button class="btn-gift" onclick="openModal('Jogo de Cama Karsten','🛏','R$ 640')">Presentear</button></div>
+      </div>
+    </div>
+    <div class="gc rv d2">
+      <div class="gc-img">✈️<span class="gc-sold">Presenteado!</span></div>
+      <div class="gc-body">
+        <h3 class="gc-name">Lua de Mel — Bali</h3>
+        <p class="gc-desc">Contribuição para a lua de mel dos sonhos.</p>
+        <div class="gc-foot"><div class="gc-price">R$ 300<span>/cota</span></div>
+          <button class="btn-gift" disabled>Esgotado</button></div>
+      </div>
+    </div>
+    <div class="gc rv d1">
+      <div class="gc-img">🪴</div>
+      <div class="gc-body">
+        <h3 class="gc-name">Espelho Decorativo</h3>
+        <p class="gc-desc">Redondo 80cm, moldura dourada Art Déco.</p>
+        <div class="gc-foot"><div class="gc-price">R$ 420<span>/unid.</span></div>
+          <button class="btn-gift" onclick="openModal('Espelho Decorativo','🪴','R$ 420')">Presentear</button></div>
+      </div>
+    </div>
+    <div class="gc rv d2">
+      <div class="gc-img">🫖</div>
+      <div class="gc-body">
+        <h3 class="gc-name">Cafeteira Bialetti</h3>
+        <p class="gc-desc">Moka Express 6 xícaras. Para os cafés eternos a dois.</p>
+        <div class="gc-foot"><div class="gc-price">R$ 280<span>/unid.</span></div>
+          <button class="btn-gift" onclick="openModal('Cafeteira Bialetti','🫖','R$ 280')">Presentear</button></div>
+      </div>
+    </div>
+    <div class="gc rv d3">
+      <div class="gc-img">📷</div>
+      <div class="gc-body">
+        <h3 class="gc-name">Câmera Polaroid Now+</h3>
+        <p class="gc-desc">Para registrar cada momento especial.</p>
+        <div class="gc-foot"><div class="gc-price">R$ 560<span>/unid.</span></div>
+          <button class="btn-gift" onclick="openModal('Câmera Polaroid Now+','📷','R$ 560')">Presentear</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pix-box rv d2">
+    <h3>Prefere enviar via PIX?</h3>
+    <p>Contribua livremente com o valor que desejar. Qualquer presente é recebido com muito amor.</p>
+    <div class="pix-row">
+      <span class="pix-key" id="pixKey">casamento.andre.joao@gmail.com</span>
+      <button class="btn-copy" id="btnCopy" onclick="copyPix()">Copiar</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="ft-palm">
+    <img src="refs/logo.png" alt="André & João" class="ft-logo-img" />
+  </div>
+  <p class="ft-names">André <span>&</span> João</p>
+  <p class="ft-date">12 · Dezembro · 2026 · Costa dos Coqueiros, Bahia</p>
+  <div class="ft-hr"></div>
+  <p class="ft-copy">Feito com amor para o nosso grande dia ✦</p>
+</footer>
+
+
+<!-- ═══════ MODAL ═══════ -->
+<div class="modal-ov" id="giftModal" onclick="closeOut(event)">
+  <div class="modal">
+    <div class="modal-em" id="mEmoji">🎁</div>
+    <h3 id="mTitle">Presentear</h3>
+    <p id="mDesc"></p>
+    <div class="modal-pix">
+      <div class="modal-pix-lbl">Chave PIX</div>
+      <div class="modal-pix-key">casamento.andre.joao@gmail.com</div>
+    </div>
+    <button class="btn-mclose" onclick="closeModal()">Pronto — Obrigado! ✦</button>
+  </div>
+</div>
+
+<script>
+  /* NAV */
+  const nav  = document.getElementById('nav');
+  const hero = document.getElementById('hero');
+  function syncNav(){
+    const past = hero.getBoundingClientRect().bottom <= 64;
+    nav.classList.toggle('solid', past);
+    nav.classList.toggle('over', !past);
+  }
+  window.addEventListener('scroll', syncNav, {passive:true});
+  syncNav();
+
+  /* BURGER */
+  const burger = document.getElementById('burger');
+  const drawer = document.getElementById('drawer');
+  burger.addEventListener('click', () => drawer.classList.toggle('open'));
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('open')));
+
+  /* SMOOTH SCROLL */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if(href==='#') return;
+      e.preventDefault();
+      const el = document.querySelector(href);
+      if(el) window.scrollTo({top: el.getBoundingClientRect().top + scrollY - 64, behavior:'smooth'});
+    });
+  });
+
+  /* REVEAL */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, {threshold:.1, rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  /* COUNTDOWN */
+  const pad = n => String(n).padStart(2,'0');
+  function tick(){
+    const diff = Math.max(0, new Date('2026-12-12T16:00:00-03:00') - new Date());
+    document.getElementById('cdD').textContent = pad(Math.floor(diff/86400000));
+    document.getElementById('cdH').textContent = pad(Math.floor(diff%86400000/3600000));
+    document.getElementById('cdM').textContent = pad(Math.floor(diff%3600000/60000));
+    document.getElementById('cdS').textContent = pad(Math.floor(diff%60000/1000));
+  }
+  tick(); setInterval(tick,1000);
+
+  /* RSVP */
+  document.getElementById('rsvpForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('fname').value.trim();
+    if(!name){ document.getElementById('fname').focus(); return; }
+    document.getElementById('rsvpForm').style.display = 'none';
+    document.getElementById('rsvpOk').style.display = 'block';
+    document.getElementById('okName').textContent = name;
+  });
+
+  /* PIX */
+  function copyPix(){
+    navigator.clipboard.writeText('casamento.andre.joao@gmail.com').then(() => {
+      const b = document.getElementById('btnCopy');
+      b.textContent = '✓ Copiado'; b.classList.add('ok');
+      setTimeout(()=>{ b.textContent='Copiar'; b.classList.remove('ok'); }, 2200);
+    });
+  }
+
+  /* MODAL */
+  function openModal(name,emoji,price){
+    document.getElementById('mEmoji').textContent = emoji;
+    document.getElementById('mTitle').textContent = name;
+    document.getElementById('mDesc').textContent =
+      `Para nos presentear com "${name}" (${price}), faça um PIX para a chave abaixo e coloque o nome do item na mensagem. Muito obrigado!`;
+    document.getElementById('giftModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    document.getElementById('giftModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeOut(e){ if(e.target.id==='giftModal') closeModal(); }
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+</script>
+</body>
+</html>

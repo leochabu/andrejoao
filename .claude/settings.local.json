@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.redweek.com)",
+      "Bash(node src/scraper.js https://www.redweek.com/)",
+      "Bash(npm install:*)"
+    ]
+  }
+}

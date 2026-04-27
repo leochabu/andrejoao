@@ -3,7 +3,28 @@
     "allow": [
       "WebFetch(domain:www.redweek.com)",
       "Bash(node src/scraper.js https://www.redweek.com/)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(gh repo:*)",
+      "Bash(gh api:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(find D:/Casamento -name *logo* -type f)",
+      "Bash(npx playwright *)",
+      "Bash(python -m http.server 8787)",
+      "Bash(echo \"PID=$!\")",
+      "Bash(node -e ' *)",
+      "Bash(python -c ' *)",
+      "Read(//c/Users/leoch/AppData/Roaming/npm/node_modules/**)",
+      "Bash(node -e \"require\\('playwright'\\)\")",
+      "Read(//c/Users/leoch/**)",
+      "Bash(python -c \"import playwright; print\\('ok'\\)\")",
+      "Bash(where npx *)",
+      "Bash(npx --yes playwright@1.59.1 --version)",
+      "Bash(node -e \"try{require\\('C:/Users/leoch/AppData/Local/ms-playwright/../../../npm/node_modules/playwright'\\)}catch\\(e\\){console.log\\(e.message\\)}\")",
+      "Bash(npm root *)",
+      "Bash(unzip -o \"pre wedding.zip\" -d pre_wedding)",
+      "Bash(unzip -o \"cerimonia.zip\" -d cerimonia)"
     ]
   }
 }

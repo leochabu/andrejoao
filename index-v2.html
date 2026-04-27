@@ -136,17 +136,26 @@
     .bot-tr{top:0;right:0;transform:scaleX(-1)}
 
     .hero-body {
-      position:relative;z-index:1;
-      display:flex;flex-direction:column;align-items:center;text-align:center;
-      color:#fff;padding:0 24px;
+      position:absolute;inset:0;z-index:1;
+      display:flex;flex-direction:column;align-items:center;
+      color:#fff;
     }
-    .hero-logo-wrap{position:relative;margin-bottom:24px;display:flex;justify-content:center}
+    .hero-top {
+      padding:80px 24px 0;
+      display:flex;flex-direction:column;align-items:center;text-align:center;
+    }
+    .hero-center {
+      flex:1;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      text-align:center;padding:0 24px 64px;
+    }
+    .hero-logo-wrap{position:relative;margin-bottom:10px;display:flex;justify-content:center}
     .hero-logo-wrap::before{
       content:'';position:absolute;inset:-30px;border-radius:50%;
       background:radial-gradient(circle,rgba(196,146,74,.2) 0%,transparent 70%);
     }
-    .hero-logo-img{height:160px;width:auto;mix-blend-mode:screen;filter:brightness(1.3) contrast(1.05) saturate(1.1);position:relative;z-index:1}
-    .hero-eyebrow{font-family:'IM Fell English',serif;font-style:italic;font-size:1.1rem;color:rgba(255,255,255,.9);text-shadow:0 1px 14px rgba(0,0,0,.6);margin-bottom:14px;letter-spacing:.06em}
+    .hero-logo-img{height:130px;width:auto;mix-blend-mode:screen;filter:brightness(1.3) contrast(1.05) saturate(1.1);position:relative;z-index:1}
+    .hero-eyebrow{font-family:'IM Fell English',serif;font-style:italic;font-size:1.05rem;color:rgba(255,255,255,.85);text-shadow:0 1px 14px rgba(0,0,0,.6);letter-spacing:.06em}
     .hero-name{font-family:'Cinzel Decorative',serif;font-size:clamp(2.2rem,6.5vw,5.5rem);font-weight:400;letter-spacing:.16em;line-height:1.05;text-shadow:0 2px 24px rgba(0,0,0,.6),0 0 60px rgba(0,0,0,.2)}
     .hero-rule{display:flex;align-items:center;gap:18px;margin:14px 0}
     .hero-rule-line{height:1px;width:56px;background:rgba(255,255,255,.45)}
@@ -207,7 +216,7 @@
     /* ─────────────────────────────────
        COUNTDOWN — over beach photo
     ───────────────────────────────────*/
-    .countdown{position:relative;padding:100px 6%;text-align:center;overflow:hidden}
+    .countdown{position:relative;padding:120px 6%;text-align:center;overflow:hidden}
     .countdown-photo{position:absolute;inset:0;background:url('refs/56c53e08-f638-451f-9f10-ff6bc6577fbd.jpg') center/cover no-repeat}
     .countdown-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(18,34,20,.75) 0%,rgba(18,34,20,.6) 100%)}
     .countdown-inner{position:relative;z-index:1}
@@ -252,7 +261,12 @@
        LOCAL — stacked panels
     ───────────────────────────────────*/
     .local{background:var(--forest)}
-    .local-hdr{padding:72px 6% 48px;text-align:center}
+    .local-hdr{padding:72px 6% 48px;text-align:center;position:relative;overflow:hidden;min-height:320px}
+    .local-hdr-img-l,.local-hdr-img-r{position:absolute;top:0;height:100%;width:50%;object-fit:cover;z-index:0}
+    .local-hdr-img-l{left:0;object-position:center center}
+    .local-hdr-img-r{right:0;object-position:center center}
+    .local-hdr-overlay{position:absolute;inset:0;z-index:1;background:rgba(18,34,20,.58)}
+    .local-hdr>*:not(.local-hdr-img-l):not(.local-hdr-img-r):not(.local-hdr-overlay){position:relative;z-index:2}
     .local-panels{display:flex;flex-direction:column}
     .local-panel{position:relative;height:55vh;min-height:320px;overflow:hidden;cursor:pointer}
     .local-panel img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;object-position:center}
@@ -378,12 +392,97 @@
       .local-panel{height:65vw;min-height:260px}
     }
     @media(max-width:480px){
-      .hero-logo-img{height:120px}
+      .hero-logo-img{height:96px}
+      .hero-top{padding-top:72px}
       .invite-card{padding:28px 16px}
       .modal{padding:28px 20px}
       .pix-box{padding:22px 18px}
       .cd-sep{display:none}
       .frond-sm{width:44px}.frond-md{width:60px}
+    }
+
+    /* ── COMO CHEGAR ── */
+    .howto{background:var(--cream);padding:88px 6%}
+    .howto-inner{max-width:900px;margin:0 auto;text-align:center}
+    .howto-intro{font-size:.93rem;color:var(--muted);line-height:1.85;max-width:620px;margin:20px auto 48px}
+    .howto-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px;text-align:left}
+    .howto-card{background:#fff;border:1px solid var(--border);border-radius:3px;padding:32px 26px}
+    .howto-card-icon{font-size:1.4rem;margin-bottom:14px;display:block}
+    .howto-card h3{font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--forest);margin-bottom:10px}
+    .howto-card p{font-size:.87rem;color:var(--muted);line-height:1.78}
+    .howto-addr{margin-top:40px;padding:20px 24px;background:#fff;border:1px solid var(--border);border-radius:3px;display:inline-flex;align-items:center;gap:14px;font-size:.82rem;color:var(--muted);line-height:1.7}
+    .howto-addr-icon{font-size:1.2rem;flex-shrink:0}
+    .howto-addr strong{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--forest);display:block;margin-bottom:4px}
+
+    /* ── PROGRAMAÇÃO ── */
+    .prog{background:var(--forest);padding:88px 6%}
+    .prog-inner{max-width:760px;margin:0 auto}
+    .prog-days{margin-top:52px;display:flex;flex-direction:column}
+    .prog-day{border-left:1px solid rgba(255,255,255,.15);padding:0 0 52px 36px;position:relative}
+    .prog-day:last-child{padding-bottom:0;border-left-color:transparent}
+    .prog-day::before{content:'';position:absolute;left:-5px;top:5px;width:9px;height:9px;border-radius:50%;background:var(--gold)}
+    .prog-day-date{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+    .prog-day-title{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2vw,1.55rem);color:#fff;font-weight:400;margin-bottom:18px}
+    .prog-day-title.highlight{color:var(--gold)}
+    .prog-event{margin-bottom:18px}
+    .prog-event-time{font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:5px}
+    .prog-event-name{font-family:'Cinzel',serif;font-size:.83rem;color:rgba(196,146,74,.85);letter-spacing:.08em;margin-bottom:7px}
+    .prog-event-desc{font-size:.87rem;color:rgba(255,255,255,.62);line-height:1.8}
+    .prog-event-note{font-size:.78rem;color:rgba(255,255,255,.32);font-style:italic;margin-top:8px;padding-left:12px;border-left:2px solid rgba(196,146,74,.3)}
+
+    /* ── PLACEHOLDER SECTIONS ── */
+    .ph-section{background:var(--cream);padding:88px 6%;text-align:center;border-top:1px solid var(--border)}
+    .ph-section.dark{background:var(--forest);border-top:1px solid rgba(255,255,255,.08)}
+    .ph-soon{display:inline-block;margin-top:22px;padding:9px 22px;border:1px solid var(--border);border-radius:2px;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+    .ph-section.dark .ph-soon{border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.35)}
+
+    /* ── TRAJE ── */
+    .traje-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:40px;max-width:880px;margin-left:auto;margin-right:auto;text-align:left}
+    .traje-card{border:1px solid var(--border);border-radius:3px;overflow:hidden}
+    .traje-card-hdr{background:var(--forest);color:#fff;padding:22px 28px}
+    .traje-card-hdr-label{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+    .traje-card-hdr-title{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:400}
+    .traje-card-hdr-color{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:5px;font-style:italic}
+    .traje-card-body{background:#fff}
+    .traje-gender{padding:20px 28px}
+    .traje-gender+.traje-gender{border-top:1px solid var(--border)}
+    .traje-gender-label{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--forest);margin-bottom:8px}
+    .traje-gender p{font-size:.87rem;color:var(--muted);line-height:1.8}
+    .traje-photos{display:flex;gap:8px;overflow-x:auto;padding:14px 16px;background:#f5f3ee;border-top:1px solid var(--border);scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+    .traje-photos::-webkit-scrollbar{height:4px}
+    .traje-photos::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+    .traje-photo{flex:0 0 auto;width:96px;height:136px;object-fit:cover;border-radius:2px;cursor:pointer;transition:opacity .15s}
+    .traje-photo:hover{opacity:.82}
+
+    /* ── LIGHTBOX ── */
+    #lb{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;flex-direction:column;padding:20px}
+    #lb.open{display:flex}
+    #lb-img{max-width:min(88vw,780px);max-height:80vh;object-fit:contain;border-radius:4px;user-select:none;display:block}
+    #lb-counter{color:rgba(255,255,255,.45);font-size:.78rem;letter-spacing:.12em;margin-top:14px}
+    .lb-btn{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:1.8rem;width:48px;height:64px;cursor:pointer;border-radius:4px;transition:background .2s;line-height:1;display:flex;align-items:center;justify-content:center}
+    .lb-btn:hover{background:rgba(255,255,255,.22)}
+    #lb-prev{left:16px}#lb-next{right:16px}
+    #lb-close{position:fixed;top:16px;right:20px;background:none;border:none;color:rgba(255,255,255,.6);font-size:1.6rem;cursor:pointer;line-height:1;padding:8px;border-radius:4px;transition:color .15s}
+    #lb-close:hover{color:#fff}
+
+    /* ── HOSPEDAGEM ── */
+    .hosp-intro{max-width:580px;font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.85;margin:0 auto 36px;text-align:center}
+    .hosp-cards{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin-bottom:36px}
+    .hosp-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:3px;padding:28px 36px;min-width:220px;text-align:center}
+    .hosp-card-name{font-family:'Cinzel',serif;font-size:.95rem;font-weight:400;color:#fff;margin-bottom:10px}
+    .hosp-card-ig{display:inline-block;font-size:.78rem;color:var(--gold);text-decoration:none;letter-spacing:.05em}
+    .hosp-card-ig:hover{text-decoration:underline}
+    .hosp-notice{max-width:580px;margin:0 auto;padding:20px 24px;background:rgba(255,255,255,.05);border-left:2px solid var(--gold);border-radius:0 2px 2px 0;text-align:left}
+    .hosp-notice-label{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+    .hosp-notice p{font-size:.82rem;color:rgba(255,255,255,.55);line-height:1.8}
+
+    /* ── PADRINHOS ── */
+    .padr-letter{max-width:600px;margin:36px auto 0;text-align:center}
+    .padr-letter p{font-family:'IM Fell English',serif;font-size:.98rem;color:var(--muted);line-height:2;font-style:italic}
+
+    @media(max-width:768px){
+      .howto-cards{grid-template-columns:1fr}
+      .prog-day{padding-left:24px}
     }
   </style>
 </head>
@@ -398,63 +497,12 @@
 -->
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- FROND — large, pointing right, origin bottom-left -->
-    <symbol id="frond-r" viewBox="0 0 300 140">
-      <!-- rachis -->
-      <path d="M6 130 Q90 82 294 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-      <!-- leaflet pair 1 -->
-      <path d="M30 120 Q14 137 2 142" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none"/>
-      <path d="M30 120 Q27 103 22 96" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none"/>
-      <!-- pair 2 -->
-      <path d="M58 108 Q38 128 18 135" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" fill="none"/>
-      <path d="M58 108 Q54 89 48 81" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" fill="none"/>
-      <!-- pair 3 -->
-      <path d="M86 96 Q63 118 40 127" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" fill="none"/>
-      <path d="M86 96 Q82 76 74 67" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" fill="none"/>
-      <!-- pair 4 -->
-      <path d="M114 84 Q89 107 64 118" stroke="currentColor" stroke-width="1.05" stroke-linecap="round" fill="none"/>
-      <path d="M114 84 Q110 63 101 53" stroke="currentColor" stroke-width="1.05" stroke-linecap="round" fill="none"/>
-      <!-- pair 5 -->
-      <path d="M142 72 Q115 97 88 109" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/>
-      <path d="M142 72 Q138 50 128 39" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/>
-      <!-- pair 6 -->
-      <path d="M170 60 Q141 86 112 100" stroke="currentColor" stroke-width=".95" stroke-linecap="round" fill="none"/>
-      <path d="M170 60 Q166 38 155 27" stroke="currentColor" stroke-width=".95" stroke-linecap="round" fill="none"/>
-      <!-- pair 7 -->
-      <path d="M198 48 Q167 75 136 90" stroke="currentColor" stroke-width=".9" stroke-linecap="round" fill="none"/>
-      <path d="M198 48 Q194 26 182 15" stroke="currentColor" stroke-width=".9" stroke-linecap="round" fill="none"/>
-      <!-- pair 8 -->
-      <path d="M226 36 Q193 64 160 80" stroke="currentColor" stroke-width=".85" stroke-linecap="round" fill="none"/>
-      <path d="M226 36 Q222 14 209 3" stroke="currentColor" stroke-width=".85" stroke-linecap="round" fill="none"/>
-      <!-- pair 9 -->
-      <path d="M254 24 Q219 53 184 70" stroke="currentColor" stroke-width=".8" stroke-linecap="round" fill="none"/>
-      <path d="M254 24 Q250 2 236 -9" stroke="currentColor" stroke-width=".8" stroke-linecap="round" fill="none"/>
-      <!-- pair 10 (tip region) -->
-      <path d="M278 14 Q242 44 206 62" stroke="currentColor" stroke-width=".7" stroke-linecap="round" fill="none"/>
-      <path d="M278 14 Q274 -8 259 -19" stroke="currentColor" stroke-width=".7" stroke-linecap="round" fill="none"/>
+    <!-- COCONUT PALM — vectorized from logo -->
+    <symbol id="frond-r" viewBox="0 0 120 200">
     </symbol>
 
-    <!-- FROND SMALL — same shape, different viewBox for small sizes -->
-    <symbol id="frond-sm" viewBox="0 0 180 90">
-      <path d="M4 84 Q55 52 176 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-      <path d="M18 76 Q8 87 1 90"   stroke="currentColor" stroke-width="1.1" stroke-linecap="round" fill="none"/>
-      <path d="M18 76 Q16 64 12 59" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" fill="none"/>
-      <path d="M36 68 Q22 81 8 86"  stroke="currentColor" stroke-width="1.05" stroke-linecap="round" fill="none"/>
-      <path d="M36 68 Q33 55 28 49" stroke="currentColor" stroke-width="1.05" stroke-linecap="round" fill="none"/>
-      <path d="M54 60 Q38 74 20 81" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/>
-      <path d="M54 60 Q51 46 45 39" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/>
-      <path d="M72 52 Q54 67 34 75" stroke="currentColor" stroke-width=".95" stroke-linecap="round" fill="none"/>
-      <path d="M72 52 Q69 38 62 31" stroke="currentColor" stroke-width=".95" stroke-linecap="round" fill="none"/>
-      <path d="M90 44 Q70 60 48 69" stroke="currentColor" stroke-width=".9" stroke-linecap="round" fill="none"/>
-      <path d="M90 44 Q87 30 79 22" stroke="currentColor" stroke-width=".9" stroke-linecap="round" fill="none"/>
-      <path d="M108 36 Q86 53 62 63" stroke="currentColor" stroke-width=".85" stroke-linecap="round" fill="none"/>
-      <path d="M108 36 Q105 22 96 14" stroke="currentColor" stroke-width=".85" stroke-linecap="round" fill="none"/>
-      <path d="M126 28 Q102 46 76 57" stroke="currentColor" stroke-width=".8" stroke-linecap="round" fill="none"/>
-      <path d="M126 28 Q123 14 113 6" stroke="currentColor" stroke-width=".8" stroke-linecap="round" fill="none"/>
-      <path d="M148 19 Q122 38 94 50" stroke="currentColor" stroke-width=".75" stroke-linecap="round" fill="none"/>
-      <path d="M148 19 Q145 5 134 -3" stroke="currentColor" stroke-width=".75" stroke-linecap="round" fill="none"/>
-      <path d="M166 12 Q139 32 110 44" stroke="currentColor" stroke-width=".7" stroke-linecap="round" fill="none"/>
-      <path d="M166 12 Q163 -2 151 -10" stroke="currentColor" stroke-width=".7" stroke-linecap="round" fill="none"/>
+    <!-- COCONUT PALM SMALL — compact version -->
+    <symbol id="frond-sm" viewBox="0 0 80 140">
     </symbol>
   </defs>
 </svg>
@@ -463,10 +511,11 @@
 
   <!-- ══════ NAV ══════ -->
   <nav id="nav" class="over">
-    <a href="#historia" class="nav-link">Nossa História</a>
-    <a href="#local"    class="nav-link">Local</a>
-    <a href="#rsvp"     class="nav-link">Confirmação</a>
-    <a href="#presentes" class="nav-link">Presentes</a>
+    <a href="#local"         class="nav-link">Local</a>
+    <a href="#como-chegar"   class="nav-link">Como Chegar</a>
+    <a href="#programacao"   class="nav-link">Programação</a>
+    <a href="#rsvp"          class="nav-link">Confirmação</a>
+    <a href="#presentes"     class="nav-link">Presentes</a>
     <button class="nav-burger" id="burger" aria-label="Menu">
       <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
         <path d="M0 1h20M0 7h20M0 13h20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
@@ -476,6 +525,12 @@
   <div class="nav-drawer" id="drawer">
     <a href="#historia">Nossa História</a>
     <a href="#local">Local</a>
+    <a href="#como-chegar">Como Chegar</a>
+    <a href="#programacao">Programação</a>
+    <a href="#traje">Traje</a>
+    <a href="#hospedagem">Hospedagem</a>
+    <a href="#padrinhos">Padrinhos</a>
+    <a href="#mural">Mural</a>
     <a href="#rsvp">Confirmação</a>
     <a href="#presentes">Presentes</a>
   </div>
@@ -483,7 +538,7 @@
 
   <!-- ══════ HERO ══════ -->
   <section class="hero" id="hero">
-    <img class="hero-img" src="refs/e6f12e22-b2d2-4aa5-9ce9-66421a412758.jpg" alt="André e João" />
+    <img class="hero-img" src="refs/novo_bg.jpeg" alt="André e João" />
     <div class="hero-overlay"></div>
     <div class="bot bot-tl">
       <svg width="180" height="200" viewBox="0 0 180 200" fill="none" opacity=".2">
@@ -502,20 +557,24 @@
       </svg>
     </div>
     <div class="hero-body">
-      <div class="hero-logo-wrap">
-        <img src="refs/logo.png" alt="André & João" class="hero-logo-img" />
+      <div class="hero-top">
+        <div class="hero-logo-wrap">
+          <img src="refs/logo.png" alt="André & João" class="hero-logo-img" />
+        </div>
+        <p class="hero-eyebrow">um convite especial</p>
       </div>
-      <p class="hero-eyebrow">um convite especial</p>
-      <h1 class="hero-name">ANDRÉ</h1>
-      <div class="hero-rule">
-        <span class="hero-rule-line"></span>
-        <span class="hero-rule-text">e</span>
-        <span class="hero-rule-line"></span>
+      <div class="hero-center">
+        <h1 class="hero-name">ANDRÉ</h1>
+        <div class="hero-rule">
+          <span class="hero-rule-line"></span>
+          <span class="hero-rule-text">e</span>
+          <span class="hero-rule-line"></span>
+        </div>
+        <h1 class="hero-name">JOÃO</h1>
+        <p class="hero-tagline">convidam você para celebrar o amor deles</p>
+        <p class="hero-date">12 · Dezembro · 2026</p>
+        <p class="hero-venue">Vila Entre Chaves · Morros de Camaragibe, Alagoas</p>
       </div>
-      <h1 class="hero-name">JOÃO</h1>
-      <p class="hero-tagline">convidam você para celebrar o amor deles</p>
-      <p class="hero-date">12 · Dezembro · 2026</p>
-      <p class="hero-venue">Vilarejo das Palmeiras · Costa dos Coqueiros, Bahia</p>
     </div>
     <div class="hero-scroll"><span>Rolar</span><div class="scroll-line"></div></div>
   </section>
@@ -534,14 +593,14 @@
         <span class="invite-divider-line"></span>
       </div>
       <h2 class="invite-names">André <span>&</span> João</h2>
-      <p class="invite-body">a celebração do seu casamento<br>rodeados das pessoas que mais amam</p>
+      <p class="invite-body">Criamos este site com muito carinho para compartilhar cada detalhe do nosso grande dia. Confirme sua presença e, se desejar, nos presenteie com algo especial — cada gesto será recebido com muito carinho e gratidão.</p>
       <div class="invite-divider" style="margin:20px 0 16px">
         <span class="invite-divider-line"></span>
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 .8l1 2.1 2.3.3-1.7 1.6.4 2.3L6 6l-2 1.1.4-2.3L2.7 3.2l2.3-.3z" fill="#C4924A"/></svg>
         <span class="invite-divider-line"></span>
       </div>
       <p class="invite-date">Sábado, 12 de Dezembro de 2026</p>
-      <p class="invite-place">Vilarejo das Palmeiras · Costa dos Coqueiros, Bahia</p>
+      <p class="invite-place">Vila Entre Chaves · Morros de Camaragibe, Alagoas</p>
     </div>
   </section>
 
@@ -553,20 +612,17 @@
     <div class="countdown-inner">
 
       <!-- Frond heading — white/gold on dark bg -->
-      <div class="frond-heading rv" style="margin-bottom:52px">
-        <div class="frond-label-row">
-          <svg class="frond-sm frond-flip" color="rgba(196,146,74,.55)" style="transform:scaleX(-1) rotate(-8deg)">
-            <use href="#frond-sm"/>
-          </svg>
-          <p class="sec-label" style="color:rgba(255,255,255,.38)">Faltam apenas</p>
-          <svg class="frond-sm" color="rgba(196,146,74,.55)" style="transform:rotate(-8deg)">
-            <use href="#frond-sm"/>
-          </svg>
-        </div>
-        <h2 class="sec-title-light" style="font-family:'Cinzel',serif;font-size:clamp(1.6rem,2.5vw,2.3rem);color:#fff;letter-spacing:.06em;font-weight:400">Para o Grande Dia</h2>
+      <div class="frond-label-row" style="margin-bottom:60px">
+        <svg class="frond-sm frond-flip" color="rgba(196,146,74,.55)" style="transform:scaleX(-1) rotate(-8deg)">
+          <use href="#frond-sm"/>
+        </svg>
+        <p class="sec-label" style="color:rgba(255,255,255,.38)">Faltam apenas</p>
+        <svg class="frond-sm" color="rgba(196,146,74,.55)" style="transform:rotate(-8deg)">
+          <use href="#frond-sm"/>
+        </svg>
       </div>
 
-      <div class="cd-grid rv d1">
+      <div class="cd-grid rv d1" style="margin-bottom:64px">
         <div class="cd-unit"><span class="cd-num" id="cdD">--</span><span class="cd-lbl">Dias</span></div>
         <span class="cd-sep">:</span>
         <div class="cd-unit"><span class="cd-num" id="cdH">--</span><span class="cd-lbl">Horas</span></div>
@@ -574,6 +630,10 @@
         <div class="cd-unit"><span class="cd-num" id="cdM">--</span><span class="cd-lbl">Minutos</span></div>
         <span class="cd-sep">:</span>
         <div class="cd-unit"><span class="cd-num" id="cdS">--</span><span class="cd-lbl">Segundos</span></div>
+      </div>
+
+      <div class="frond-heading rv">
+        <h2 class="sec-title-light" style="font-family:'Cinzel',serif;font-size:clamp(1.6rem,2.5vw,2.3rem);color:#fff;letter-spacing:.06em;font-weight:400">Para o Grande Dia</h2>
       </div>
     </div>
   </section>
@@ -633,7 +693,7 @@
             <div class="tl-dot" style="background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 4px rgba(196,146,74,.2)"></div>
             <p class="tl-yr">12 de Dezembro de 2026</p>
             <h3 class="tl-ev" style="color:var(--gold)">O grande dia</h3>
-            <p class="tl-ds">Voltamos à Bahia para celebrar rodeados de todos que amamos. Seja bem-vindo à nossa história.</p>
+            <p class="tl-ds">Viemos celebrar em Alagoas, rodeados de todos que amamos. Seja bem-vindo à nossa história.</p>
           </div>
         </div>
       </div>
@@ -645,6 +705,9 @@
   <!-- ══════ LOCAL ══════ -->
   <section class="local" id="local">
     <div class="local-hdr">
+      <img class="local-hdr-img-l" src="refs/hWhatsApp Image 2026-04-13 at 7.38.17 PM.jpeg" alt="" />
+      <img class="local-hdr-img-r" src="refs/b22b8554-b46a-4da7-82fa-3fbb044fae96.jpg" alt="" />
+      <div class="local-hdr-overlay"></div>
       <!-- Frond heading on dark bg -->
       <div class="frond-heading">
         <div class="frond-label-row rv">
@@ -656,9 +719,9 @@
             <use href="#frond-r"/>
           </svg>
         </div>
-        <h2 class="sec-title rv d1" style="color:#fff;margin-top:4px">Vilarejo das Palmeiras</h2>
+        <h2 class="sec-title rv d1" style="color:#fff;margin-top:4px">Vila Entre Chaves</h2>
         <p class="sec-sub rv d2" style="color:rgba(255,255,255,.5);max-width:460px;margin:12px auto 0;line-height:1.75">
-          Costa dos Coqueiros, Bahia — um paraíso entre coqueiros centenários, areia branca e o azul infinito do Atlântico.
+          Morros de Camaragibe, Alagoas — em meio a uma fazenda de coqueiros, um espaço intimista e perfeito para esse momento tão especial.
         </p>
       </div>
     </div>
@@ -668,9 +731,9 @@
         <img src="refs/56c53e08-f638-451f-9f10-ff6bc6577fbd.jpg" alt="Vista aérea" />
         <div class="local-panel-overlay"></div>
         <div class="local-panel-content">
-          <p class="local-panel-num">01 · Chegada</p>
-          <h3 class="local-panel-title">Vista Aérea</h3>
-          <p class="local-panel-desc">Quilômetros de coqueirais encontrando a areia branca — o cenário perfeito.</p>
+          <p class="local-panel-num">01 · O Espaço</p>
+          <h3 class="local-panel-title">Vila Entre Chaves</h3>
+          <p class="local-panel-desc">Uma fazenda de coqueiros centenários com clima intimista — o cenário perfeito para o nosso grande dia.</p>
         </div>
       </div>
       <div class="local-panel rv d1">
@@ -694,14 +757,249 @@
     </div>
 
     <div class="local-map-row rv">
-      <a href="https://maps.google.com" target="_blank" class="btn-map">
-        <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
-          <path d="M6 .5C3.5.5 1.5 2.5 1.5 5c0 3.75 4.5 8.5 4.5 8.5S10.5 8.75 10.5 5C10.5 2.5 8.5.5 6 .5z" stroke="currentColor" stroke-width="1.2" fill="none"/>
-          <circle cx="6" cy="5" r="1.5" stroke="currentColor" stroke-width="1.1"/>
-        </svg>
-        Como chegar
+      <a href="https://www.instagram.com/vilaentrechaves" target="_blank" class="btn-map">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+        @vilaentrechaves
       </a>
     </div>
+  </section>
+
+
+  <!-- ══════ COMO CHEGAR ══════ -->
+  <section class="howto" id="como-chegar">
+    <div class="howto-inner">
+      <div class="frond-heading">
+        <div class="frond-label-row rv">
+          <svg class="frond-sm frond-flip" color="var(--sage)" style="transform:scaleX(-1) rotate(-10deg);opacity:.7"><use href="#frond-sm"/></svg>
+          <p class="sec-label">Logística</p>
+          <svg class="frond-sm" color="var(--sage)" style="transform:rotate(-10deg);opacity:.7"><use href="#frond-sm"/></svg>
+        </div>
+        <h2 class="sec-title rv d1" style="margin-top:4px">Como Chegar</h2>
+      </div>
+      <p class="howto-intro rv d2">Para facilitar sua experiência, reunimos as melhores opções de acesso ao local da celebração.</p>
+      <div class="howto-cards">
+        <div class="howto-card rv">
+          <span class="howto-card-icon">✈</span>
+          <h3>Aeroporto de Maceió</h3>
+          <p>O aeroporto mais próximo, a aproximadamente 1h20 de distância — a alternativa mais prática e confortável.</p>
+        </div>
+        <div class="howto-card rv d1">
+          <span class="howto-card-icon">✈</span>
+          <h3>Aeroporto de Recife</h3>
+          <p>Outra opção disponível, localizada a cerca de 4 horas do destino.</p>
+        </div>
+        <div class="howto-card rv d2">
+          <span class="howto-card-icon">🚗</span>
+          <h3>Transfer ou Locação</h3>
+          <p>Recomendamos a organização prévia do transporte para que sua chegada seja tranquila e aproveite cada momento dessa experiência especial.</p>
+        </div>
+      </div>
+      <div class="rv d3" style="text-align:center">
+        <div class="howto-addr">
+          <span class="howto-addr-icon">📍</span>
+          <div>
+            <strong>Endereço</strong>
+            Fazenda Morros do Camaragibe, S/N Gleba 13, Zona Rural<br>Passo de Camaragibe · Alagoas · CEP 57930-000
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════ PROGRAMAÇÃO ══════ -->
+  <section class="prog" id="programacao">
+    <div class="prog-inner">
+      <div class="frond-heading" style="text-align:center">
+        <div class="frond-label-row rv" style="justify-content:center">
+          <svg class="frond-sm frond-flip" color="rgba(196,146,74,.55)" style="transform:scaleX(-1) rotate(-8deg)"><use href="#frond-sm"/></svg>
+          <p class="sec-label" style="color:rgba(255,255,255,.38)">Os nossos dias</p>
+          <svg class="frond-sm" color="rgba(196,146,74,.55)" style="transform:rotate(-8deg)"><use href="#frond-sm"/></svg>
+        </div>
+        <h2 class="sec-title rv d1" style="color:#fff;margin-top:4px">Programação</h2>
+      </div>
+
+      <div class="prog-days">
+        <div class="prog-day rv d1">
+          <p class="prog-day-date">10 · Dezembro · 2026</p>
+          <h3 class="prog-day-title">Check-in &amp; Chegada</h3>
+          <div class="prog-event">
+            <p class="prog-event-time">A partir das 12h</p>
+            <p class="prog-event-desc">Iniciaremos o check-in no hotel. Um momento para desacelerar, aproveitar o destino e entrar no clima dos dias especiais que estão por vir. Descanse, explore os arredores e prepare-se para viver essa experiência conosco.</p>
+          </div>
+        </div>
+
+        <div class="prog-day rv d1">
+          <p class="prog-day-date">11 · Dezembro · 2026</p>
+          <h3 class="prog-day-title">Pré-Wedding</h3>
+          <div class="prog-event">
+            <p class="prog-event-time">15h30</p>
+            <p class="prog-event-name">Luau à beira-mar</p>
+            <p class="prog-event-desc">Ao pôr do sol, daremos início às celebrações com um luau leve e acolhedor. Uma tarde para aproveitar boa música, comida e bebida, com a brisa do mar e uma energia incrível.</p>
+            <p class="prog-event-note">Evento reservado aos hóspedes. Confira as orientações de traje no menu.</p>
+          </div>
+        </div>
+
+        <div class="prog-day rv d1">
+          <p class="prog-day-date">12 · Dezembro · 2026</p>
+          <h3 class="prog-day-title highlight">O Casamento ✦</h3>
+          <div class="prog-event">
+            <p class="prog-event-time">15h</p>
+            <p class="prog-event-name">Cerimônia</p>
+            <p class="prog-event-desc">Chegou o grande momento. Nossa cerimônia acontecerá em um cenário único, cercado pela natureza e por pessoas especiais. A pontualidade é essencial — chegue no horário para vivenciar cada instante desde o início.</p>
+            <p class="prog-event-note">Confira as orientações de traje no menu.</p>
+          </div>
+        </div>
+
+        <div class="prog-day rv d1">
+          <p class="prog-day-date">13 · Dezembro · 2026</p>
+          <h3 class="prog-day-title">Check-out</h3>
+          <div class="prog-event">
+            <p class="prog-event-time">Até às 13h</p>
+            <p class="prog-event-desc">Após dias tão especiais, desejamos que levem consigo lembranças inesquecíveis desse momento que tivemos a alegria de compartilhar com vocês.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════ TRAJE ══════ -->
+  <section class="ph-section" id="traje">
+    <div class="frond-heading">
+      <div class="frond-label-row rv">
+        <svg class="frond-sm frond-flip" color="var(--sage)" style="transform:scaleX(-1) rotate(-10deg);opacity:.7"><use href="#frond-sm"/></svg>
+        <p class="sec-label">Dress Code</p>
+        <svg class="frond-sm" color="var(--sage)" style="transform:rotate(-10deg);opacity:.7"><use href="#frond-sm"/></svg>
+      </div>
+      <h2 class="sec-title rv d1" style="margin-top:4px">Traje</h2>
+    </div>
+
+    <div class="traje-cards">
+      <div class="traje-card rv">
+        <div class="traje-card-hdr">
+          <p class="traje-card-hdr-label">Pré-Wedding</p>
+          <h3 class="traje-card-hdr-title">Luau Chic</h3>
+          <p class="traje-card-hdr-color">Cor obrigatória: Branco</p>
+        </div>
+        <div class="traje-card-body">
+          <div class="traje-gender">
+            <p class="traje-gender-label">Mulheres</p>
+            <p>Sugerimos vestidos ou conjuntos na cor branca, em tecidos leves e fluidos. Para manter a harmonia do evento, pedimos evitar brilhos e estampas.</p>
+          </div>
+          <div class="traje-gender">
+            <p class="traje-gender-label">Homens</p>
+            <p>Camisa de linho branca (manga curta ou longa), combinada com calça ou bermuda em tons claros, como areia, cáqui ou bege. Pedimos, gentilmente, evitar camisas estampadas.</p>
+          </div>
+        </div>
+        <div class="traje-photos">
+          <img class="traje-photo" src="refs/trajes evento/pw/pw_01.jpeg" alt="Referência Pré-Wedding">
+          <img class="traje-photo" src="refs/trajes evento/pw/pw_02.jpeg" alt="Referência Pré-Wedding">
+          <img class="traje-photo" src="refs/trajes evento/pw/pw_03.jpeg" alt="Referência Pré-Wedding">
+          <img class="traje-photo" src="refs/trajes evento/pw/pw_04.jpeg" alt="Referência Pré-Wedding">
+          <img class="traje-photo" src="refs/trajes evento/pw/pw_05.jpeg" alt="Referência Pré-Wedding">
+          <img class="traje-photo" src="refs/trajes evento/pw/pw_06.jpeg" alt="Referência Pré-Wedding">
+          <img class="traje-photo" src="refs/trajes evento/pw/pw_07.jpeg" alt="Referência Pré-Wedding">
+          <img class="traje-photo" src="refs/trajes evento/pw/pw_08.jpeg" alt="Referência Pré-Wedding">
+          <img class="traje-photo" src="refs/trajes evento/pw/pw_09.jpeg" alt="Referência Pré-Wedding">
+        </div>
+      </div>
+      <div class="traje-card rv d1">
+        <div class="traje-card-hdr">
+          <p class="traje-card-hdr-label">Cerimônia</p>
+          <h3 class="traje-card-hdr-title">Praia</h3>
+        </div>
+        <div class="traje-card-body">
+          <div class="traje-gender">
+            <p class="traje-gender-label">Mulheres</p>
+            <p>Sugerimos vestidos longos, em tecidos leves e fluidos, ideais para o clima praiano. Pedimos evitar brilhos, tecidos como veludo e cetim, bem como peças muito estruturadas.</p>
+          </div>
+          <div class="traje-gender">
+            <p class="traje-gender-label">Homens</p>
+            <p>Sugerimos terno ou conjuntos em linho, em tons claros e naturais. Pedimos evitar jeans bem como cores escuras, como azul-marinho, preto e cinza escuro.</p>
+          </div>
+        </div>
+        <div class="traje-photos">
+          <img class="traje-photo" src="refs/trajes evento/cer/cer_01.jpeg" alt="Referência Cerimônia">
+          <img class="traje-photo" src="refs/trajes evento/cer/cer_02.jpeg" alt="Referência Cerimônia">
+          <img class="traje-photo" src="refs/trajes evento/cer/cer_03.jpeg" alt="Referência Cerimônia">
+          <img class="traje-photo" src="refs/trajes evento/cer/cer_04.jpeg" alt="Referência Cerimônia">
+          <img class="traje-photo" src="refs/trajes evento/cer/cer_05.jpeg" alt="Referência Cerimônia">
+          <img class="traje-photo" src="refs/trajes evento/cer/cer_06.jpeg" alt="Referência Cerimônia">
+          <img class="traje-photo" src="refs/trajes evento/cer/cer_07.jpeg" alt="Referência Cerimônia">
+          <img class="traje-photo" src="refs/trajes evento/cer/cer_08.jpeg" alt="Referência Cerimônia">
+          <img class="traje-photo" src="refs/trajes evento/cer/cer_09.jpeg" alt="Referência Cerimônia">
+          <img class="traje-photo" src="refs/trajes evento/cer/cer_10.jpeg" alt="Referência Cerimônia">
+          <img class="traje-photo" src="refs/trajes evento/cer/cer_11.jpeg" alt="Referência Cerimônia">
+          <img class="traje-photo" src="refs/trajes evento/cer/cer_12.jpeg" alt="Referência Cerimônia">
+          <img class="traje-photo" src="refs/trajes evento/cer/cer_13.jpeg" alt="Referência Cerimônia">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════ HOSPEDAGEM ══════ -->
+  <section class="ph-section dark" id="hospedagem">
+    <div class="frond-heading">
+      <div class="frond-label-row rv">
+        <svg class="frond-sm frond-flip" color="rgba(196,146,74,.4)" style="transform:scaleX(-1) rotate(-10deg)"><use href="#frond-sm"/></svg>
+        <p class="sec-label" style="color:rgba(255,255,255,.38)">Onde ficar</p>
+        <svg class="frond-sm" color="rgba(196,146,74,.4)" style="transform:rotate(-10deg)"><use href="#frond-sm"/></svg>
+      </div>
+      <h2 class="sec-title rv d1" style="color:#fff;margin-top:4px">Hospedagem</h2>
+    </div>
+    <p class="hosp-intro rv d2">O local do evento é mais reservado e com acesso limitado, por isso há poucas opções de hospedagem nas proximidades com acesso facilitado. Recomendamos a reserva com antecedência, devido à disponibilidade reduzida na região.</p>
+    <div class="hosp-cards rv d2">
+      <div class="hosp-card">
+        <p class="hosp-card-name">Primitivo Hotel</p>
+        <a class="hosp-card-ig" href="https://instagram.com/primitivo.hotel" target="_blank" rel="noopener">@primitivo.hotel</a>
+      </div>
+      <div class="hosp-card">
+        <p class="hosp-card-name">Vila Galé Alagoas</p>
+        <a class="hosp-card-ig" href="https://instagram.com/vilagale.alagoas" target="_blank" rel="noopener">@vilagale.alagoas</a>
+      </div>
+    </div>
+    <div class="hosp-notice rv d3">
+      <p class="hosp-notice-label">Observação importante</p>
+      <p>Não recomendamos hospedagens fora dessas opções. Apesar da proximidade no mapa, a região de São Miguel dos Milagres possui um rio que impede o acesso direto de carro ao local do evento, o que pode dificultar significativamente o deslocamento.</p>
+    </div>
+  </section>
+
+
+  <!-- ══════ PADRINHOS ══════ -->
+  <section class="ph-section" id="padrinhos">
+    <div class="frond-heading">
+      <div class="frond-label-row rv">
+        <svg class="frond-sm frond-flip" color="var(--sage)" style="transform:scaleX(-1) rotate(-10deg);opacity:.7"><use href="#frond-sm"/></svg>
+        <p class="sec-label">Nosso time</p>
+        <svg class="frond-sm" color="var(--sage)" style="transform:rotate(-10deg);opacity:.7"><use href="#frond-sm"/></svg>
+      </div>
+      <h2 class="sec-title rv d1" style="margin-top:4px">Padrinhos</h2>
+    </div>
+    <div class="padr-letter rv d2">
+      <p>Aos nossos queridos padrinhos e madrinhas,</p>
+      <br>
+      <p>Ter vocês ao nosso lado nesse momento tão especial é motivo de imensa alegria. Cada um faz parte da nossa história de forma única, e dividir essa nova etapa com vocês torna tudo ainda mais significativo.</p>
+      <br>
+      <p>Escolhemos vocês para estarem conosco não apenas nesse dia, mas como testemunhas do nosso amor e da construção desse sonho que estamos realizando.</p>
+      <br>
+      <p>Pedimos, com carinho, que atentem-se às orientações do Manual dos Padrinhos, preparado especialmente para esse momento.</p>
+    </div>
+  </section>
+
+
+  <!-- ══════ MURAL ══════ -->
+  <section class="ph-section dark" id="mural">
+    <div class="frond-heading">
+      <div class="frond-label-row rv">
+        <svg class="frond-sm frond-flip" color="rgba(196,146,74,.4)" style="transform:scaleX(-1) rotate(-10deg)"><use href="#frond-sm"/></svg>
+        <p class="sec-label" style="color:rgba(255,255,255,.38)">Deixe sua marca</p>
+        <svg class="frond-sm" color="rgba(196,146,74,.4)" style="transform:rotate(-10deg)"><use href="#frond-sm"/></svg>
+      </div>
+      <h2 class="sec-title rv d1" style="color:#fff;margin-top:4px">Mural de Mensagens</h2>
+    </div>
+    <span class="ph-soon rv d2">Em breve</span>
   </section>
 
 
@@ -754,31 +1052,6 @@
                 Não poderei ir
               </span>
             </label>
-          </div>
-        </div>
-        <div class="fg-row rv d2">
-          <div class="fg">
-            <label class="flabel" for="guests">Acompanhantes</label>
-            <div class="sel-wrap">
-              <select class="fsel" id="guests">
-                <option value="0">Apenas eu</option>
-                <option value="1">+ 1 pessoa</option>
-                <option value="2">+ 2 pessoas</option>
-                <option value="3">+ 3 pessoas</option>
-              </select>
-            </div>
-          </div>
-          <div class="fg">
-            <label class="flabel" for="diet">Restrição alimentar</label>
-            <div class="sel-wrap">
-              <select class="fsel" id="diet">
-                <option>Nenhuma</option>
-                <option>Vegetariano</option>
-                <option>Vegano</option>
-                <option>Sem glúten</option>
-                <option>Sem lactose</option>
-              </select>
-            </div>
           </div>
         </div>
         <div class="fg rv d2">
@@ -893,13 +1166,22 @@
       <img src="refs/logo.png" alt="André & João" class="ft-logo-img" />
     </div>
     <p class="ft-names">André <span>&</span> João</p>
-    <p class="ft-date">12 · Dezembro · 2026 · Costa dos Coqueiros, Bahia</p>
+    <p class="ft-date">12 · Dezembro · 2026 · Morros de Camaragibe, Alagoas</p>
     <div class="ft-hr"></div>
     <p class="ft-copy">Feito com amor para o nosso grande dia ✦</p>
   </footer>
 
 </div><!-- #wrap -->
 
+
+<!-- ══════ LIGHTBOX ══════ -->
+<div id="lb" onclick="lbCloseOut(event)">
+  <button id="lb-close" onclick="lbClose()" aria-label="Fechar">✕</button>
+  <img id="lb-img" src="" alt="" />
+  <p id="lb-counter"></p>
+  <button class="lb-btn" id="lb-prev" onclick="lbStep(-1)" aria-label="Anterior">&#8249;</button>
+  <button class="lb-btn" id="lb-next" onclick="lbStep(1)" aria-label="Próxima">&#8250;</button>
+</div>
 
 <!-- ══════ MODAL ══════ -->
 <div class="modal-ov" id="giftModal" onclick="closeOut(event)">
@@ -995,6 +1277,31 @@
   }
   function closeOut(e){ if(e.target.id==='giftModal') closeModal(); }
   document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
+  /* LIGHTBOX */
+  let lbImgs=[], lbIdx=0;
+  document.querySelectorAll('.traje-photo').forEach(img => {
+    img.addEventListener('click', () => {
+      lbImgs = Array.from(img.closest('.traje-photos').querySelectorAll('.traje-photo'));
+      lbIdx  = lbImgs.indexOf(img);
+      lbShow();
+    });
+  });
+  function lbShow(){
+    document.getElementById('lb-img').src = lbImgs[lbIdx].src;
+    document.getElementById('lb-counter').textContent = (lbIdx+1) + ' / ' + lbImgs.length;
+    document.getElementById('lb').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function lbStep(dir){ lbIdx=(lbIdx+dir+lbImgs.length)%lbImgs.length; lbShow(); }
+  function lbClose(){ document.getElementById('lb').classList.remove('open'); document.body.style.overflow=''; }
+  function lbCloseOut(e){ if(e.target.id==='lb') lbClose(); }
+  document.addEventListener('keydown', e => {
+    if(!document.getElementById('lb').classList.contains('open')) return;
+    if(e.key==='Escape') lbClose();
+    if(e.key==='ArrowLeft') lbStep(-1);
+    if(e.key==='ArrowRight') lbStep(1);
+  });
 </script>
 </body>
 </html>

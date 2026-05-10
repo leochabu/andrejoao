@@ -24,7 +24,26 @@
       "Bash(node -e \"try{require\\('C:/Users/leoch/AppData/Local/ms-playwright/../../../npm/node_modules/playwright'\\)}catch\\(e\\){console.log\\(e.message\\)}\")",
       "Bash(npm root *)",
       "Bash(unzip -o \"pre wedding.zip\" -d pre_wedding)",
-      "Bash(unzip -o \"cerimonia.zip\" -d cerimonia)"
+      "Bash(unzip -o \"cerimonia.zip\" -d cerimonia)",
+      "Bash(start *)",
+      "Bash(mv \"Na parte da nossa historia colocar essa foto.jpeg\" \"historia_principal.jpeg\")",
+      "Bash(mv \"No contador regressivo colocar essa foto por favor.jpeg\" \"contador_bg.jpeg\")",
+      "Bash(mv \"hWhatsApp Image 2026-04-13 at 7.38.17 PM.jpeg\" \"local_header.jpeg\")",
+      "Bash(mv \"56c53e08-f638-451f-9f10-ff6bc6577fbd.jpg\" \"local_vista_aerea.jpg\")",
+      "Bash(mv \"b22b8554-b46a-4da7-82fa-3fbb044fae96.jpg\" \"local_praia.jpg\")",
+      "Bash(mv \"WhatsApp Image 2026-04-13 at 7.56.14 PM.jpeg\" \"cer_h_01.jpeg\")",
+      "Bash(mv \"WhatsApp Image 2026-04-13 at 7.56.15 PM \\(1\\).jpeg\" \"cer_h_02.jpeg\")",
+      "Bash(mv \"WhatsApp Image 2026-04-13 at 7.56.15 PM \\(2\\).jpeg\" \"cer_h_03.jpeg\")",
+      "Bash(mv \"WhatsApp Image 2026-04-13 at 7.56.15 PM \\(3\\).jpeg\" \"cer_h_04.jpeg\")",
+      "Bash(mv \"WhatsApp Image 2026-04-13 at 7.56.15 PM.jpeg\" \"cer_h_05.jpeg\")",
+      "Bash(mv \"WhatsApp Image 2026-04-13 at 7.56.15 PM \\(4\\).jpeg\" \"cer_m_01.jpeg\")",
+      "Bash(mv \"WhatsApp Image 2026-04-13 at 7.56.15 PM \\(5\\).jpeg\" \"cer_m_02.jpeg\")",
+      "Bash(mv \"WhatsApp Image 2026-04-13 at 7.56.16 PM \\(1\\).jpeg\" \"cer_m_03.jpeg\")",
+      "Bash(mv \"WhatsApp Image 2026-04-13 at 7.56.16 PM \\(2\\).jpeg\" \"cer_m_04.jpeg\")",
+      "Bash(mv \"WhatsApp Image 2026-04-13 at 7.56.16 PM \\(3\\).jpeg\" \"cer_m_05.jpeg\")",
+      "PowerShell(Copy-Item \"d:\\\\Casamento\\\\refs\\\\fotos_hd\\\\WhatsApp Image 2026-04-27 at 8.07.06 AM \\(1\\).jpeg\" -Destination \"d:\\\\Casamento\\\\refs\\\\contador_regressivo.jpeg\" -Force)",
+      "PowerShell(Copy-Item \"d:\\\\Casamento\\\\refs\\\\fotos_hd\\\\WhatsApp Image 2026-04-27 at 8.07.06 AM \\(2\\).jpeg\" -Destination \"d:\\\\Casamento\\\\refs\\\\nossos_dias.jpeg\" -Force)",
+      "PowerShell(Copy-Item \"d:\\\\Casamento\\\\refs\\\\fotos_hd\\\\WhatsApp Image 2026-04-27 at 8.07.05 AM \\(3\\).jpeg\" -Destination \"d:\\\\Casamento\\\\refs\\\\novo_bg.jpeg\" -Force)"
     ]
   }
 }

@@ -103,8 +103,8 @@
     }
     .hero-center {
       flex:1;
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      text-align:center; padding:0 24px 64px;
+      display:flex; flex-direction:column; align-items:center; justify-content:flex-end;
+      text-align:center; padding:0 24px 130px;
     }
     .hero-logo-wrap {
       position:relative; margin-bottom:10px;
@@ -188,7 +188,7 @@
       content:'';
       position:absolute; bottom:0; right:0;
       width:360px; height:360px;
-      background:url('refs/915e42c54640fe470f154d758f247f71.jpg') center/contain no-repeat;
+      background:url('refs/rsvp_bg.jpg') center/contain no-repeat;
       opacity:.04;
       pointer-events:none;
     }
@@ -252,6 +252,7 @@
       font-size:.95rem; color:var(--muted);
       margin:18px 0; line-height:1.75; letter-spacing:.03em;
     }
+    .invite-body p + p { margin-top:10px; }
     .invite-date {
       font-family:'Cinzel',serif;
       font-size:.85rem; letter-spacing:.22em;
@@ -273,7 +274,7 @@
     }
     .countdown-photo {
       position:absolute; inset:0;
-      background:url('refs/56c53e08-f638-451f-9f10-ff6bc6577fbd.jpg') center/cover no-repeat;
+      background:url('refs/contador_regressivo.jpeg') center/cover no-repeat;
       background-attachment:fixed;
     }
     .countdown-overlay {
@@ -343,7 +344,10 @@
     .history-content {
       padding:72px 6% 72px 48px;
     }
-    .history-hdr { margin-bottom:52px; }
+    .history-hdr { margin-bottom:32px; }
+    .hist-intro { font-size:.97rem; line-height:1.85; color:var(--text); max-width:520px; margin-bottom:48px; }
+    .hist-intro p { margin-bottom:1em; }
+    .hist-intro p:last-child { margin-bottom:0; }
     .sec-label {
       display:inline-block; font-size:.67rem; letter-spacing:.26em;
       text-transform:uppercase; color:var(--sage); font-weight:600; margin-bottom:10px;
@@ -411,10 +415,11 @@
       max-width:480px; margin:0 auto; line-height:1.75;
     }
 
-    /* Three stacked full-width panels */
-    .local-panels { display:flex; flex-direction:column; }
+    /* Carousel for local panels */
+    .local-panels { position:relative; overflow:hidden; }
+    .carousel-track { display:flex; transition:transform .5s cubic-bezier(.4,0,.2,1); will-change:transform; }
     .local-panel {
-      position:relative; height:55vh; min-height:320px;
+      position:relative; flex:0 0 100%; height:55vh; min-height:320px;
       overflow:hidden; cursor:pointer;
     }
     .local-panel img {
@@ -423,6 +428,30 @@
       object-position:center;
     }
     .local-panel:hover img { transform:scale(1.03); }
+    .carousel-btn {
+      position:absolute; top:50%; z-index:10;
+      transform:translateY(-50%);
+      background:rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.2);
+      color:#fff; width:44px; height:44px;
+      border-radius:50%; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition:background .2s, border-color .2s;
+    }
+    .carousel-btn:hover { background:rgba(0,0,0,.65); border-color:rgba(255,255,255,.45); }
+    .carousel-btn-prev { left:18px; }
+    .carousel-btn-next { right:18px; }
+    .carousel-dots {
+      position:absolute; bottom:18px; left:50%;
+      transform:translateX(-50%);
+      display:flex; gap:10px; z-index:10;
+    }
+    .carousel-dot {
+      width:8px; height:8px; border-radius:50%;
+      background:rgba(255,255,255,.38);
+      cursor:pointer; transition:background .25s, transform .25s;
+      border:none; padding:0;
+    }
+    .carousel-dot.active { background:var(--gold); transform:scale(1.35); }
     .local-panel-overlay {
       position:absolute; inset:0;
       background:linear-gradient(to right, rgba(18,34,20,.7) 0%, rgba(18,34,20,.1) 60%);
@@ -721,11 +750,23 @@
     .howto-addr strong{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--forest);display:block;margin-bottom:4px}
 
     /* ── PROGRAMAÇÃO ── */
-    .prog{background:var(--forest);padding:88px 6%}
-    .prog-inner{max-width:760px;margin:0 auto}
-    .prog-days{margin-top:52px;display:flex;flex-direction:column}
-    .prog-day{border-left:1px solid rgba(255,255,255,.15);padding:0 0 52px 36px;position:relative}
-    .prog-day:last-child{padding-bottom:0;border-left-color:transparent}
+    .prog{background:var(--forest);padding:0}
+    .prog-photo{
+      width:100%;height:52vh;min-height:300px;
+      background:url('refs/nossos_dias.jpeg') center 35%/cover no-repeat;
+      position:relative;
+    }
+    .prog-photo::after{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(to bottom,rgba(18,34,20,.15) 0%,rgba(18,34,20,.75) 100%);
+    }
+    .prog-inner{max-width:760px;margin:0 auto;padding:72px 6% 88px}
+    .prog-days{margin-top:52px;overflow:hidden}
+    .prog-carousel-track{display:flex;transition:transform .45s cubic-bezier(.4,0,.2,1);will-change:transform}
+    .prog-day{flex:0 0 100%;border-left:1px solid rgba(255,255,255,.15);padding:0 0 0 36px;position:relative;min-height:160px}
+    .prog-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:36px}
+    .prog-nav-btn{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.65);width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s}
+    .prog-nav-btn:hover{border-color:var(--gold);color:var(--gold)}
     .prog-day::before{content:'';position:absolute;left:-5px;top:5px;width:9px;height:9px;border-radius:50%;background:var(--gold)}
     .prog-day-date{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
     .prog-day-title{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2vw,1.55rem);color:#fff;font-weight:400;margin-bottom:18px}
@@ -739,6 +780,10 @@
     /* ── PLACEHOLDER SECTIONS ── */
     .ph-section{background:var(--cream);padding:88px 6%;text-align:center;border-top:1px solid var(--border)}
     .ph-section.dark{background:var(--forest);border-top:1px solid rgba(255,255,255,.08)}
+    .mural-photo{width:100%;height:48vh;min-height:280px;background:url('refs/fotos_hd/Mural de Mensagens.jpeg') center 40%/cover no-repeat;position:relative}
+    .mural-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(18,34,20,.1) 0%,rgba(18,34,20,.8) 100%)}
+    #mural{padding:0;border-top:none}
+    #mural .frond-heading{padding:60px 6% 0}
     .ph-soon{display:inline-block;margin-top:22px;padding:9px 22px;border:1px solid var(--border);border-radius:2px;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
     .ph-section.dark .ph-soon{border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.35)}
 
@@ -754,7 +799,7 @@
     .traje-gender+.traje-gender{border-top:1px solid var(--border)}
     .traje-gender-label{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--forest);margin-bottom:8px}
     .traje-gender p{font-size:.87rem;color:var(--muted);line-height:1.8}
-    .traje-photos{display:flex;gap:8px;overflow-x:auto;padding:14px 16px;background:#f5f3ee;border-top:1px solid var(--border);scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+    .traje-photos{display:flex;gap:8px;overflow-x:auto;padding:12px 16px;background:#f5f3ee;border-top:1px solid var(--border);scrollbar-width:thin;scrollbar-color:var(--border) transparent;margin:12px -28px -20px}
     .traje-photos::-webkit-scrollbar{height:4px}
     .traje-photos::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
     .traje-photo{flex:0 0 auto;width:96px;height:136px;object-fit:cover;border-radius:2px;cursor:pointer;transition:opacity .15s}
@@ -827,21 +872,33 @@
   <div class="hero-overlay"></div>
 
   <div class="bot bot-tl">
-    <svg width="180" height="200" viewBox="0 0 180 200" fill="none" opacity=".2">
-      <path d="M6 192C6 138 34 88 70 50C106 12 154 1 174 7" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-      <path d="M70 50C60 32 63 13 73 0" stroke="white" stroke-width=".85" fill="none" stroke-linecap="round"/>
-      <path d="M70 50C48 46 28 50 8 58" stroke="white" stroke-width=".85" fill="none" stroke-linecap="round"/>
-      <path d="M112 28C108 15 110 4 118 0" stroke="white" stroke-width=".75" fill="none" stroke-linecap="round" opacity=".7"/>
-      <circle cx="70" cy="50" r="2.8" fill="white" opacity=".5"/>
-      <circle cx="112" cy="28" r="2" fill="white" opacity=".4"/>
+    <svg width="210" height="210" viewBox="0 0 210 210" fill="none">
+      <!-- Arcos de onda oceânica irradiando do canto superior esquerdo -->
+      <path d="M210,0 C165,22 132,55 100,88 C68,120 36,155 0,210" stroke="white" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".28"/>
+      <path d="M168,0 C130,20 100,50 74,78 C48,106 22,142 0,180" stroke="white" stroke-width="1.0" fill="none" stroke-linecap="round" opacity=".20"/>
+      <path d="M126,0 C97,17 74,42 54,66 C34,90 14,120 0,152" stroke="white" stroke-width=".8" fill="none" stroke-linecap="round" opacity=".15"/>
+      <path d="M84,0 C64,14 48,32 34,52 C20,72 8,96 0,122" stroke="white" stroke-width=".65" fill="none" stroke-linecap="round" opacity=".11"/>
+      <path d="M42,0 C32,10 22,22 14,36 C6,50 1,66 0,88" stroke="white" stroke-width=".5" fill="none" stroke-linecap="round" opacity=".08"/>
+      <!-- Cristas de onda -->
+      <path d="M162,32 Q168,26 176,31" stroke="white" stroke-width=".75" fill="none" stroke-linecap="round" opacity=".32"/>
+      <path d="M104,84 Q110,78 118,83" stroke="white" stroke-width=".7" fill="none" stroke-linecap="round" opacity=".28"/>
+      <path d="M46,142 Q53,135 61,140" stroke="white" stroke-width=".65" fill="none" stroke-linecap="round" opacity=".25"/>
+      <circle cx="167" cy="30" r="1.6" fill="white" opacity=".32"/>
+      <circle cx="108" cy="82" r="1.4" fill="white" opacity=".28"/>
+      <circle cx="50" cy="140" r="1.2" fill="white" opacity=".24"/>
     </svg>
   </div>
   <div class="bot bot-tr">
-    <svg width="180" height="200" viewBox="0 0 180 200" fill="none" opacity=".2">
-      <path d="M6 192C6 138 34 88 70 50C106 12 154 1 174 7" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-      <path d="M70 50C60 32 63 13 73 0" stroke="white" stroke-width=".85" fill="none" stroke-linecap="round"/>
-      <path d="M70 50C48 46 28 50 8 58" stroke="white" stroke-width=".85" fill="none" stroke-linecap="round"/>
-      <circle cx="70" cy="50" r="2.8" fill="white" opacity=".5"/>
+    <svg width="210" height="210" viewBox="0 0 210 210" fill="none">
+      <path d="M210,0 C165,22 132,55 100,88 C68,120 36,155 0,210" stroke="white" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".28"/>
+      <path d="M168,0 C130,20 100,50 74,78 C48,106 22,142 0,180" stroke="white" stroke-width="1.0" fill="none" stroke-linecap="round" opacity=".20"/>
+      <path d="M126,0 C97,17 74,42 54,66 C34,90 14,120 0,152" stroke="white" stroke-width=".8" fill="none" stroke-linecap="round" opacity=".15"/>
+      <path d="M84,0 C64,14 48,32 34,52 C20,72 8,96 0,122" stroke="white" stroke-width=".65" fill="none" stroke-linecap="round" opacity=".11"/>
+      <path d="M42,0 C32,10 22,22 14,36 C6,50 1,66 0,88" stroke="white" stroke-width=".5" fill="none" stroke-linecap="round" opacity=".08"/>
+      <path d="M162,32 Q168,26 176,31" stroke="white" stroke-width=".75" fill="none" stroke-linecap="round" opacity=".32"/>
+      <path d="M104,84 Q110,78 118,83" stroke="white" stroke-width=".7" fill="none" stroke-linecap="round" opacity=".28"/>
+      <circle cx="167" cy="30" r="1.6" fill="white" opacity=".32"/>
+      <circle cx="108" cy="82" r="1.4" fill="white" opacity=".28"/>
     </svg>
   </div>
 
@@ -888,7 +945,11 @@
       <span class="invite-divider-line"></span>
     </div>
     <h2 class="invite-names">André <span>&</span> João</h2>
-    <p class="invite-body">Criamos este site com muito carinho para compartilhar cada detalhe do nosso grande dia. Confirme sua presença e, se desejar, nos presenteie com algo especial — cada gesto será recebido com muito carinho e gratidão.</p>
+    <div class="invite-body">
+      <p>Criamos este site com muito carinho para compartilhar com vocês cada detalhe da realização do nosso grande dia. Estamos imensamente felizes e será ainda mais especial poder contar com a presença de cada um de vocês nesse momento tão importante das nossas vidas.</p>
+      <p>Pedimos, por gentileza, que confirmem sua presença através do menu "Confirme sua Presença", preenchendo as informações solicitadas. Sua confirmação é muito importante para nós.</p>
+      <p>Fiquem à vontade também para nos presentear com algo especial através da nossa "Lista de Presentes". Cada gesto será recebido com muito carinho e gratidão.</p>
+    </div>
     <div class="invite-divider" style="margin:20px 0 16px">
       <span class="invite-divider-line"></span>
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -927,13 +988,20 @@
   <div class="history-inner">
 
     <div class="history-photo-col rv">
-      <img src="refs/e6f12e22-b2d2-4aa5-9ce9-66421a412758.jpg" alt="André e João" />
+      <img src="refs/historia_principal.jpeg" alt="André e João" />
     </div>
 
     <div class="history-content">
       <div class="history-hdr">
         <p class="sec-label rv">Nossa história</p>
         <h2 class="sec-title rv d1">Como tudo<br>começou</h2>
+      </div>
+
+      <div class="hist-intro rv d2">
+        <p>Nossa história começou de um jeito simples, mas com algo que sempre pareceu diferente.</p>
+        <p>Fomos construindo uma conexão que cresceu com o tempo e ganhou cada vez mais significado, com um amor sólido e cheio de parceria.</p>
+        <p>Hoje, seguimos escolhendo um ao outro todos os dias e é com essa certeza que damos o próximo passo da nossa história.</p>
+        <p>Celebrar esse momento com vocês torna tudo ainda mais especial.</p>
       </div>
 
       <div class="tl">
@@ -977,41 +1045,65 @@
 <!-- ═══════ LOCAL ═══════ -->
 <section class="local" id="local">
   <div class="local-hdr">
-    <img class="local-hdr-img-l" src="refs/hWhatsApp Image 2026-04-13 at 7.38.17 PM.jpeg" alt="" />
-    <img class="local-hdr-img-r" src="refs/b22b8554-b46a-4da7-82fa-3fbb044fae96.jpg" alt="" />
+    <img class="local-hdr-img-l" src="refs/local_header.jpeg" alt="" />
+    <img class="local-hdr-img-r" src="refs/local_praia.jpg" alt="" />
     <div class="local-hdr-overlay"></div>
     <p class="sec-label rv" style="color:rgba(255,255,255,.38)">Onde vamos celebrar</p>
     <h2 class="sec-title rv d1" style="color:#fff;font-family:'Cinzel',serif;font-size:clamp(1.6rem,2.8vw,2.3rem);font-weight:400">Vila Entre Chaves</h2>
-    <p class="sec-sub rv d2" style="color:rgba(255,255,255,.5);font-size:.95rem;max-width:480px;margin:12px auto 0;line-height:1.75">Morros de Camaragibe, Alagoas — em meio a uma fazenda de coqueiros, um espaço intimista e perfeito para esse momento tão especial.</p>
+    <p class="sec-sub rv d2" style="color:rgba(255,255,255,.5);font-size:.95rem;max-width:500px;margin:12px auto 0;line-height:1.75">Em meio a uma fazenda de coqueiros, na praia de Morros de Camaragibe, em Alagoas, o espaço tem um clima intimista e perfeito para esse momento tão especial. Será nesse lugar único que viveremos e compartilharemos momentos inesquecíveis ao lado de pessoas queridas.</p>
+    <a href="https://instagram.com/vilaentrechaves" target="_blank" rel="noopener" class="rv d3" style="display:inline-block;margin-top:18px;color:rgba(255,255,255,.55);font-size:.8rem;letter-spacing:.12em;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:2px">@vilaentrechaves</a>
   </div>
 
   <div class="local-panels">
-    <div class="local-panel rv">
-      <img src="refs/56c53e08-f638-451f-9f10-ff6bc6577fbd.jpg" alt="Vista aérea" />
-      <div class="local-panel-overlay"></div>
-      <div class="local-panel-content">
-        <p class="local-panel-num">01 · Chegada</p>
-        <h3 class="local-panel-title">Vista Aérea</h3>
-        <p class="local-panel-desc">Quilômetros de coqueirais encontrando a areia branca — o cenário perfeito para um casamento inesquecível.</p>
+    <div class="carousel-track" id="localTrack">
+      <div class="local-panel rv">
+        <img src="refs/local_vista_aerea.jpg" alt="Vista aérea" />
+        <div class="local-panel-overlay"></div>
+        <div class="local-panel-content">
+          <p class="local-panel-num">01 · Chegada</p>
+          <h3 class="local-panel-title">Vista Aérea</h3>
+          <p class="local-panel-desc">Quilômetros de coqueirais encontrando a areia branca — o cenário perfeito para um casamento inesquecível.</p>
+        </div>
+      </div>
+      <div class="local-panel rv">
+        <img src="refs/local_praia.jpg" alt="A praia" style="object-position:center 40%" />
+        <div class="local-panel-overlay"></div>
+        <div class="local-panel-content">
+          <p class="local-panel-num">02 · Cerimônia</p>
+          <h3 class="local-panel-title">A Praia</h3>
+          <p class="local-panel-desc">Mar turquesa, brisa suave e o som das ondas como trilha sonora do nosso sim.</p>
+        </div>
+      </div>
+      <div class="local-panel rv">
+        <img src="refs/local_resort.jpg" alt="O resort" />
+        <div class="local-panel-overlay"></div>
+        <div class="local-panel-content">
+          <p class="local-panel-num">03 · Recepção</p>
+          <h3 class="local-panel-title">O Resort</h3>
+          <p class="local-panel-desc">Piscina, gastronomia à beira-mar e hospedagem para os convidados que vierem de longe.</p>
+        </div>
+      </div>
+      <div class="local-panel rv">
+        <img src="refs/fotos_hd/Onde Vamos Celebrar.jpeg" alt="André e João no coqueirais" style="object-position:center center" />
+        <div class="local-panel-overlay"></div>
+        <div class="local-panel-content">
+          <p class="local-panel-num">04 · Os Noivos</p>
+          <h3 class="local-panel-title">No Coqueiral</h3>
+          <p class="local-panel-desc">Entre coqueiros e sombras do entardecer — o cenário que fará parte da nossa memória para sempre.</p>
+        </div>
       </div>
     </div>
-    <div class="local-panel rv d1">
-      <img src="refs/b22b8554-b46a-4da7-82fa-3fbb044fae96.jpg" alt="A praia" style="object-position:center 40%" />
-      <div class="local-panel-overlay"></div>
-      <div class="local-panel-content">
-        <p class="local-panel-num">02 · Cerimônia</p>
-        <h3 class="local-panel-title">A Praia</h3>
-        <p class="local-panel-desc">Mar turquesa, brisa suave e o som das ondas como trilha sonora do nosso sim.</p>
-      </div>
-    </div>
-    <div class="local-panel rv d2">
-      <img src="refs/cfb989eb-27a7-4dc0-8ac7-2ae5d8e62a7e.jpg" alt="O resort" />
-      <div class="local-panel-overlay"></div>
-      <div class="local-panel-content">
-        <p class="local-panel-num">03 · Recepção</p>
-        <h3 class="local-panel-title">O Resort</h3>
-        <p class="local-panel-desc">Piscina, gastronomia à beira-mar e hospedagem para os convidados que vierem de longe.</p>
-      </div>
+    <button class="carousel-btn carousel-btn-prev" onclick="localCarousel(-1)" aria-label="Anterior">
+      <svg width="10" height="17" viewBox="0 0 10 17" fill="none"><path d="M8.5 1.5 1.5 8.5l7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="carousel-btn carousel-btn-next" onclick="localCarousel(1)" aria-label="Próximo">
+      <svg width="10" height="17" viewBox="0 0 10 17" fill="none"><path d="M1.5 1.5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="carousel-dots" id="localDots">
+      <button class="carousel-dot active" onclick="localGoTo(0)" aria-label="Painel 1"></button>
+      <button class="carousel-dot" onclick="localGoTo(1)" aria-label="Painel 2"></button>
+      <button class="carousel-dot" onclick="localGoTo(2)" aria-label="Painel 3"></button>
+      <button class="carousel-dot" onclick="localGoTo(3)" aria-label="Painel 4"></button>
     </div>
   </div>
 
@@ -1071,6 +1163,7 @@
 
 <!-- ═══════ PROGRAMAÇÃO ═══════ -->
 <section class="prog" id="programacao">
+  <div class="prog-photo"></div>
   <div class="prog-inner">
     <div class="frond-heading" style="text-align:center">
       <div class="frond-label-row rv" style="justify-content:center">
@@ -1081,41 +1174,57 @@
       <h2 class="sec-title rv d1" style="color:#fff;margin-top:4px">Programação</h2>
     </div>
     <div class="prog-days">
-      <div class="prog-day rv d1">
-        <p class="prog-day-date">10 · Dezembro · 2026</p>
-        <h3 class="prog-day-title">Check-in &amp; Chegada</h3>
-        <div class="prog-event">
-          <p class="prog-event-time">A partir das 12h</p>
-          <p class="prog-event-desc">Iniciaremos o check-in no hotel. Um momento para desacelerar, aproveitar o destino e entrar no clima dos dias especiais que estão por vir. Descanse, explore os arredores e prepare-se para viver essa experiência conosco.</p>
+      <div class="prog-carousel-track" id="progTrack">
+        <div class="prog-day rv">
+          <p class="prog-day-date">10 · Dezembro · 2026</p>
+          <h3 class="prog-day-title">Check-in &amp; Chegada</h3>
+          <div class="prog-event">
+            <p class="prog-event-time">A partir das 12h</p>
+            <p class="prog-event-desc">Iniciaremos o check-in no hotel. Um momento para desacelerar, aproveitar o destino e entrar no clima dos dias especiais que estão por vir. Descanse, explore os arredores e prepare-se para viver essa experiência conosco.</p>
+          </div>
+        </div>
+        <div class="prog-day rv">
+          <p class="prog-day-date">11 · Dezembro · 2026</p>
+          <h3 class="prog-day-title">Pré-Wedding</h3>
+          <div class="prog-event">
+            <p class="prog-event-time">15h30</p>
+            <p class="prog-event-name">Luau à beira-mar</p>
+            <p class="prog-event-desc">Ao pôr do sol, daremos início às celebrações com um luau leve e acolhedor. Uma tarde para aproveitar boa música, comida e bebida, com a brisa do mar e uma energia incrível.</p>
+            <p class="prog-event-note">Evento reservado aos hóspedes. Confira as orientações de traje no menu.</p>
+          </div>
+        </div>
+        <div class="prog-day rv">
+          <p class="prog-day-date">12 · Dezembro · 2026</p>
+          <h3 class="prog-day-title highlight">O Casamento ✦</h3>
+          <div class="prog-event">
+            <p class="prog-event-time">15h</p>
+            <p class="prog-event-name">Cerimônia</p>
+            <p class="prog-event-desc">Chegou o grande momento. Nossa cerimônia acontecerá em um cenário único, cercado pela natureza e por pessoas especiais. A pontualidade é essencial — chegue no horário para vivenciar cada instante desde o início.</p>
+            <p class="prog-event-note">Confira as orientações de traje no menu.</p>
+          </div>
+        </div>
+        <div class="prog-day rv">
+          <p class="prog-day-date">13 · Dezembro · 2026</p>
+          <h3 class="prog-day-title">Check-out</h3>
+          <div class="prog-event">
+            <p class="prog-event-time">Até às 13h</p>
+            <p class="prog-event-desc">Após dias tão especiais, desejamos que levem consigo lembranças inesquecíveis desse momento que tivemos a alegria de compartilhar com vocês.</p>
+          </div>
         </div>
       </div>
-      <div class="prog-day rv d1">
-        <p class="prog-day-date">11 · Dezembro · 2026</p>
-        <h3 class="prog-day-title">Pré-Wedding</h3>
-        <div class="prog-event">
-          <p class="prog-event-time">15h30</p>
-          <p class="prog-event-name">Luau à beira-mar</p>
-          <p class="prog-event-desc">Ao pôr do sol, daremos início às celebrações com um luau leve e acolhedor. Uma tarde para aproveitar boa música, comida e bebida, com a brisa do mar e uma energia incrível.</p>
-          <p class="prog-event-note">Evento reservado aos hóspedes. Confira as orientações de traje no menu.</p>
+      <div class="prog-nav">
+        <button class="prog-nav-btn" onclick="progCarousel(-1)" aria-label="Anterior">
+          <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M7.5 1.5 1.5 7.5l6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="carousel-dots" id="progDots" style="position:static;transform:none">
+          <button class="carousel-dot active" onclick="progGoTo(0)" aria-label="Dia 1"></button>
+          <button class="carousel-dot" onclick="progGoTo(1)" aria-label="Dia 2"></button>
+          <button class="carousel-dot" onclick="progGoTo(2)" aria-label="Dia 3"></button>
+          <button class="carousel-dot" onclick="progGoTo(3)" aria-label="Dia 4"></button>
         </div>
-      </div>
-      <div class="prog-day rv d1">
-        <p class="prog-day-date">12 · Dezembro · 2026</p>
-        <h3 class="prog-day-title highlight">O Casamento ✦</h3>
-        <div class="prog-event">
-          <p class="prog-event-time">15h</p>
-          <p class="prog-event-name">Cerimônia</p>
-          <p class="prog-event-desc">Chegou o grande momento. Nossa cerimônia acontecerá em um cenário único, cercado pela natureza e por pessoas especiais. A pontualidade é essencial — chegue no horário para vivenciar cada instante desde o início.</p>
-          <p class="prog-event-note">Confira as orientações de traje no menu.</p>
-        </div>
-      </div>
-      <div class="prog-day rv d1">
-        <p class="prog-day-date">13 · Dezembro · 2026</p>
-        <h3 class="prog-day-title">Check-out</h3>
-        <div class="prog-event">
-          <p class="prog-event-time">Até às 13h</p>
-          <p class="prog-event-desc">Após dias tão especiais, desejamos que levem consigo lembranças inesquecíveis desse momento que tivemos a alegria de compartilhar com vocês.</p>
-        </div>
+        <button class="prog-nav-btn" onclick="progCarousel(1)" aria-label="Próximo">
+          <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
       </div>
     </div>
   </div>
@@ -1144,22 +1253,24 @@
         <div class="traje-gender">
           <p class="traje-gender-label">Mulheres</p>
           <p>Sugerimos vestidos ou conjuntos na cor branca, em tecidos leves e fluidos. Para manter a harmonia do evento, pedimos evitar brilhos e estampas.</p>
+          <div class="traje-photos">
+            <img class="traje-photo" src="refs/trajes evento/pre_wedding/mulheres/pw_m_01.jpeg" alt="Referência Mulheres">
+            <img class="traje-photo" src="refs/trajes evento/pre_wedding/mulheres/pw_m_02.jpeg" alt="Referência Mulheres">
+            <img class="traje-photo" src="refs/trajes evento/pre_wedding/mulheres/pw_m_03.jpeg" alt="Referência Mulheres">
+            <img class="traje-photo" src="refs/trajes evento/pre_wedding/mulheres/pw_m_04.jpeg" alt="Referência Mulheres">
+            <img class="traje-photo" src="refs/trajes evento/pre_wedding/mulheres/pw_m_05.jpeg" alt="Referência Mulheres">
+            <img class="traje-photo" src="refs/trajes evento/pre_wedding/mulheres/pw_m_06.jpeg" alt="Referência Mulheres">
+          </div>
         </div>
         <div class="traje-gender">
           <p class="traje-gender-label">Homens</p>
           <p>Camisa de linho branca (manga curta ou longa), combinada com calça ou bermuda em tons claros, como areia, cáqui ou bege. Pedimos, gentilmente, evitar camisas estampadas.</p>
+          <div class="traje-photos">
+            <img class="traje-photo" src="refs/trajes evento/pre_wedding/pw_h_01.jpeg" alt="Referência Homens">
+            <img class="traje-photo" src="refs/trajes evento/pre_wedding/pw_h_02.jpeg" alt="Referência Homens">
+            <img class="traje-photo" src="refs/trajes evento/pre_wedding/pw_h_03.jpeg" alt="Referência Homens">
+          </div>
         </div>
-      </div>
-      <div class="traje-photos">
-        <img class="traje-photo" src="refs/trajes evento/pw/pw_01.jpeg" alt="Referência Pré-Wedding">
-        <img class="traje-photo" src="refs/trajes evento/pw/pw_02.jpeg" alt="Referência Pré-Wedding">
-        <img class="traje-photo" src="refs/trajes evento/pw/pw_03.jpeg" alt="Referência Pré-Wedding">
-        <img class="traje-photo" src="refs/trajes evento/pw/pw_04.jpeg" alt="Referência Pré-Wedding">
-        <img class="traje-photo" src="refs/trajes evento/pw/pw_05.jpeg" alt="Referência Pré-Wedding">
-        <img class="traje-photo" src="refs/trajes evento/pw/pw_06.jpeg" alt="Referência Pré-Wedding">
-        <img class="traje-photo" src="refs/trajes evento/pw/pw_07.jpeg" alt="Referência Pré-Wedding">
-        <img class="traje-photo" src="refs/trajes evento/pw/pw_08.jpeg" alt="Referência Pré-Wedding">
-        <img class="traje-photo" src="refs/trajes evento/pw/pw_09.jpeg" alt="Referência Pré-Wedding">
       </div>
     </div>
     <div class="traje-card rv d1">
@@ -1171,26 +1282,28 @@
         <div class="traje-gender">
           <p class="traje-gender-label">Mulheres</p>
           <p>Sugerimos vestidos longos, em tecidos leves e fluidos, ideais para o clima praiano. Pedimos evitar brilhos, tecidos como veludo e cetim, bem como peças muito estruturadas.</p>
+          <div class="traje-photos">
+            <img class="traje-photo" src="refs/trajes evento/cerimonia/mulheres/cer_m_01.jpeg" alt="Referência Mulheres">
+            <img class="traje-photo" src="refs/trajes evento/cerimonia/mulheres/cer_m_02.jpeg" alt="Referência Mulheres">
+            <img class="traje-photo" src="refs/trajes evento/cerimonia/mulheres/cer_m_03.jpeg" alt="Referência Mulheres">
+            <img class="traje-photo" src="refs/trajes evento/cerimonia/mulheres/cer_m_04.jpeg" alt="Referência Mulheres">
+            <img class="traje-photo" src="refs/trajes evento/cerimonia/mulheres/cer_m_05.jpeg" alt="Referência Mulheres">
+            <img class="traje-photo" src="refs/trajes evento/cerimonia/mulheres/cer_m_06.jpeg" alt="Referência Mulheres">
+            <img class="traje-photo" src="refs/trajes evento/cerimonia/mulheres/cer_m_07.jpeg" alt="Referência Mulheres">
+            <img class="traje-photo" src="refs/trajes evento/cerimonia/mulheres/cer_m_08.jpeg" alt="Referência Mulheres">
+          </div>
         </div>
         <div class="traje-gender">
           <p class="traje-gender-label">Homens</p>
           <p>Sugerimos terno ou conjuntos em linho, em tons claros e naturais. Pedimos evitar jeans bem como cores escuras, como azul-marinho, preto e cinza escuro.</p>
+          <div class="traje-photos">
+            <img class="traje-photo" src="refs/trajes evento/cerimonia/homens/cer_h_01.jpeg" alt="Referência Homens">
+            <img class="traje-photo" src="refs/trajes evento/cerimonia/homens/cer_h_02.jpeg" alt="Referência Homens">
+            <img class="traje-photo" src="refs/trajes evento/cerimonia/homens/cer_h_03.jpeg" alt="Referência Homens">
+            <img class="traje-photo" src="refs/trajes evento/cerimonia/homens/cer_h_04.jpeg" alt="Referência Homens">
+            <img class="traje-photo" src="refs/trajes evento/cerimonia/homens/cer_h_05.jpeg" alt="Referência Homens">
+          </div>
         </div>
-      </div>
-      <div class="traje-photos">
-        <img class="traje-photo" src="refs/trajes evento/cer/cer_01.jpeg" alt="Referência Cerimônia">
-        <img class="traje-photo" src="refs/trajes evento/cer/cer_02.jpeg" alt="Referência Cerimônia">
-        <img class="traje-photo" src="refs/trajes evento/cer/cer_03.jpeg" alt="Referência Cerimônia">
-        <img class="traje-photo" src="refs/trajes evento/cer/cer_04.jpeg" alt="Referência Cerimônia">
-        <img class="traje-photo" src="refs/trajes evento/cer/cer_05.jpeg" alt="Referência Cerimônia">
-        <img class="traje-photo" src="refs/trajes evento/cer/cer_06.jpeg" alt="Referência Cerimônia">
-        <img class="traje-photo" src="refs/trajes evento/cer/cer_07.jpeg" alt="Referência Cerimônia">
-        <img class="traje-photo" src="refs/trajes evento/cer/cer_08.jpeg" alt="Referência Cerimônia">
-        <img class="traje-photo" src="refs/trajes evento/cer/cer_09.jpeg" alt="Referência Cerimônia">
-        <img class="traje-photo" src="refs/trajes evento/cer/cer_10.jpeg" alt="Referência Cerimônia">
-        <img class="traje-photo" src="refs/trajes evento/cer/cer_11.jpeg" alt="Referência Cerimônia">
-        <img class="traje-photo" src="refs/trajes evento/cer/cer_12.jpeg" alt="Referência Cerimônia">
-        <img class="traje-photo" src="refs/trajes evento/cer/cer_13.jpeg" alt="Referência Cerimônia">
       </div>
     </div>
   </div>
@@ -1249,6 +1362,7 @@
 
 <!-- ═══════ MURAL ═══════ -->
 <section class="ph-section dark" id="mural">
+  <div class="mural-photo"></div>
   <div class="frond-heading">
     <div class="frond-label-row rv">
       <svg class="frond-sm frond-flip" color="rgba(196,146,74,.4)" style="transform:scaleX(-1) rotate(-10deg)"><use href="#frond-sm"/></svg>
@@ -1264,7 +1378,7 @@
 <!-- ═══════ RSVP ═══════ -->
 <section class="rsvp" id="rsvp">
   <div class="rsvp-photo">
-    <img src="refs/b22b8554-b46a-4da7-82fa-3fbb044fae96.jpg" alt="Praia" />
+    <img src="refs/fotos_hd/WhatsApp Image 2026-04-27 at 8.07.06 AM (3).jpeg" alt="André e João" style="object-position:center 30%" />
     <div class="rsvp-photo-overlay"></div>
     <div class="rsvp-photo-caption">
       <h3>Você vai<br>estar lá?</h3>
@@ -1465,6 +1579,53 @@
       if(el) window.scrollTo({top: el.getBoundingClientRect().top + scrollY - 64, behavior:'smooth'});
     });
   });
+
+  /* PROG CAROUSEL */
+  let progIdx = 0;
+  const progTotal = 4;
+  function progGoTo(n) {
+    progIdx = n;
+    document.getElementById('progTrack').style.transform = `translateX(-${n * 100}%)`;
+    document.querySelectorAll('#progDots .carousel-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === n);
+    });
+  }
+  function progCarousel(dir) {
+    progGoTo((progIdx + dir + progTotal) % progTotal);
+  }
+  (function(){
+    const el = document.getElementById('progTrack');
+    let sx = 0;
+    el.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive:true});
+    el.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 40) progCarousel(dx < 0 ? 1 : -1);
+    }, {passive:true});
+  })();
+
+  /* LOCAL CAROUSEL */
+  let localIdx = 0;
+  const localTotal = 4;
+  function localGoTo(n) {
+    localIdx = n;
+    document.getElementById('localTrack').style.transform = `translateX(-${n * 100}%)`;
+    document.querySelectorAll('#localDots .carousel-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === n);
+    });
+  }
+  function localCarousel(dir) {
+    localGoTo((localIdx + dir + localTotal) % localTotal);
+  }
+  /* Swipe support */
+  (function(){
+    const el = document.getElementById('localTrack');
+    let sx = 0;
+    el.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive:true});
+    el.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 40) localCarousel(dx < 0 ? 1 : -1);
+    }, {passive:true});
+  })();
 
   /* REVEAL */
   const io = new IntersectionObserver(entries => {

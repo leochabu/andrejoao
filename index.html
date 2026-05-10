@@ -92,6 +92,8 @@
     .bot { position:absolute; pointer-events:none; }
     .bot-tl { top:0; left:0; }
     .bot-tr { top:0; right:0; transform:scaleX(-1); }
+    .bot-bl { bottom:0; left:0; transform:scaleY(-1); }
+    .bot-br { bottom:0; right:0; transform:scale(-1); }
     .hero-body {
       position:absolute; inset:0; z-index:1;
       display:flex; flex-direction:column; align-items:center;
@@ -284,7 +286,7 @@
     .countdown-inner { position:relative; z-index:1; }
     .sec-label-light {
       display:inline-block; font-size:.67rem; letter-spacing:.26em;
-      text-transform:uppercase; color:rgba(255,255,255,.45); font-weight:600; margin-bottom:10px;
+      text-transform:uppercase; color:rgba(255,255,255,.75); font-weight:600; margin-bottom:10px;
     }
     .sec-title-light {
       font-family:'Cinzel',serif;
@@ -346,6 +348,7 @@
     }
     .history-hdr { margin-bottom:32px; }
     .hist-intro { font-size:.97rem; line-height:1.85; color:var(--text); max-width:520px; margin-bottom:48px; }
+    .tl { display:none; }
     .hist-intro p { margin-bottom:1em; }
     .hist-intro p:last-child { margin-bottom:0; }
     .sec-label {
@@ -408,10 +411,10 @@
     .local-hdr>*:not(.local-hdr-img-l):not(.local-hdr-img-r):not(.local-hdr-overlay){
       position:relative;z-index:2;
     }
-    .local-hdr .sec-label { color:rgba(255,255,255,.38); }
+    .local-hdr .sec-label { color:rgba(255,255,255,.75); }
     .local-hdr .sec-title { color:#fff; font-size:clamp(1.6rem,2.8vw,2.3rem); }
     .local-hdr .sec-sub {
-      color:rgba(255,255,255,.5); font-size:.95rem;
+      color:rgba(255,255,255,.8); font-size:.95rem;
       max-width:480px; margin:0 auto; line-height:1.75;
     }
 
@@ -477,6 +480,8 @@
       font-size:.86rem; color:rgba(255,255,255,.7);
       line-height:1.65;
     }
+    .local-reel{text-align:center;padding:52px 6% 0}
+    .local-reel iframe{border:none;border-radius:12px;width:100%;max-width:340px;height:600px;display:block;margin:0 auto}
     .local-map-row {
       padding:40px 6%;
       display:flex; justify-content:center;
@@ -601,15 +606,10 @@
     }
     .gc:hover { transform:translateY(-4px); box-shadow:0 10px 32px rgba(30,58,34,.10); }
     .gc-img {
-      height:130px; display:flex; align-items:center;
-      justify-content:center; font-size:2.6rem; position:relative;
+      height:160px; display:flex; align-items:center;
+      justify-content:center; position:relative; background:#fff; overflow:hidden;
     }
-    .gc:nth-child(1) .gc-img{background:#EDF5EA}
-    .gc:nth-child(2) .gc-img{background:#FBF4E8}
-    .gc:nth-child(3) .gc-img{background:#E8F3F5}
-    .gc:nth-child(4) .gc-img{background:#F5EBE0}
-    .gc:nth-child(5) .gc-img{background:#EEF0F5}
-    .gc:nth-child(6) .gc-img{background:#F5EEE0}
+    .gc-img img { width:100%; height:100%; object-fit:contain; display:block; }
     .gc-sold {
       position:absolute; top:9px; right:9px; background:var(--sage); color:#fff;
       font-size:.6rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
@@ -693,7 +693,8 @@
       transform:scale(.96); transition:transform .25s;
     }
     .modal-ov.open .modal { transform:scale(1); }
-    .modal-em { font-size:2.6rem; margin-bottom:12px; }
+    .modal-em { margin-bottom:14px; }
+    .modal-em img { width:100px; height:100px; object-fit:contain; border-radius:6px; background:#f8f6f2; display:block; margin:0 auto; }
     .modal h3 { font-family:'Cinzel',serif; font-size:1.3rem; color:var(--forest); margin-bottom:7px; font-weight:400; }
     .modal p { font-size:.85rem; color:var(--muted); line-height:1.65; margin-bottom:22px; }
     .modal-pix { background:var(--cream); border:1px solid var(--border); border-radius:4px; padding:13px 15px; margin-bottom:20px; }
@@ -772,10 +773,22 @@
     .prog-day-title{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2vw,1.55rem);color:#fff;font-weight:400;margin-bottom:18px}
     .prog-day-title.highlight{color:var(--gold)}
     .prog-event{margin-bottom:18px}
-    .prog-event-time{font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:5px}
+    .prog-event-time{font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:5px}
     .prog-event-name{font-family:'Cinzel',serif;font-size:.83rem;color:rgba(196,146,74,.85);letter-spacing:.08em;margin-bottom:7px}
     .prog-event-desc{font-size:.87rem;color:rgba(255,255,255,.62);line-height:1.8}
     .prog-event-note{font-size:.78rem;color:rgba(255,255,255,.32);font-style:italic;margin-top:8px;padding-left:12px;border-left:2px solid rgba(196,146,74,.3)}
+
+    /* ── FROND HEADINGS ── */
+    .frond-heading{display:flex;flex-direction:column;align-items:center;text-align:center}
+    .frond-label-row{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:12px}
+    .frond-label-row .sec-label{margin:0}
+    .frond-sm{width:48px;height:auto;flex-shrink:0}
+    .frond-flip{transform:scaleX(-1)}
+
+    /* ── BACK TO TOP ── */
+    #btt{position:fixed;bottom:28px;right:28px;width:42px;height:42px;border-radius:50%;background:var(--forest);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;z-index:900}
+    #btt.vis{opacity:1;pointer-events:auto}
+    #btt svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 
     /* ── PLACEHOLDER SECTIONS ── */
     .ph-section{background:var(--cream);padding:88px 6%;text-align:center;border-top:1px solid var(--border)}
@@ -793,7 +806,7 @@
     .traje-card-hdr{background:var(--forest);color:#fff;padding:22px 28px}
     .traje-card-hdr-label{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
     .traje-card-hdr-title{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:400}
-    .traje-card-hdr-color{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:5px;font-style:italic}
+    .traje-card-hdr-color{font-size:.78rem;color:rgba(255,255,255,.8);margin-top:5px;font-style:italic}
     .traje-card-body{background:#fff}
     .traje-gender{padding:20px 28px}
     .traje-gender+.traje-gender{border-top:1px solid var(--border)}
@@ -802,8 +815,18 @@
     .traje-photos{display:flex;gap:8px;overflow-x:auto;padding:12px 16px;background:#f5f3ee;border-top:1px solid var(--border);scrollbar-width:thin;scrollbar-color:var(--border) transparent;margin:12px -28px -20px}
     .traje-photos::-webkit-scrollbar{height:4px}
     .traje-photos::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-    .traje-photo{flex:0 0 auto;width:96px;height:136px;object-fit:cover;border-radius:2px;cursor:pointer;transition:opacity .15s}
+    .traje-photo{flex:0 0 auto;width:96px;height:136px;object-fit:contain;background:#ede9e3;border-radius:2px;cursor:pointer;transition:opacity .15s}
     .traje-photo:hover{opacity:.82}
+
+    /* ── GALERIA ── */
+    .gallery-mosaic{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:4px;max-width:820px;height:440px;margin:32px auto 0}
+    .gm-main{grid-row:1/3;overflow:hidden;border-radius:3px 0 0 3px}
+    .gm-top{overflow:hidden;border-radius:0 3px 0 0}
+    .gm-bot{overflow:hidden;border-radius:0 0 3px 0}
+    .gm-photo{width:100%;height:100%;object-fit:cover;display:block;cursor:pointer;transition:opacity .2s}
+    .gm-photo:hover{opacity:.83}
+    .gallery-btn{display:inline-block;margin-top:22px;padding:10px 30px;border:1px solid var(--forest);border-radius:2px;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--forest);background:none;cursor:pointer;font-family:inherit;transition:background .2s,color .2s}
+    .gallery-btn:hover{background:var(--forest);color:#fff}
 
     /* ── LIGHTBOX ── */
     #lb{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;flex-direction:column;padding:20px}
@@ -825,7 +848,7 @@
     .hosp-card-ig:hover{text-decoration:underline}
     .hosp-notice{max-width:580px;margin:0 auto;padding:20px 24px;background:rgba(255,255,255,.05);border-left:2px solid var(--gold);border-radius:0 2px 2px 0;text-align:left}
     .hosp-notice-label{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-    .hosp-notice p{font-size:.82rem;color:rgba(255,255,255,.55);line-height:1.8}
+    .hosp-notice p{font-size:.82rem;color:rgba(255,255,255,.8);line-height:1.8}
 
     /* ── PADRINHOS ── */
     .padr-letter{max-width:600px;margin:36px auto 0;text-align:center}
@@ -838,6 +861,12 @@
   </style>
 </head>
 <body>
+
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <symbol id="frond-sm" viewBox="0 0 80 140"></symbol>
+  </defs>
+</svg>
 
 <!-- ═══════ NAV ═══════ -->
 <nav id="nav" class="over">
@@ -854,6 +883,7 @@
 </nav>
 <div class="nav-drawer" id="drawer">
   <a href="#historia">Nossa História</a>
+  <a href="#galeria">Galeria</a>
   <a href="#local">Local</a>
   <a href="#como-chegar">Como Chegar</a>
   <a href="#programacao">Programação</a>
@@ -871,36 +901,6 @@
   <img class="hero-img" src="refs/novo_bg.jpeg" alt="André e João" />
   <div class="hero-overlay"></div>
 
-  <div class="bot bot-tl">
-    <svg width="210" height="210" viewBox="0 0 210 210" fill="none">
-      <!-- Arcos de onda oceânica irradiando do canto superior esquerdo -->
-      <path d="M210,0 C165,22 132,55 100,88 C68,120 36,155 0,210" stroke="white" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".28"/>
-      <path d="M168,0 C130,20 100,50 74,78 C48,106 22,142 0,180" stroke="white" stroke-width="1.0" fill="none" stroke-linecap="round" opacity=".20"/>
-      <path d="M126,0 C97,17 74,42 54,66 C34,90 14,120 0,152" stroke="white" stroke-width=".8" fill="none" stroke-linecap="round" opacity=".15"/>
-      <path d="M84,0 C64,14 48,32 34,52 C20,72 8,96 0,122" stroke="white" stroke-width=".65" fill="none" stroke-linecap="round" opacity=".11"/>
-      <path d="M42,0 C32,10 22,22 14,36 C6,50 1,66 0,88" stroke="white" stroke-width=".5" fill="none" stroke-linecap="round" opacity=".08"/>
-      <!-- Cristas de onda -->
-      <path d="M162,32 Q168,26 176,31" stroke="white" stroke-width=".75" fill="none" stroke-linecap="round" opacity=".32"/>
-      <path d="M104,84 Q110,78 118,83" stroke="white" stroke-width=".7" fill="none" stroke-linecap="round" opacity=".28"/>
-      <path d="M46,142 Q53,135 61,140" stroke="white" stroke-width=".65" fill="none" stroke-linecap="round" opacity=".25"/>
-      <circle cx="167" cy="30" r="1.6" fill="white" opacity=".32"/>
-      <circle cx="108" cy="82" r="1.4" fill="white" opacity=".28"/>
-      <circle cx="50" cy="140" r="1.2" fill="white" opacity=".24"/>
-    </svg>
-  </div>
-  <div class="bot bot-tr">
-    <svg width="210" height="210" viewBox="0 0 210 210" fill="none">
-      <path d="M210,0 C165,22 132,55 100,88 C68,120 36,155 0,210" stroke="white" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".28"/>
-      <path d="M168,0 C130,20 100,50 74,78 C48,106 22,142 0,180" stroke="white" stroke-width="1.0" fill="none" stroke-linecap="round" opacity=".20"/>
-      <path d="M126,0 C97,17 74,42 54,66 C34,90 14,120 0,152" stroke="white" stroke-width=".8" fill="none" stroke-linecap="round" opacity=".15"/>
-      <path d="M84,0 C64,14 48,32 34,52 C20,72 8,96 0,122" stroke="white" stroke-width=".65" fill="none" stroke-linecap="round" opacity=".11"/>
-      <path d="M42,0 C32,10 22,22 14,36 C6,50 1,66 0,88" stroke="white" stroke-width=".5" fill="none" stroke-linecap="round" opacity=".08"/>
-      <path d="M162,32 Q168,26 176,31" stroke="white" stroke-width=".75" fill="none" stroke-linecap="round" opacity=".32"/>
-      <path d="M104,84 Q110,78 118,83" stroke="white" stroke-width=".7" fill="none" stroke-linecap="round" opacity=".28"/>
-      <circle cx="167" cy="30" r="1.6" fill="white" opacity=".32"/>
-      <circle cx="108" cy="82" r="1.4" fill="white" opacity=".28"/>
-    </svg>
-  </div>
 
   <div class="hero-body">
     <div class="hero-top">
@@ -1042,16 +1042,35 @@
 </section>
 
 
+<!-- ═══════ GALERIA ═══════ -->
+<section class="ph-section" id="galeria">
+  <div class="frond-heading rv">
+    <div class="frond-label-row">
+      <svg class="frond-sm frond-flip" color="var(--sage)" style="transform:scaleX(-1) rotate(-10deg);opacity:.7"><use href="#frond-sm"/></svg>
+      <p class="sec-label">Nós dois</p>
+      <svg class="frond-sm" color="var(--sage)" style="transform:rotate(-10deg);opacity:.7"><use href="#frond-sm"/></svg>
+    </div>
+    <h2 class="sec-title rv d1">Galeria</h2>
+  </div>
+  <div class="gallery-mosaic rv">
+    <div class="gm-main"><img class="gm-photo" data-idx="5" src="refs/fotos_hd/WhatsApp Image 2026-04-27 at 8.07.06 AM (1).jpeg" alt="André e João" /></div>
+    <div class="gm-top"> <img class="gm-photo" data-idx="0" src="refs/fotos_hd/WhatsApp Image 2026-04-27 at 8.07.05 AM.jpeg"      alt="André e João" /></div>
+    <div class="gm-bot"> <img class="gm-photo" data-idx="7" src="refs/fotos_hd/WhatsApp Image 2026-04-27 at 8.07.06 AM (3).jpeg" alt="André e João" /></div>
+  </div>
+  <button class="gallery-btn rv d1" onclick="openGallery()">Galeria</button>
+</section>
+
+
 <!-- ═══════ LOCAL ═══════ -->
 <section class="local" id="local">
   <div class="local-hdr">
     <img class="local-hdr-img-l" src="refs/local_header.jpeg" alt="" />
     <img class="local-hdr-img-r" src="refs/local_praia.jpg" alt="" />
     <div class="local-hdr-overlay"></div>
-    <p class="sec-label rv" style="color:rgba(255,255,255,.38)">Onde vamos celebrar</p>
+    <p class="sec-label rv" style="color:rgba(255,255,255,.75)">Onde vamos celebrar</p>
     <h2 class="sec-title rv d1" style="color:#fff;font-family:'Cinzel',serif;font-size:clamp(1.6rem,2.8vw,2.3rem);font-weight:400">Vila Entre Chaves</h2>
-    <p class="sec-sub rv d2" style="color:rgba(255,255,255,.5);font-size:.95rem;max-width:500px;margin:12px auto 0;line-height:1.75">Em meio a uma fazenda de coqueiros, na praia de Morros de Camaragibe, em Alagoas, o espaço tem um clima intimista e perfeito para esse momento tão especial. Será nesse lugar único que viveremos e compartilharemos momentos inesquecíveis ao lado de pessoas queridas.</p>
-    <a href="https://instagram.com/vilaentrechaves" target="_blank" rel="noopener" class="rv d3" style="display:inline-block;margin-top:18px;color:rgba(255,255,255,.55);font-size:.8rem;letter-spacing:.12em;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:2px">@vilaentrechaves</a>
+    <p class="sec-sub rv d2" style="color:rgba(255,255,255,.8);font-size:.95rem;max-width:500px;margin:12px auto 0;line-height:1.75">Em meio a uma fazenda de coqueiros, na praia de Morros de Camaragibe, em Alagoas, o espaço tem um clima intimista e perfeito para esse momento tão especial. Será nesse lugar único que viveremos e compartilharemos momentos inesquecíveis ao lado de pessoas queridas.</p>
+    <a href="https://instagram.com/vilaentrechaves" target="_blank" rel="noopener" class="rv d3" style="display:inline-block;margin-top:18px;color:rgba(255,255,255,.8);font-size:.8rem;letter-spacing:.12em;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:2px">@vilaentrechaves</a>
   </div>
 
   <div class="local-panels">
@@ -1105,6 +1124,10 @@
       <button class="carousel-dot" onclick="localGoTo(2)" aria-label="Painel 3"></button>
       <button class="carousel-dot" onclick="localGoTo(3)" aria-label="Painel 4"></button>
     </div>
+  </div>
+
+  <div class="local-reel rv">
+    <iframe src="https://www.instagram.com/reel/CpFl3oGDSg9/embed/" allowfullscreen scrolling="no" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
   </div>
 
   <div class="local-map-row rv">
@@ -1168,7 +1191,7 @@
     <div class="frond-heading" style="text-align:center">
       <div class="frond-label-row rv" style="justify-content:center">
         <svg class="frond-sm frond-flip" color="rgba(196,146,74,.55)" style="transform:scaleX(-1) rotate(-8deg)"><use href="#frond-sm"/></svg>
-        <p class="sec-label" style="color:rgba(255,255,255,.38)">Os nossos dias</p>
+        <p class="sec-label" style="color:rgba(255,255,255,.75)">Os nossos dias</p>
         <svg class="frond-sm" color="rgba(196,146,74,.55)" style="transform:rotate(-8deg)"><use href="#frond-sm"/></svg>
       </div>
       <h2 class="sec-title rv d1" style="color:#fff;margin-top:4px">Programação</h2>
@@ -1315,7 +1338,7 @@
   <div class="frond-heading">
     <div class="frond-label-row rv">
       <svg class="frond-sm frond-flip" color="rgba(196,146,74,.4)" style="transform:scaleX(-1) rotate(-10deg)"><use href="#frond-sm"/></svg>
-      <p class="sec-label" style="color:rgba(255,255,255,.38)">Onde ficar</p>
+      <p class="sec-label" style="color:rgba(255,255,255,.75)">Onde ficar</p>
       <svg class="frond-sm" color="rgba(196,146,74,.4)" style="transform:rotate(-10deg)"><use href="#frond-sm"/></svg>
     </div>
     <h2 class="sec-title rv d1" style="color:#fff;margin-top:4px">Hospedagem</h2>
@@ -1366,7 +1389,7 @@
   <div class="frond-heading">
     <div class="frond-label-row rv">
       <svg class="frond-sm frond-flip" color="rgba(196,146,74,.4)" style="transform:scaleX(-1) rotate(-10deg)"><use href="#frond-sm"/></svg>
-      <p class="sec-label" style="color:rgba(255,255,255,.38)">Deixe sua marca</p>
+      <p class="sec-label" style="color:rgba(255,255,255,.75)">Deixe sua marca</p>
       <svg class="frond-sm" color="rgba(196,146,74,.4)" style="transform:rotate(-10deg)"><use href="#frond-sm"/></svg>
     </div>
     <h2 class="sec-title rv d1" style="color:#fff;margin-top:4px">Mural de Mensagens</h2>
@@ -1449,60 +1472,31 @@
   <p class="gifts-intro rv d2">Sua presença já é o maior presente. Mas se quiser nos presentear, escolhemos itens especiais para o nosso novo lar.</p>
 
   <div class="gifts-grid">
-    <div class="gc rv">
-      <div class="gc-img">🍳</div>
-      <div class="gc-body">
-        <h3 class="gc-name">Panela Le Creuset</h3>
-        <p class="gc-desc">Caçarola redonda 28cm, esmalte vermelho cereja.</p>
-        <div class="gc-foot"><div class="gc-price">R$ 980<span>/unid.</span></div>
-          <button class="btn-gift" onclick="openModal('Panela Le Creuset','🍳','R$ 980')">Presentear</button></div>
-      </div>
-    </div>
-    <div class="gc rv d1">
-      <div class="gc-img">🛏</div>
-      <div class="gc-body">
-        <h3 class="gc-name">Jogo de Cama Karsten</h3>
-        <p class="gc-desc">King 300 fios, cor off-white. Algodão egípcio.</p>
-        <div class="gc-foot"><div class="gc-price">R$ 640<span>/unid.</span></div>
-          <button class="btn-gift" onclick="openModal('Jogo de Cama Karsten','🛏','R$ 640')">Presentear</button></div>
-      </div>
-    </div>
-    <div class="gc rv d2">
-      <div class="gc-img">✈️<span class="gc-sold">Presenteado!</span></div>
-      <div class="gc-body">
-        <h3 class="gc-name">Lua de Mel — Bali</h3>
-        <p class="gc-desc">Contribuição para a lua de mel dos sonhos.</p>
-        <div class="gc-foot"><div class="gc-price">R$ 300<span>/cota</span></div>
-          <button class="btn-gift" disabled>Esgotado</button></div>
-      </div>
-    </div>
-    <div class="gc rv d1">
-      <div class="gc-img">🪴</div>
-      <div class="gc-body">
-        <h3 class="gc-name">Espelho Decorativo</h3>
-        <p class="gc-desc">Redondo 80cm, moldura dourada Art Déco.</p>
-        <div class="gc-foot"><div class="gc-price">R$ 420<span>/unid.</span></div>
-          <button class="btn-gift" onclick="openModal('Espelho Decorativo','🪴','R$ 420')">Presentear</button></div>
-      </div>
-    </div>
-    <div class="gc rv d2">
-      <div class="gc-img">🫖</div>
-      <div class="gc-body">
-        <h3 class="gc-name">Cafeteira Bialetti</h3>
-        <p class="gc-desc">Moka Express 6 xícaras. Para os cafés eternos a dois.</p>
-        <div class="gc-foot"><div class="gc-price">R$ 280<span>/unid.</span></div>
-          <button class="btn-gift" onclick="openModal('Cafeteira Bialetti','🫖','R$ 280')">Presentear</button></div>
-      </div>
-    </div>
-    <div class="gc rv d3">
-      <div class="gc-img">📷</div>
-      <div class="gc-body">
-        <h3 class="gc-name">Câmera Polaroid Now+</h3>
-        <p class="gc-desc">Para registrar cada momento especial.</p>
-        <div class="gc-foot"><div class="gc-price">R$ 560<span>/unid.</span></div>
-          <button class="btn-gift" onclick="openModal('Câmera Polaroid Now+','📷','R$ 560')">Presentear</button></div>
-      </div>
-    </div>
+    <div class="gc rv"><div class="gc-img"><img src="https://cdn.awsli.com.br/600x450/1080/1080230/produto/50577122/domin--quadratto-barbecue-30cm-220v-cooktop-elettromec-de-bq-30-xq-2zea--1--dsiutmwm72.jpg" alt="Cooktop Elettromec" /></div><div class="gc-body"><h3 class="gc-name">Cooktop Barbecue Elettromec</h3><p class="gc-desc">Dominó Quadratto elétrico inox 30cm, 220V.</p><div class="gc-foot"><div class="gc-price">R$ 4.740<span>,50</span></div><button class="btn-gift" onclick="openModal('Cooktop Barbecue Elettromec','https://cdn.awsli.com.br/600x450/1080/1080230/produto/50577122/domin--quadratto-barbecue-30cm-220v-cooktop-elettromec-de-bq-30-xq-2zea--1--dsiutmwm72.jpg','R$ 4.740,50')">Presentear</button></div></div></div>
+    <div class="gc rv d1"><div class="gc-img"><img src="https://images.samsung.com/is/image/samsung/p6pim/br/un55u8600fgxzd/gallery/br-uhd-u8500f-un55u8600fgxzd-546202868?$1164_776_PNG$" alt="Smart TV Samsung 55" /></div><div class="gc-body"><h3 class="gc-name">Smart TV Samsung 55" 4K</h3><p class="gc-desc">Crystal HDR, Tizen, Alexa e Xbox Gaming.</p><div class="gc-foot"><div class="gc-price">R$ 2.659<span>,05</span></div><button class="btn-gift" onclick="openModal('Smart TV Samsung 55&quot; 4K','https://images.samsung.com/is/image/samsung/p6pim/br/un55u8600fgxzd/gallery/br-uhd-u8500f-un55u8600fgxzd-546202868?$1164_776_PNG$','R$ 2.659,05')">Presentear</button></div></div></div>
+    <div class="gc rv d2"><div class="gc-img"><img src="https://brastemp.vtexassets.com/arquivos/ids/271543-800-auto?v=639002064407470000&width=800&height=auto&aspect=true" alt="Cooktop Brastemp" /></div><div class="gc-body"><h3 class="gc-name">Cooktop 5 Bocas Brastemp Eclipse</h3><p class="gc-desc">Collection com Quadrichama, vidro preto.</p><div class="gc-foot"><div class="gc-price">R$ 1.800<span>,00</span></div><button class="btn-gift" onclick="openModal('Cooktop 5 Bocas Brastemp Eclipse','https://brastemp.vtexassets.com/arquivos/ids/271543-800-auto?v=639002064407470000&width=800&height=auto&aspect=true','R$ 1.800,00')">Presentear</button></div></div></div>
+    <div class="gc rv"><div class="gc-img"><img src="refs/tacas.webp" alt="Taças Bohemia" /></div><div class="gc-body"><h3 class="gc-name">Jogo 6 Taças Cristal Bohemia</h3><p class="gc-desc">Alex 600ml, cristal ecológico Wolff.</p><div class="gc-foot"><div class="gc-price">R$ 400<span>,00</span></div><button class="btn-gift" onclick="openModal('Jogo 6 Taças Cristal Bohemia','refs/tacas.webp','R$ 400,00')">Presentear</button></div></div></div>
+    <div class="gc rv d1"><div class="gc-img"><img src="https://sottilecasa.cdn.magazord.com.br/img/2020/08/produto/7981/faqueiro-my-st-james-48-pecas-versailles-inox-1.jpg?ims=fit-in/800x800/filters:fill(white)" alt="Faqueiro St James" /></div><div class="gc-body"><h3 class="gc-name">Faqueiro Versailles St James</h3><p class="gc-desc">Inox 101 peças, acabamento espelhado.</p><div class="gc-foot"><div class="gc-price">R$ 2.500<span>,00</span></div><button class="btn-gift" onclick="openModal('Faqueiro Versailles St James','https://sottilecasa.cdn.magazord.com.br/img/2020/08/produto/7981/faqueiro-my-st-james-48-pecas-versailles-inox-1.jpg?ims=fit-in/800x800/filters:fill(white)','R$ 2.500,00')">Presentear</button></div></div></div>
+    <div class="gc rv d2"><div class="gc-img"><img src="https://images.samsung.com/is/image/samsung/p6pim/br/qn75q7faagxzd/gallery/br-qled-q7f-qn75q7faagxzd-546412975?$1164_776_PNG$" alt="Smart TV Samsung 75" /></div><div class="gc-body"><h3 class="gc-name">Smart TV Samsung 75" QLED 4K</h3><p class="gc-desc">Vision AI, Xbox Cloud Gaming, controle por gestos.</p><div class="gc-foot"><div class="gc-price">R$ 5.700<span>,00</span></div><button class="btn-gift" onclick="openModal('Smart TV Samsung 75&quot; QLED 4K','https://images.samsung.com/is/image/samsung/p6pim/br/qn75q7faagxzd/gallery/br-qled-q7f-qn75q7faagxzd-546412975?$1164_776_PNG$','R$ 5.700,00')">Presentear</button></div></div></div>
+    <div class="gc rv"><div class="gc-img"><img src="https://excellenceshop.vtexassets.com/arquivos/ids/219285-800-auto?v=638853447369170000&width=800&height=auto&aspect=true" alt="Lixeira Tramontina Sense" /></div><div class="gc-body"><h3 class="gc-name">Lixeira Tramontina Sense Square</h3><p class="gc-desc">Automática com sensor, aço inox acetinado 8L.</p><div class="gc-foot"><div class="gc-price">R$ 600<span>,00</span></div><button class="btn-gift" onclick="openModal('Lixeira Tramontina Sense Square','https://excellenceshop.vtexassets.com/arquivos/ids/219285-800-auto?v=638853447369170000&width=800&height=auto&aspect=true','R$ 600,00')">Presentear</button></div></div></div>
+    <div class="gc rv d1"><div class="gc-img"><img src="https://files.claryt.co/product/94544430/94544430PNM001B_w960.jpg" alt="Lixeira Tramontina Octos" /></div><div class="gc-body"><h3 class="gc-name">Lixeira Tramontina Octos</h3><p class="gc-desc">Seco e molhado, pedal, inox, 15L + 15L.</p><div class="gc-foot"><div class="gc-price">R$ 1.228<span>,00</span></div><button class="btn-gift" onclick="openModal('Lixeira Tramontina Octos','https://files.claryt.co/product/94544430/94544430PNM001B_w960.jpg','R$ 1.228,00')">Presentear</button></div></div></div>
+    <div class="gc rv d2"><div class="gc-img"><img src="refs/coifa.webp" alt="Coifa Tramontina" /></div><div class="gc-body"><h3 class="gc-name">Coifa Tramontina Incasso</h3><p class="gc-desc">Embutir, aço inox 75cm, 220V, 630m³/hora.</p><div class="gc-foot"><div class="gc-price">R$ 3.120<span>,00</span></div><button class="btn-gift" onclick="openModal('Coifa Tramontina Incasso','refs/coifa.webp','R$ 3.120,00')">Presentear</button></div></div></div>
+    <div class="gc rv"><div class="gc-img"><img src="https://kitchenaid.vtexassets.com/arquivos/ids/172247-800-800?v=638926934573930000&width=800&height=800&aspect=true" alt="Liquidificador KitchenAid" /></div><div class="gc-body"><h3 class="gc-name">Liquidificador KitchenAid Pure Power</h3><p class="gc-desc">10 velocidades, Empire Red, 110V.</p><div class="gc-foot"><div class="gc-price">R$ 899<span>,00</span></div><button class="btn-gift" onclick="openModal('Liquidificador KitchenAid Pure Power','https://kitchenaid.vtexassets.com/arquivos/ids/172247-800-800?v=638926934573930000&width=800&height=800&aspect=true','R$ 899,00')">Presentear</button></div></div></div>
+    <div class="gc rv d1"><div class="gc-img"><img src="refs/whatsapp_andre/00000150-PHOTO-2026-05-09-05-52-23.jpg" alt="Sorveteira Ninja Creami" /></div><div class="gc-body"><h3 class="gc-name">Sorveteira Ninja Creami</h3><p class="gc-desc">Sorvete, gelato, smoothie bowl e milkshake. 220V.</p><div class="gc-foot"><div class="gc-price">R$ 1.900<span>,00</span></div><button class="btn-gift" onclick="openModal('Sorveteira Ninja Creami','refs/whatsapp_andre/00000150-PHOTO-2026-05-09-05-52-23.jpg','R$ 1.900,00')">Presentear</button></div></div></div>
+    <div class="gc rv d2"><div class="gc-img"><img src="refs/whatsapp_andre/00000151-PHOTO-2026-05-09-05-52-24.jpg" alt="Ralador Ariete" /></div><div class="gc-body"><h3 class="gc-name">Ralador de Queijo Elétrico Ariete</h3><p class="gc-desc">Sem fio, recarregável, bivolt.</p><div class="gc-foot"><div class="gc-price">R$ 350<span>,00</span></div><button class="btn-gift" onclick="openModal('Ralador de Queijo Elétrico Ariete','refs/whatsapp_andre/00000151-PHOTO-2026-05-09-05-52-24.jpg','R$ 350,00')">Presentear</button></div></div></div>
+    <div class="gc rv"><div class="gc-img"><img src="https://kitchenaid.vtexassets.com/arquivos/ids/161863-800-800?v=637025077388700000&width=800&height=800&aspect=true" alt="Mini Processador KitchenAid" /></div><div class="gc-body"><h3 class="gc-name">Mini Processador KitchenAid</h3><p class="gc-desc">KJA03BV, 220V, Empire Red.</p><div class="gc-foot"><div class="gc-price">R$ 499<span>,00</span></div><button class="btn-gift" onclick="openModal('Mini Processador KitchenAid','https://kitchenaid.vtexassets.com/arquivos/ids/161863-800-800?v=637025077388700000&width=800&height=800&aspect=true','R$ 499,00')">Presentear</button></div></div></div>
+    <div class="gc rv d1"><div class="gc-img"><img src="refs/jogotoalhas.webp" alt="Jogo de Banhão Trussardi" /></div><div class="gc-body"><h3 class="gc-name">Jogo de Banhão Trussardi Fontani</h3><p class="gc-desc">4 peças, branco, algodão premium.</p><div class="gc-foot"><div class="gc-price">R$ 400<span>,00</span></div><button class="btn-gift" onclick="openModal('Jogo de Banhão Trussardi Fontani','refs/jogotoalhas.webp','R$ 400,00')">Presentear</button></div></div></div>
+    <div class="gc rv d2"><div class="gc-img"><img src="https://shopcetro.vtexassets.com/arquivos/ids/242274-800-auto?v=638663280948800000&width=800&height=auto&aspect=true" alt="Sous Vide" /></div><div class="gc-body"><h3 class="gc-name">Termocirculador Sous Vide CSVC 95</h3><p class="gc-desc">Cozimento a vácuo de precisão, inox.</p><div class="gc-foot"><div class="gc-price">R$ 1.330<span>,00</span></div><button class="btn-gift" onclick="openModal('Termocirculador Sous Vide CSVC 95','https://shopcetro.vtexassets.com/arquivos/ids/242274-800-auto?v=638663280948800000&width=800&height=auto&aspect=true','R$ 1.330,00')">Presentear</button></div></div></div>
+    <div class="gc rv"><div class="gc-img"><img src="https://oxfordporcelanas.vtexassets.com/arquivos/ids/197855-800-800?v=638925039597870000&width=800&height=800&aspect=true" alt="Aparelho Jantar Ryo" /></div><div class="gc-body"><h3 class="gc-name">Aparelho de Jantar Ryo Maresia</h3><p class="gc-desc">42 peças, chá e café inclusos.</p><div class="gc-foot"><div class="gc-price">R$ 800<span>,00</span></div><button class="btn-gift" onclick="openModal('Aparelho de Jantar Ryo Maresia','https://oxfordporcelanas.vtexassets.com/arquivos/ids/197855-800-800?v=638925039597870000&width=800&height=800&aspect=true','R$ 800,00')">Presentear</button></div></div></div>
+    <div class="gc rv d1"><div class="gc-img"><img src="refs/seladora.webp" alt="Seladora Vácuo Cetro" /></div><div class="gc-body"><h3 class="gc-name">Seladora a Vácuo Cetro CPVS 280R</h3><p class="gc-desc">Comercial com reservatório, 220V.</p><div class="gc-foot"><div class="gc-price">R$ 989<span>,00</span></div><button class="btn-gift" onclick="openModal('Seladora a Vácuo Cetro CPVS 280R','refs/seladora.webp','R$ 989,00')">Presentear</button></div></div></div>
+    <div class="gc rv d2"><div class="gc-img"><img src="refs/roomba.webp" alt="Roomba iRobot" /></div><div class="gc-body"><h3 class="gc-name">Robô Aspirador Roomba 105 Combo</h3><p class="gc-desc">iRobot, aspira e passa pano, bivolt.</p><div class="gc-foot"><div class="gc-price">R$ 2.000<span>,00</span></div><button class="btn-gift" onclick="openModal('Robô Aspirador Roomba 105 Combo','refs/roomba.webp','R$ 2.000,00')">Presentear</button></div></div></div>
+    <div class="gc rv"><div class="gc-img"><img src="refs/travessas.webp" alt="Travessas Le Creuset" /></div><div class="gc-body"><h3 class="gc-name">Set 3 Travessas Heritage Le Creuset</h3><p class="gc-desc">Retangulares, cerâmica, tamanhos P, M e G.</p><div class="gc-foot"><div class="gc-price">R$ 1.349<span>,00</span></div><button class="btn-gift" onclick="openModal('Set 3 Travessas Heritage Le Creuset','refs/travessas.webp','R$ 1.349,00')">Presentear</button></div></div></div>
+    <div class="gc rv d1"><div class="gc-img"><img src="https://images.samsung.com/is/image/samsung/p6pim/br/hw-b650f-zd/gallery/br-b-series-soundbar-hw-b650f-hw-b650f-zd-549226648?$1164_776_PNG$" alt="Soundbar Samsung" /></div><div class="gc-body"><h3 class="gc-name">Soundbar Samsung HW-B650F</h3><p class="gc-desc">3.1 canais, 370W, Dolby Audio, subwoofer sem fio.</p><div class="gc-foot"><div class="gc-price">R$ 1.359<span>,00</span></div><button class="btn-gift" onclick="openModal('Soundbar Samsung HW-B650F','https://images.samsung.com/is/image/samsung/p6pim/br/hw-b650f-zd/gallery/br-b-series-soundbar-hw-b650f-hw-b650f-zd-549226648?$1164_776_PNG$','R$ 1.359,00')">Presentear</button></div></div></div>
+    <div class="gc rv d2"><div class="gc-img"><img src="https://kitchenaid.vtexassets.com/arquivos/ids/170193-800-800?v=638490612291800000&width=800&height=800&aspect=true" alt="Batedeira KitchenAid Artisan" /></div><div class="gc-body"><h3 class="gc-name">Batedeira KitchenAid Artisan</h3><p class="gc-desc">Empire Red, KEA33CV, 220V.</p><div class="gc-foot"><div class="gc-price">R$ 2.500<span>,00</span></div><button class="btn-gift" onclick="openModal('Batedeira KitchenAid Artisan','https://kitchenaid.vtexassets.com/arquivos/ids/170193-800-800?v=638490612291800000&width=800&height=800&aspect=true','R$ 2.500,00')">Presentear</button></div></div></div>
+    <div class="gc rv"><div class="gc-img"><img src="https://presentesrodriguez.vtexassets.com/arquivos/ids/178541-800-auto?v=637790527572800000&width=800&height=auto&aspect=true" alt="Grelha Le Creuset" /></div><div class="gc-body"><h3 class="gc-name">Grelha Retangular Le Creuset</h3><p class="gc-desc">Ferro fundido, coleção Teal.</p><div class="gc-foot"><div class="gc-price">R$ 1.430<span>,00</span></div><button class="btn-gift" onclick="openModal('Grelha Retangular Le Creuset','https://presentesrodriguez.vtexassets.com/arquivos/ids/178541-800-auto?v=637790527572800000&width=800&height=auto&aspect=true','R$ 1.430,00')">Presentear</button></div></div></div>
+    <div class="gc rv d1"><div class="gc-img"><img src="refs/ar_condicionado.avif" alt="Ar-Condicionado LG" /></div><div class="gc-body"><h3 class="gc-name">Ar-Condicionado LG Artcool 24.000 BTU</h3><p class="gc-desc">AI Dual Inverter Voice, 220V, design espelhado.</p><div class="gc-foot"><div class="gc-price">R$ 3.800<span>,00</span></div><button class="btn-gift" onclick="openModal('Ar-Condicionado LG Artcool 24.000 BTU','refs/ar_condicionado.avif','R$ 3.800,00')">Presentear</button></div></div></div>
+    <div class="gc rv d2"><div class="gc-img"><img src="https://brastemp.vtexassets.com/arquivos/ids/267257-800-auto?v=638974470301330000&width=800&height=auto&aspect=true" alt="Micro-ondas Brastemp" /></div><div class="gc-body"><h3 class="gc-name">Micro-ondas Brastemp Embutir 32L</h3><p class="gc-desc">18 receitas pré-programadas, design preto.</p><div class="gc-foot"><div class="gc-price">R$ 2.000<span>,00</span></div><button class="btn-gift" onclick="openModal('Micro-ondas Brastemp Embutir 32L','https://brastemp.vtexassets.com/arquivos/ids/267257-800-auto?v=638974470301330000&width=800&height=auto&aspect=true','R$ 2.000,00')">Presentear</button></div></div></div>
+    <div class="gc rv"><div class="gc-img"><img src="refs/mesa_travertino.jpg" alt="Mesa Travertino" /></div><div class="gc-body"><h3 class="gc-name">Mesa de Jantar Orgânica Travertino</h3><p class="gc-desc">Tampo em travertino, base madeira, design orgânico.</p><div class="gc-foot"><div class="gc-price">R$ 20.000<span>,00</span></div><button class="btn-gift" onclick="openModal('Mesa de Jantar Orgânica Travertino','refs/mesa_travertino.jpg','R$ 20.000,00')">Presentear</button></div></div></div>
   </div>
 
   <div class="pix-box rv d2">
@@ -1527,6 +1521,11 @@
   <p class="ft-copy">Feito com amor para o nosso grande dia ✦</p>
 </footer>
 
+
+<!-- ═══════ BACK TO TOP ═══════ -->
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
 
 <!-- ═══════ LIGHTBOX ═══════ -->
 <div id="lb" onclick="lbCloseOut(event)">
@@ -1562,6 +1561,10 @@
   }
   window.addEventListener('scroll', syncNav, {passive:true});
   syncNav();
+
+  /* BACK TO TOP */
+  const btt = document.getElementById('btt');
+  window.addEventListener('scroll', () => btt.classList.toggle('vis', window.scrollY > 400), {passive:true});
 
   /* BURGER */
   const burger = document.getElementById('burger');
@@ -1664,8 +1667,8 @@
   }
 
   /* MODAL */
-  function openModal(name,emoji,price){
-    document.getElementById('mEmoji').textContent = emoji;
+  function openModal(name,img,price){
+    document.getElementById('mEmoji').innerHTML = '<img src="'+img+'" alt="'+name+'" />';
     document.getElementById('mTitle').textContent = name;
     document.getElementById('mDesc').textContent =
       `Para nos presentear com "${name}" (${price}), faça um PIX para a chave abaixo e coloque o nome do item na mensagem. Muito obrigado!`;
@@ -1688,6 +1691,26 @@
       lbShow();
     });
   });
+  const galleryAll = [
+    {src:'refs/fotos_hd/WhatsApp Image 2026-04-27 at 8.07.05 AM.jpeg'},
+    {src:'refs/fotos_hd/WhatsApp Image 2026-04-27 at 8.07.05 AM (1).jpeg'},
+    {src:'refs/fotos_hd/WhatsApp Image 2026-04-27 at 8.07.05 AM (2).jpeg'},
+    {src:'refs/fotos_hd/WhatsApp Image 2026-04-27 at 8.07.05 AM (3).jpeg'},
+    {src:'refs/fotos_hd/WhatsApp Image 2026-04-27 at 8.07.05 AM (4).jpeg'},
+    {src:'refs/fotos_hd/WhatsApp Image 2026-04-27 at 8.07.06 AM (1).jpeg'},
+    {src:'refs/fotos_hd/WhatsApp Image 2026-04-27 at 8.07.06 AM (2).jpeg'},
+    {src:'refs/fotos_hd/WhatsApp Image 2026-04-27 at 8.07.06 AM (3).jpeg'},
+    {src:'refs/fotos_hd/Mural de Mensagens.jpeg'},
+    {src:'refs/fotos_hd/Onde Vamos Celebrar.jpeg'},
+  ];
+  document.querySelectorAll('.gm-photo').forEach(img => {
+    img.addEventListener('click', () => {
+      lbImgs = galleryAll;
+      lbIdx  = parseInt(img.dataset.idx) || 0;
+      lbShow();
+    });
+  });
+  function openGallery(){ lbImgs = galleryAll; lbIdx = 0; lbShow(); }
   function lbShow(){
     document.getElementById('lb-img').src = lbImgs[lbIdx].src;
     document.getElementById('lb-counter').textContent = (lbIdx+1) + ' / ' + lbImgs.length;

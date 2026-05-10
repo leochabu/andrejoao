@@ -554,13 +554,13 @@
       transform:translateY(-50%);
       border:4px solid transparent; border-top-color:var(--muted); pointer-events:none;
     }
-    .rsvp-choices { display:flex; gap:10px; }
-    .rc { flex:1; cursor:pointer; }
+    .rsvp-choices { display:flex; flex-direction:column; gap:8px; }
+    .rc { cursor:pointer; }
     .rc input { display:none; }
     .rc-lbl {
-      display:flex; align-items:center; justify-content:center; gap:7px;
-      padding:11px; border:1.5px solid var(--border); border-radius:2px;
-      font-size:.84rem; color:var(--muted); background:var(--cream);
+      display:flex; align-items:center; gap:10px;
+      padding:12px 16px; border:1.5px solid var(--border); border-radius:2px;
+      font-size:.88rem; color:var(--muted); background:var(--cream);
       cursor:pointer; transition:all .2s; user-select:none;
     }
     .rc input:checked+.rc-lbl {
@@ -799,6 +799,25 @@
     #mural .frond-heading{padding:60px 6% 0}
     .ph-soon{display:inline-block;margin-top:22px;padding:9px 22px;border:1px solid var(--border);border-radius:2px;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
     .ph-section.dark .ph-soon{border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.35)}
+
+    /* ── MURAL BODY ── */
+    .mural-body{padding:52px 6% 72px;max-width:860px;margin:0 auto}
+    .mural-form-wrap{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:4px;padding:32px;margin-bottom:52px}
+    .mural-form-wrap h3{font-family:'Cinzel',serif;color:#fff;font-size:1.05rem;font-weight:400;margin-bottom:22px}
+    .mural-fg{margin-bottom:14px}
+    .mural-flabel{display:block;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.6);margin-bottom:6px}
+    .mural-finput,.mural-ftxt{width:100%;padding:11px 14px;border:1.5px solid rgba(255,255,255,.18);border-radius:2px;background:rgba(255,255,255,.07);font-family:'DM Sans',sans-serif;font-size:.88rem;color:#fff;outline:none;transition:border-color .2s;box-sizing:border-box}
+    .mural-finput::placeholder,.mural-ftxt::placeholder{color:rgba(255,255,255,.35)}
+    .mural-finput:focus,.mural-ftxt:focus{border-color:rgba(255,255,255,.45)}
+    .mural-ftxt{resize:vertical;min-height:90px}
+    .mural-form-ok{display:none;text-align:center;padding:14px 0;color:rgba(255,255,255,.75);font-size:.9rem}
+    .mural-msgs-title{font-family:'Cinzel',serif;color:rgba(255,255,255,.5);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:24px}
+    .mural-msgs{display:flex;flex-direction:column;gap:18px}
+    .mural-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:22px 26px}
+    .mural-card-nome{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:8px}
+    .mural-card-txt{color:rgba(255,255,255,.82);font-size:.93rem;line-height:1.75;font-style:italic}
+    .mural-card-data{font-size:.68rem;color:rgba(255,255,255,.3);margin-top:10px}
+    .mural-empty{text-align:center;color:rgba(255,255,255,.35);font-size:.88rem;padding:28px 0}
 
     /* ── TRAJE ── */
     .traje-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:40px;max-width:880px;margin-left:auto;margin-right:auto;text-align:left}
@@ -1394,7 +1413,28 @@
     </div>
     <h2 class="sec-title rv d1" style="color:#fff;margin-top:4px">Mural de Mensagens</h2>
   </div>
-  <span class="ph-soon rv d2">Em breve</span>
+  <div class="mural-body">
+    <div class="mural-form-wrap rv d2">
+      <h3>Deixe uma mensagem para André &amp; João</h3>
+      <form id="muralForm" novalidate>
+        <div class="mural-fg">
+          <label class="mural-flabel" for="mural-nome">Seu nome</label>
+          <input class="mural-finput" type="text" id="mural-nome" placeholder="Como você quer aparecer?" required />
+        </div>
+        <div class="mural-fg">
+          <label class="mural-flabel" for="mural-msg">Mensagem</label>
+          <textarea class="mural-ftxt" id="mural-msg" placeholder="Escreva sua mensagem…" required></textarea>
+        </div>
+        <button type="submit" class="btn-sub" style="margin-top:4px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25)">Enviar mensagem</button>
+      </form>
+      <div class="mural-form-ok" id="muralOk">✓ Mensagem enviada! Ela aparecerá no mural após aprovação.</div>
+    </div>
+
+    <p class="mural-msgs-title rv d3">Mensagens dos convidados</p>
+    <div class="mural-msgs rv d3" id="muralMsgs">
+      <div class="mural-empty">As mensagens aparecerão aqui após aprovação.</div>
+    </div>
+  </div>
 </section>
 
 
@@ -1416,26 +1456,26 @@
     </div>
 
     <form id="rsvpForm" novalidate>
-      <div class="fg-row rv d1">
-        <div class="fg">
-          <label class="flabel" for="fname">Nome</label>
-          <input class="finput" type="text" id="fname" placeholder="Seu nome" required />
-        </div>
-        <div class="fg">
-          <label class="flabel" for="lname">Sobrenome</label>
-          <input class="finput" type="text" id="lname" placeholder="Seu sobrenome" />
-        </div>
+      <div class="fg rv d1">
+        <label class="flabel" for="fname">Nome completo</label>
+        <input class="finput" type="text" id="fname" placeholder="Seu nome completo" required />
       </div>
       <div class="fg rv d1">
         <label class="flabel">Confirmação</label>
         <div class="rsvp-choices">
-          <label class="rc"><input type="radio" name="att" value="yes" checked />
+          <label class="rc"><input type="radio" name="att" value="sim" checked />
             <span class="rc-lbl">
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
               Sim, estarei lá!
             </span>
           </label>
-          <label class="rc"><input type="radio" name="att" value="no" />
+          <label class="rc"><input type="radio" name="att" value="talvez" />
+            <span class="rc-lbl">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 2v5M6.5 9.5v1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+              Talvez
+            </span>
+          </label>
+          <label class="rc"><input type="radio" name="att" value="nao" />
             <span class="rc-lbl">
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M3 3l7 7M10 3l-7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
               Não poderei ir
@@ -1443,11 +1483,7 @@
           </label>
         </div>
       </div>
-      <div class="fg rv d2">
-        <label class="flabel" for="msg">Mensagem <em style="font-weight:300;text-transform:none;letter-spacing:0">(opcional)</em></label>
-        <textarea class="ftxt" id="msg" placeholder="Uma mensagem para André e João…"></textarea>
-      </div>
-      <button type="submit" class="btn-sub rv d3">Confirmar Presença</button>
+      <button type="submit" class="btn-sub rv d2">Confirmar Presença</button>
     </form>
 
     <div class="rsvp-ok" id="rsvpOk">
@@ -1647,15 +1683,61 @@
   }
   tick(); setInterval(tick,1000);
 
+  /* ── GOOGLE APPS SCRIPT ENDPOINT ── */
+  const GAS_URL = 'https://script.google.com/macros/s/AKfycby0UAbs4A6C1qCkjxousuLG-hModc9YwYoXuy7CCI_p6dmHsWFL9m5zXBU1V6xnZgGK/exec';
+
+  function gasGet(params){
+    const qs = new URLSearchParams(params).toString();
+    return fetch(GAS_URL + '?' + qs, {mode:'no-cors'}).catch(() => {});
+  }
+
   /* RSVP */
   document.getElementById('rsvpForm').addEventListener('submit', e => {
     e.preventDefault();
-    const name = document.getElementById('fname').value.trim();
-    if(!name){ document.getElementById('fname').focus(); return; }
+    const nome = document.getElementById('fname').value.trim();
+    if(!nome){ document.getElementById('fname').focus(); return; }
+    const confirmacao = document.querySelector('input[name="att"]:checked').value;
+    gasGet({tipo:'rsvp', nome, confirmacao});
     document.getElementById('rsvpForm').style.display = 'none';
     document.getElementById('rsvpOk').style.display = 'block';
-    document.getElementById('okName').textContent = name;
+    document.getElementById('okName').textContent = nome;
   });
+
+  /* MURAL FORM */
+  document.getElementById('muralForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const nome = document.getElementById('mural-nome').value.trim();
+    const mensagem = document.getElementById('mural-msg').value.trim();
+    if(!nome || !mensagem) return;
+    gasGet({tipo:'mural_enviar', nome, mensagem});
+    document.getElementById('muralForm').style.display = 'none';
+    document.getElementById('muralOk').style.display = 'block';
+  });
+
+  /* MURAL LOAD — JSONP (bypasses CORS) */
+  function renderMural(msgs){
+    const el = document.getElementById('muralMsgs');
+    if(!msgs || !msgs.length){
+      el.innerHTML = '<div class="mural-empty">Ainda não há mensagens aprovadas. Seja o primeiro!</div>';
+      return;
+    }
+    el.innerHTML = msgs.map(m => `
+      <div class="mural-card">
+        <div class="mural-card-nome">${m.nome}</div>
+        <div class="mural-card-txt">"${m.mensagem}"</div>
+        <div class="mural-card-data">${m.data}</div>
+      </div>`).join('');
+  }
+  function loadMural(){
+    const cb = 'muralCb' + Date.now();
+    window[cb] = function(msgs){ delete window[cb]; document.getElementById('_muralScript').remove(); renderMural(msgs); };
+    const s = document.createElement('script');
+    s.id = '_muralScript';
+    s.src = GAS_URL + '?tipo=mural&callback=' + cb;
+    s.onerror = () => { delete window[cb]; s.remove(); };
+    document.head.appendChild(s);
+  }
+  loadMural();
 
   /* PIX */
   function copyPix(){

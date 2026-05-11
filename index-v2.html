@@ -758,11 +758,30 @@
   </section>
 
 
+  <!-- ══════ GALERIA ══════ -->
+  <section class="ph-section" id="galeria">
+    <div class="frond-heading rv">
+      <div class="frond-label-row">
+        <svg class="frond-sm frond-flip" color="var(--sage)" style="transform:scaleX(-1) rotate(-10deg);opacity:.7"><use href="#frond-sm"/></svg>
+        <p class="sec-label">Nós dois</p>
+        <svg class="frond-sm" color="var(--sage)" style="transform:rotate(-10deg);opacity:.7"><use href="#frond-sm"/></svg>
+      </div>
+      <h2 class="sec-title rv d1">Galeria</h2>
+    </div>
+    <div class="gallery-mosaic rv">
+      <div class="gm-main"><img class="gm-photo" data-idx="5" src="refs/fotos_hd/foto_06.jpeg" alt="André e João" /></div>
+      <div class="gm-top"> <img class="gm-photo" data-idx="0" src="refs/fotos_hd/foto_01.jpeg"      alt="André e João" /></div>
+      <div class="gm-bot"> <img class="gm-photo" data-idx="7" src="refs/fotos_hd/foto_08.jpeg" alt="André e João" /></div>
+    </div>
+    <button class="gallery-btn rv d1" onclick="openGallery()">Galeria</button>
+  </section>
+
+
   <!-- ══════ LOCAL ══════ -->
   <section class="local" id="local">
     <div class="local-hdr">
-      <img class="local-hdr-img-l" src="refs/casal_08.jpeg" alt="" />
-      <img class="local-hdr-img-r" src="refs/b22b8554-b46a-4da7-82fa-3fbb044fae96.jpg" alt="" />
+      <img class="local-hdr-img-l" src="refs/local_header.jpeg" alt="" />
+      <img class="local-hdr-img-r" src="refs/local_praia.jpg" alt="" />
       <div class="local-hdr-overlay"></div>
       <!-- Frond heading on dark bg -->
       <div class="frond-heading">
@@ -775,47 +794,50 @@
             <use href="#frond-r"/>
           </svg>
         </div>
-        <h2 class="sec-title rv d1" style="color:#fff;margin-top:4px">Vila Entre Chaves</h2>
-        <p class="sec-sub rv d2" style="color:rgba(255,255,255,.8);max-width:460px;margin:12px auto 0;line-height:1.75">
-          Morros de Camaragibe, Alagoas — em meio a uma fazenda de coqueiros, um espaço intimista e perfeito para esse momento tão especial.
+        <h2 class="sec-title rv d1" style="color:#fff;font-family:'Cinzel',serif;font-size:clamp(1.6rem,2.8vw,2.3rem);font-weight:400;margin-top:4px">Vila Entre Chaves</h2>
+        <p class="sec-sub rv d2" style="color:rgba(255,255,255,.8);font-size:.95rem;max-width:500px;margin:12px auto 0;line-height:1.75">
+          Em meio a uma fazenda de coqueiros, na praia de Morros de Camaragibe, em Alagoas, o espaço tem um clima intimista e perfeito para esse momento tão especial. Será nesse lugar único que viveremos e compartilharemos momentos inesquecíveis ao lado de pessoas queridas.
         </p>
+        <a href="https://instagram.com/vilaentrechaves" target="_blank" rel="noopener" class="rv d3" style="display:inline-block;margin-top:18px;color:rgba(255,255,255,.8);font-size:.8rem;letter-spacing:.12em;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:2px">@vilaentrechaves</a>
       </div>
     </div>
 
     <div class="local-panels">
-      <div class="local-panel rv">
-        <img src="refs/56c53e08-f638-451f-9f10-ff6bc6577fbd.jpg" alt="Vista aérea" />
-        <div class="local-panel-overlay"></div>
-        <div class="local-panel-content">
-          <p class="local-panel-num">01 · O Espaço</p>
-          <h3 class="local-panel-title">Vila Entre Chaves</h3>
-          <p class="local-panel-desc">Uma fazenda de coqueiros centenários com clima intimista — o cenário perfeito para o nosso grande dia.</p>
+      <div class="carousel-track" id="localTrack">
+        <div class="local-panel rv">
+          <img src="refs/local_vista_aerea.jpg" alt="Vista aérea" />
+        </div>
+        <div class="local-panel rv">
+          <img src="refs/local_praia.jpg" alt="A praia" style="object-position:center 40%" />
+        </div>
+        <div class="local-panel rv">
+          <img src="refs/local_resort.jpg" alt="O resort" />
+        </div>
+        <div class="local-panel rv">
+          <img src="refs/fotos_hd/onde_celebrar.jpeg" alt="André e João no coqueiral" style="object-position:center center" />
         </div>
       </div>
-      <div class="local-panel rv d1">
-        <img src="refs/b22b8554-b46a-4da7-82fa-3fbb044fae96.jpg" alt="A praia" style="object-position:center 40%"/>
-        <div class="local-panel-overlay"></div>
-        <div class="local-panel-content">
-          <p class="local-panel-num">02 · Cerimônia</p>
-          <h3 class="local-panel-title">A Praia</h3>
-          <p class="local-panel-desc">Mar turquesa, brisa suave e o som das ondas como trilha sonora do nosso sim.</p>
-        </div>
-      </div>
-      <div class="local-panel rv d2">
-        <img src="refs/cfb989eb-27a7-4dc0-8ac7-2ae5d8e62a7e.jpg" alt="O resort" />
-        <div class="local-panel-overlay"></div>
-        <div class="local-panel-content">
-          <p class="local-panel-num">03 · Recepção</p>
-          <h3 class="local-panel-title">O Resort</h3>
-          <p class="local-panel-desc">Piscina, gastronomia à beira-mar e hospedagem para os convidados.</p>
-        </div>
+      <button class="carousel-btn carousel-btn-prev" onclick="localCarousel(-1)" aria-label="Anterior">
+        <svg width="10" height="17" viewBox="0 0 10 17" fill="none"><path d="M8.5 1.5 1.5 8.5l7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="carousel-btn carousel-btn-next" onclick="localCarousel(1)" aria-label="Próximo">
+        <svg width="10" height="17" viewBox="0 0 10 17" fill="none"><path d="M1.5 1.5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="carousel-dots" id="localDots">
+        <button class="carousel-dot active" onclick="localGoTo(0)" aria-label="Painel 1"></button>
+        <button class="carousel-dot" onclick="localGoTo(1)" aria-label="Painel 2"></button>
+        <button class="carousel-dot" onclick="localGoTo(2)" aria-label="Painel 3"></button>
+        <button class="carousel-dot" onclick="localGoTo(3)" aria-label="Painel 4"></button>
       </div>
     </div>
 
     <div class="local-map-row rv">
-      <a href="https://www.instagram.com/vilaentrechaves" target="_blank" class="btn-map">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
-        @vilaentrechaves
+      <a href="https://maps.google.com" target="_blank" class="btn-map">
+        <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+          <path d="M6 .5C3.5.5 1.5 2.5 1.5 5c0 3.75 4.5 8.5 4.5 8.5S10.5 8.75 10.5 5C10.5 2.5 8.5.5 6 .5z" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <circle cx="6" cy="5" r="1.5" stroke="currentColor" stroke-width="1.1"/>
+        </svg>
+        Como chegar
       </a>
     </div>
 
@@ -1088,7 +1110,7 @@
   <!-- ══════ RSVP ══════ -->
   <section class="rsvp" id="rsvp">
     <div class="rsvp-photo">
-      <img src="refs/b22b8554-b46a-4da7-82fa-3fbb044fae96.jpg" alt="Praia" />
+      <img src="refs/fotos_hd/foto_08.jpeg" alt="André e João" style="object-position:center 30%" />
       <div class="rsvp-photo-overlay"></div>
       <div class="rsvp-photo-caption">
         <h3>Você vai<br>estar lá?</h3>
@@ -1376,6 +1398,53 @@
     });
   }
 
+  /* PROG CAROUSEL */
+  let progIdx = 0;
+  const progTotal = 4;
+  function progGoTo(n) {
+    progIdx = n;
+    document.getElementById('progTrack').style.transform = `translateX(-${n * 100}%)`;
+    document.querySelectorAll('#progDots .carousel-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === n);
+    });
+  }
+  function progCarousel(dir) {
+    progGoTo((progIdx + dir + progTotal) % progTotal);
+  }
+  (function(){
+    const el = document.getElementById('progTrack');
+    let sx = 0;
+    el.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive:true});
+    el.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 40) progCarousel(dx < 0 ? 1 : -1);
+    }, {passive:true});
+  })();
+
+  /* LOCAL CAROUSEL */
+  let localIdx = 0;
+  const localTotal = 4;
+  function localGoTo(n) {
+    localIdx = n;
+    document.getElementById('localTrack').style.transform = `translateX(-${n * 100}%)`;
+    document.querySelectorAll('#localDots .carousel-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === n);
+    });
+  }
+  function localCarousel(dir) {
+    localGoTo((localIdx + dir + localTotal) % localTotal);
+  }
+  /* Swipe support */
+  (function(){
+    const el = document.getElementById('localTrack');
+    let sx = 0;
+    el.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive:true});
+    el.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 40) localCarousel(dx < 0 ? 1 : -1);
+    }, {passive:true});
+  })();
+
   /* MODAL */
   function openModal(name,emoji,price){
     document.getElementById('mEmoji').textContent = emoji;
@@ -1401,6 +1470,26 @@
       lbShow();
     });
   });
+  const galleryAll = [
+    {src:'refs/fotos_hd/foto_01.jpeg'},
+    {src:'refs/fotos_hd/foto_02.jpeg'},
+    {src:'refs/fotos_hd/foto_03.jpeg'},
+    {src:'refs/fotos_hd/foto_04.jpeg'},
+    {src:'refs/fotos_hd/foto_05.jpeg'},
+    {src:'refs/fotos_hd/foto_06.jpeg'},
+    {src:'refs/fotos_hd/foto_07.jpeg'},
+    {src:'refs/fotos_hd/foto_08.jpeg'},
+    {src:'refs/fotos_hd/mural_mensagens.jpeg'},
+    {src:'refs/fotos_hd/onde_celebrar.jpeg'},
+  ];
+  document.querySelectorAll('.gm-photo').forEach(img => {
+    img.addEventListener('click', () => {
+      lbImgs = galleryAll;
+      lbIdx  = parseInt(img.dataset.idx) || 0;
+      lbShow();
+    });
+  });
+  function openGallery(){ lbImgs = galleryAll; lbIdx = 0; lbShow(); }
   function lbShow(){
     document.getElementById('lb-img').src = lbImgs[lbIdx].src;
     document.getElementById('lb-counter').textContent = (lbIdx+1) + ' / ' + lbImgs.length;

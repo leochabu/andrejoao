@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path . -Force)",
+      "Bash(Select-Object Name, FullName)",
+      "Bash(cd .. && ls -la | grep -E \"\\\\.\\(htm|html|css|js\\)\" && ls -la)",
+      "Read(//d/Casamento/**)",
+      "Bash(cd /d/Casamento && mkdir -p imagens && echo \"Diretório criado\")",
+      "Bash(cd /d/Casamento && grep -n \"refs/\" index.html | head -20)",
+      "Read(//d/d/Casamento/**)",
+      "Bash(rm -f *.jpg *.jpeg *.png *.webp *.gif *.avif *.svg *.mp3 *.mp4 && echo \"Arquivos deletados de refs/\")",
+      "Bash(git add *)",
+      "Bash(git commit -m 'Mover todas as imagens para diretório imagens e atualizar referências no HTML *)"
+    ],
+    "additionalDirectories": [
+      "d:\\Casamento\\refs"
+    ]
+  }
+}

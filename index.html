@@ -481,7 +481,7 @@
       line-height:1.65;
     }
     .local-reel{text-align:center;padding:52px 6% 0}
-    .local-reel iframe{border:none;border-radius:12px;width:100%;max-width:340px;height:600px;display:block;margin:0 auto}
+    .local-reel video{border:none;border-radius:12px;width:100%;max-width:340px;height:600px;display:block;margin:0 auto;object-fit:cover}
     .local-map-row {
       padding:40px 6%;
       display:flex; justify-content:center;
@@ -955,8 +955,7 @@
     <div class="invite-corner-tr"></div>
     <div class="invite-corner-bl"></div>
     <img src="refs/logo.png" alt="André & João" class="invite-logo" />
-    <p class="invite-opener">têm a honra de convidar você para</p>
-    <div class="invite-divider">
+<div class="invite-divider">
       <span class="invite-divider-line"></span>
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
         <path d="M7 1l1.2 2.4 2.7.4-2 1.9.5 2.7L7 7.2 4.6 8.4l.5-2.7-2-1.9 2.7-.4z" fill="#C4924A"/>
@@ -1007,7 +1006,7 @@
   <div class="history-inner">
 
     <div class="history-photo-col rv">
-      <img src="refs/historia_principal.jpeg" alt="André e João" />
+      <img src="refs/casal_04.jpeg" alt="André e João" />
     </div>
 
     <div class="history-content">
@@ -1096,39 +1095,15 @@
     <div class="carousel-track" id="localTrack">
       <div class="local-panel rv">
         <img src="refs/local_vista_aerea.jpg" alt="Vista aérea" />
-        <div class="local-panel-overlay"></div>
-        <div class="local-panel-content">
-          <p class="local-panel-num">01 · Chegada</p>
-          <h3 class="local-panel-title">Vista Aérea</h3>
-          <p class="local-panel-desc">Quilômetros de coqueirais encontrando a areia branca — o cenário perfeito para um casamento inesquecível.</p>
-        </div>
       </div>
       <div class="local-panel rv">
         <img src="refs/local_praia.jpg" alt="A praia" style="object-position:center 40%" />
-        <div class="local-panel-overlay"></div>
-        <div class="local-panel-content">
-          <p class="local-panel-num">02 · Cerimônia</p>
-          <h3 class="local-panel-title">A Praia</h3>
-          <p class="local-panel-desc">Mar turquesa, brisa suave e o som das ondas como trilha sonora do nosso sim.</p>
-        </div>
       </div>
       <div class="local-panel rv">
         <img src="refs/local_resort.jpg" alt="O resort" />
-        <div class="local-panel-overlay"></div>
-        <div class="local-panel-content">
-          <p class="local-panel-num">03 · Recepção</p>
-          <h3 class="local-panel-title">O Resort</h3>
-          <p class="local-panel-desc">Piscina, gastronomia à beira-mar e hospedagem para os convidados que vierem de longe.</p>
-        </div>
       </div>
       <div class="local-panel rv">
-        <img src="refs/fotos_hd/onde_celebrar.jpeg" alt="André e João no coqueirais" style="object-position:center center" />
-        <div class="local-panel-overlay"></div>
-        <div class="local-panel-content">
-          <p class="local-panel-num">04 · Os Noivos</p>
-          <h3 class="local-panel-title">No Coqueiral</h3>
-          <p class="local-panel-desc">Entre coqueiros e sombras do entardecer — o cenário que fará parte da nossa memória para sempre.</p>
-        </div>
+        <img src="refs/fotos_hd/onde_celebrar.jpeg" alt="André e João no coqueiral" style="object-position:center center" />
       </div>
     </div>
     <button class="carousel-btn carousel-btn-prev" onclick="localCarousel(-1)" aria-label="Anterior">
@@ -1146,7 +1121,7 @@
   </div>
 
   <div class="local-reel rv">
-    <iframe src="https://www.instagram.com/reel/CpFl3oGDSg9/embed/" allowfullscreen scrolling="no" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+    <video src="refs/video.mp4" controls playsinline></video>
   </div>
 
   <div class="local-map-row rv">
@@ -1469,13 +1444,7 @@
               Sim, estarei lá!
             </span>
           </label>
-          <label class="rc"><input type="radio" name="att" value="talvez" />
-            <span class="rc-lbl">
-              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 2v5M6.5 9.5v1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-              Talvez
-            </span>
-          </label>
-          <label class="rc"><input type="radio" name="att" value="nao" />
+<label class="rc"><input type="radio" name="att" value="nao" />
             <span class="rc-lbl">
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M3 3l7 7M10 3l-7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
               Não poderei ir

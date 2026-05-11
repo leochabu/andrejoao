@@ -1,0 +1,157 @@
+[
+  {
+    "id": 1,
+    "nome": "Cooktop Elettromec Dominó Quadratto Barbecue Elétrico Inox 30cm DE-BQ-30-XQ-2ZEA",
+    "img_url": "https://cdn.awsli.com.br/600x450/1080/1080230/produto/50577122/domin--quadratto-barbecue-30cm-220v-cooktop-elettromec-de-bq-30-xq-2zea--1--dsiutmwm72.jpg",
+    "fonte": "https://www.unikitchen.com.br/cooktop-elettromec-domino-quadratto-de-bq-30-xq-2zea-eletrico-inox-30cm-220v-cooktop"
+  },
+  {
+    "id": 2,
+    "nome": "Smart TV Samsung 55\" 4K Crystal 55U8600F",
+    "img_url": "https://images.samsung.com/is/image/samsung/p6pim/br/un55u8600fgxzd/gallery/br-uhd-u8500f-un55u8600fgxzd-546202868?$1164_776_PNG$",
+    "fonte": "https://www.samsung.com/br/tvs/uhd-4k-tv/u8600f-55-inch-crystal-uhd-4k-smart-tv-un55u8600fgxzd/"
+  },
+  {
+    "id": 3,
+    "nome": "Cooktop 5 Bocas Brastemp Eclipse Collection BDD86AP",
+    "img_url": "https://brastemp.vtexassets.com/arquivos/ids/271543-800-auto?v=639002064407470000&width=800&height=auto&aspect=true",
+    "fonte": "https://www.brastemp.com.br/cooktop-5-bocas-brastemp-eclipse-collection-com-quadrichama---bdd86ap/p"
+  },
+  {
+    "id": 4,
+    "nome": "Jogo 6 Taças Vinho Cristal Ecológico Bohemia Alex 600ml Wolff",
+    "img_url": "https://www.gruporojemac.com.br/cdn/shop/files/20681_A.jpg?v=1776879620&width=1946",
+    "fonte": "https://www.gruporojemac.com.br/jogo-6-tacas-de-vinho-alex-optic-600ml-cristal-ecologico-bohemia-wolff/p"
+  },
+  {
+    "id": 5,
+    "nome": "Faqueiro Versailles St James Inox 101 peças",
+    "img_url": "https://letseatit.com.br/cdn/shop/files/Faqueiro-St_-James-101-Pecas-Versailles-Inox.webp?v=1762300224&width=960",
+    "fonte": "https://letseatit.com.br/products/faqueiro-st-james-101-pecas-versailles-inox"
+  },
+  {
+    "id": 6,
+    "nome": "Smart TV Samsung 75\" QLED 4K QN75Q7FAAGXZD",
+    "img_url": "https://images.samsung.com/is/image/samsung/p6pim/br/qn75q7faagxzd/gallery/br-qled-q7f-qn75q7faagxzd-546412975?$1164_776_PNG$",
+    "fonte": "https://www.samsung.com/br/tvs/qled-tv/q7f-75-inch-qled-4k-smart-tv-qn75q7faagxzd/"
+  },
+  {
+    "id": 7,
+    "nome": "Lixeira Tramontina Sense Square Automática Sensor Inox 8L",
+    "img_url": "https://excellenceshop.vtexassets.com/arquivos/ids/219285-800-auto?v=638853447369170000&width=800&height=auto&aspect=true",
+    "fonte": "https://www.excellenceshop.com.br/lixeira-tramontina-em-aco-inox-com-acabamento-acetinado-sensor-square-8l-94543-008/p"
+  },
+  {
+    "id": 8,
+    "nome": "Lixeira Tramontina Octos Pedal 15L+15L código 94544430",
+    "img_url": "https://files.claryt.co/product/94544430/94544430PNM001B_w960.jpg",
+    "fonte": "https://sbambientes.com.br/lixeira-tramontina-octos-em-aco-inox-com-02-baldes-removiveis-e-pedal-15-l-15-l-94544430"
+  },
+  {
+    "id": 9,
+    "nome": "Coifa Tramontina Incasso Inox 75cm 220V código 95800016",
+    "img_url": "https://copalux.cdn.magazord.com.br/img/2023/09/produto/8648/coifa-de-embutir-tramontina-incasso-retangular-75cm-95800016-aco-inox-220v-descricao-01.png?ims=fit-in/1210x",
+    "fonte": "https://www.copalux.com.br/coifa-de-embutir-tramontina-incasso-retangular-75cm-95800016-aco-inox-220v"
+  },
+  {
+    "id": 10,
+    "nome": "Liquidificador KitchenAid Pure Power 10 Velocidades KUA20AV Empire Red",
+    "img_url": "https://kitchenaid.vtexassets.com/arquivos/ids/172247-800-800?v=638926934573930000&width=800&height=800&aspect=true",
+    "fonte": "https://www.kitchenaid.com.br/liquidificador-pure-power-kitchenaid-empire-red-kua20av/p"
+  },
+  {
+    "id": 11,
+    "nome": "Sorveteira Ninja Creami 220V",
+    "img_url": null,
+    "fonte": "https://www.americanas.com.br/ninja-creami-sorveteira-220v-7509629578/p",
+    "observacao": "A página da Americanas bloqueou o acesso (JavaScript necessário) e a do Magazine Luiza retornou 403. Não foi possível extrair a URL direta da imagem."
+  },
+  {
+    "id": 12,
+    "nome": "Ralador de Queijo Elétrico Sem Fio Recarregável Bivolt Ariete Gratti 440",
+    "img_url": null,
+    "fonte": "https://ariete.net.br/loja/cozinha/raladores-de-queijo/ralador-de-queijo-eletrico-sem-fio-ariete-grati-440-00c0440a3arbr/",
+    "observacao": "O site Ariete Brasil retornou 403 Forbidden. Não foi possível extrair a URL direta da imagem."
+  },
+  {
+    "id": 13,
+    "nome": "Mini Processador de Alimentos KitchenAid KJA03BV 220V",
+    "img_url": "https://kitchenaid.vtexassets.com/arquivos/ids/161863-800-800?v=637025077388700000&width=800&height=800&aspect=true",
+    "fonte": "https://www.kitchenaid.com.br/mini-processador-de-alimentos-kitchenaid-empire-red-kja03bv/p"
+  },
+  {
+    "id": 14,
+    "nome": "Kit Jogo de Banhão 4 Peças Trussardi Fontani Branco",
+    "img_url": "https://adedecore.cdn.magazord.com.br/img/2026/02/produto/17774/foto-derivacao-9.png?ims=fit-in/1210x",
+    "fonte": "https://www.adedecore.com.br/kit-jogo-de-banhao-4-pcs-trussardi-fontani-branco",
+    "observacao": "A loja oficial Trussardi tem apenas kit 5 peças. Imagem do kit 4 peças obtida na Ade Decore."
+  },
+  {
+    "id": 15,
+    "nome": "Termocirculador Sous Vide CSVC 95 Cetro",
+    "img_url": "https://shopcetro.vtexassets.com/arquivos/ids/242274-800-auto?v=638663280948800000&width=800&height=auto&aspect=true",
+    "fonte": "https://www.cetro.com.br/termocirculador-sous-vide-sv95/p"
+  },
+  {
+    "id": 16,
+    "nome": "Aparelho de Jantar Chá e Café 42 Peças Ryo Maresia",
+    "img_url": "https://oxfordporcelanas.vtexassets.com/arquivos/ids/197855-800-800?v=638925039597870000&width=800&height=800&aspect=true",
+    "fonte": "https://www.oxfordporcelanas.com.br/ryo-maresia-42pcs/p"
+  },
+  {
+    "id": 17,
+    "nome": "Seladora a Vácuo Cetro CPVS 280R 220V",
+    "img_url": "https://shopcetro.vtexassets.com/arquivos/ids/265527-800-auto?v=638914671981230000&width=800&height=auto&aspect=true",
+    "fonte": "https://www.cetro.com.br/seladora-a-vacuo-comercial-com-reservatorio-220v/p"
+  },
+  {
+    "id": 18,
+    "nome": "Robô Aspirador iRobot Roomba 105 Combo Aspira e Passa Pano",
+    "img_url": "https://www.irobotloja.com.br/cdn/shop/files/1COMBO105_25x.png?v=1761739437",
+    "fonte": "https://www.irobotloja.com.br/products/robo-roomba-105-combo-2-em-1-aspira-e-passa-pano"
+  },
+  {
+    "id": 19,
+    "nome": "Set 3 Travessas Retangulares Heritage Le Creuset",
+    "img_url": "https://www.lecreuset.com.br/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-br-master/default/dwe1816222/images/travessa-retangular-heritage-nuit-23cm.png?sw=650&sh=650&sm=fit",
+    "fonte": "https://www.lecreuset.com.br/travessa-retangular-heritage/71102.html",
+    "observacao": "Imagem da Travessa Heritage individual do site oficial Le Creuset Brasil. O set de 3 peças foi encontrado em revendedores como Matisse Casa, mas o acesso ao site retornou verificação de browser. Imagem representa o mesmo produto."
+  },
+  {
+    "id": 20,
+    "nome": "Soundbar Samsung HW-B650F 3.1 Canais 370W Dolby Audio",
+    "img_url": "https://images.samsung.com/is/image/samsung/p6pim/br/hw-b650f-zd/gallery/br-b-series-soundbar-hw-b650f-hw-b650f-zd-549226648?$1164_776_PNG$",
+    "fonte": "https://www.samsung.com/br/audio-devices/soundbar/black-hw-b650f-zd/"
+  },
+  {
+    "id": 21,
+    "nome": "Batedeira KitchenAid Artisan Empire Red KEA33CV 220V",
+    "img_url": "https://kitchenaid.vtexassets.com/arquivos/ids/170193-800-800?v=638490612291800000&width=800&height=800&aspect=true",
+    "fonte": "https://www.kitchenaid.com.br/batedeira-stand-mixer-kitchenaid-empire-red-kea33cv/p"
+  },
+  {
+    "id": 22,
+    "nome": "Grelha Retangular Tradicional Le Creuset (azul/verde Deep Teal)",
+    "img_url": "https://presentesrodriguez.vtexassets.com/arquivos/ids/178541-800-auto?v=637790527572800000&width=800&height=auto&aspect=true",
+    "fonte": "https://www.presentesrodriguez.com.br/grelha-retangular-rasa-traditional-32-cm-azul-deep-teal-le-creuset/p"
+  },
+  {
+    "id": 23,
+    "nome": "Ar-Condicionado LG AI Dual Inverter Artcool 24000 BTU 220V S3-Q24K2R1B",
+    "img_url": "https://content.dam/channel/wcms/br/images/ar-condicionado-residencial/s3-q24k2r1b_eb2gam1_essp_br_c/gallery/DZ-1.jpg",
+    "fonte": "https://www.lg.com/br/ar-condicionado-residencial/dual-inverter-split/s3-q24k2r1b/"
+  },
+  {
+    "id": 24,
+    "nome": "Micro-ondas Brastemp Embutir 32 Litros Preto BM146AE",
+    "img_url": "https://brastemp.vtexassets.com/arquivos/ids/267257-800-auto?v=638974470301330000&width=800&height=auto&aspect=true",
+    "fonte": "https://www.brastemp.com.br/micro-ondas-brastemp-de-embutir-32-litros-preto-com-18-receitas-pre-programadas-e-design-sofisticado-bm146ae/p"
+  },
+  {
+    "id": 25,
+    "nome": "Mesa de Jantar Orgânica em Travertino",
+    "img_url": "https://images.tcdn.com.br/img/img_prod/483355/90_mesa_de_jantar_serpentina_3_2_m_marmore_travertino_navona_e_45647_1_3695dfc6132b3604f50c300e6440dd84.jpeg",
+    "fonte": "https://www.liderinterioresloja.com.br/salajantar/mesajantar/mesa-de-jantar-serpentina-3-2-m-marmore-travertino-navona-e",
+    "observacao": "Marca não identificada conforme solicitado. Imagem da Mesa Serpentina em Mármore Travertino Navona da Lider Interiores — produto que melhor representa o estilo orgânico em travertino disponível no Brasil."
+  }
+]

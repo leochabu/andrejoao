@@ -490,6 +490,10 @@
     .howto-addr-icon{font-size:1.2rem;flex-shrink:0}
     .howto-addr strong{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--forest);display:block;margin-bottom:4px}
 
+    /* ── LOCAL REEL ── */
+    .local-reel{text-align:center;padding:52px 6% 0}
+    .local-reel video{border:none;border-radius:12px;width:100%;max-width:340px;height:600px;display:block;margin:0 auto;object-fit:cover}
+
     /* ── PROGRAMAÇÃO ── */
     .prog{background:var(--forest);padding:88px 6%}
     .prog-inner{max-width:760px;margin:0 auto}
@@ -842,6 +846,12 @@
       </a>
     </div>
   </div>
+
+<!-- ──────── VIDEO ──────── -->
+  <div class="local-reel rv">
+    <video src="refs/video.mp4" controls playsinline></video>
+  </div>
+
 </section>
 
 <!-- ──────── COMO CHEGAR ──────── -->
@@ -1121,12 +1131,6 @@
             <span class="rc-lbl">
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
               Sim, estarei lá!
-            </span>
-          </label>
-          <label class="rc"><input type="radio" name="att" value="talvez" />
-            <span class="rc-lbl">
-              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 2v5M6.5 9.5v1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-              Talvez
             </span>
           </label>
           <label class="rc"><input type="radio" name="att" value="nao" />

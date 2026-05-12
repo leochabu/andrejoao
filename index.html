@@ -784,12 +784,8 @@
       background:linear-gradient(to bottom,rgba(18,34,20,.15) 0%,rgba(18,34,20,.75) 100%);
     }
     .prog-inner{max-width:760px;margin:0 auto;padding:72px 6% 88px}
-    .prog-days{margin-top:52px;overflow:hidden}
-    .prog-carousel-track{display:flex;transition:transform .45s cubic-bezier(.4,0,.2,1);will-change:transform}
-    .prog-day{flex:0 0 100%;border-left:1px solid rgba(255,255,255,.15);padding:0 0 0 36px;position:relative;min-height:160px}
-    .prog-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:36px}
-    .prog-nav-btn{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.65);width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s}
-    .prog-nav-btn:hover{border-color:var(--gold);color:var(--gold)}
+    .prog-days{margin-top:52px;display:flex;flex-direction:column;gap:48px}
+    .prog-day{border-left:1px solid rgba(255,255,255,.15);padding:0 0 0 36px;position:relative;min-height:160px}
     .prog-day::before{content:'';position:absolute;left:-5px;top:5px;width:9px;height:9px;border-radius:50%;background:var(--gold)}
     .prog-day-date{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
     .prog-day-title{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2vw,1.55rem);color:#fff;font-weight:400;margin-bottom:18px}
@@ -1221,7 +1217,6 @@
       <h2 class="sec-title rv d1" style="color:#fff;margin-top:4px">Programação</h2>
     </div>
     <div class="prog-days">
-      <div class="prog-carousel-track" id="progTrack">
         <div class="prog-day rv">
           <p class="prog-day-date">10 · Dezembro · 2026</p>
           <h3 class="prog-day-title">Check-in &amp; Chegada</h3>
@@ -1258,21 +1253,6 @@
             <p class="prog-event-desc">Após dias tão especiais, desejamos que levem consigo lembranças inesquecíveis desse momento que tivemos a alegria de compartilhar com vocês.</p>
           </div>
         </div>
-      </div>
-      <div class="prog-nav">
-        <button class="prog-nav-btn" onclick="progCarousel(-1)" aria-label="Anterior">
-          <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M7.5 1.5 1.5 7.5l6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div class="carousel-dots" id="progDots" style="position:static;transform:none">
-          <button class="carousel-dot active" onclick="progGoTo(0)" aria-label="Dia 1"></button>
-          <button class="carousel-dot" onclick="progGoTo(1)" aria-label="Dia 2"></button>
-          <button class="carousel-dot" onclick="progGoTo(2)" aria-label="Dia 3"></button>
-          <button class="carousel-dot" onclick="progGoTo(3)" aria-label="Dia 4"></button>
-        </div>
-        <button class="prog-nav-btn" onclick="progCarousel(1)" aria-label="Próximo">
-          <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </div>
     </div>
   </div>
 </section>
@@ -1621,28 +1601,6 @@
     });
   });
 
-  /* PROG CAROUSEL */
-  let progIdx = 0;
-  const progTotal = 4;
-  function progGoTo(n) {
-    progIdx = n;
-    document.getElementById('progTrack').style.transform = `translateX(-${n * 100}%)`;
-    document.querySelectorAll('#progDots .carousel-dot').forEach((d, i) => {
-      d.classList.toggle('active', i === n);
-    });
-  }
-  function progCarousel(dir) {
-    progGoTo((progIdx + dir + progTotal) % progTotal);
-  }
-  (function(){
-    const el = document.getElementById('progTrack');
-    let sx = 0;
-    el.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive:true});
-    el.addEventListener('touchend', e => {
-      const dx = e.changedTouches[0].clientX - sx;
-      if (Math.abs(dx) > 40) progCarousel(dx < 0 ? 1 : -1);
-    }, {passive:true});
-  })();
 
   /* LOCAL CAROUSEL */
   let localIdx = 0;

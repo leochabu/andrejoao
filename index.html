@@ -842,9 +842,10 @@
     .traje-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:40px;max-width:880px;margin-left:auto;margin-right:auto;text-align:left}
     .traje-card{border:1px solid var(--border);border-radius:3px;overflow:hidden}
     .traje-card-hdr{background:var(--forest);color:#fff;padding:22px 28px}
-    .traje-card-hdr-label{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+    .traje-card-hdr-label{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+    .traje-card-hdr-date{font-family:'DM Sans',sans-serif;font-size:.68rem;letter-spacing:.05em;color:rgba(255,255,255,.55);font-weight:400;text-transform:none}
     .traje-card-hdr-title{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:400}
-    .traje-card-hdr-color{font-size:.78rem;color:rgba(255,255,255,.8);margin-top:5px;font-style:italic}
+    .traje-card-hdr-color{display:inline-block;margin-top:10px;background:rgba(255,255,255,.1);border:1px solid var(--gold);border-radius:2px;padding:4px 11px;font-size:.72rem;color:var(--gold);font-style:normal;font-weight:600;letter-spacing:.08em}
     .traje-card-body{background:#fff}
     .traje-gender{padding:20px 28px}
     .traje-gender+.traje-gender{border-top:1px solid var(--border)}
@@ -1297,7 +1298,7 @@
   <div class="traje-cards">
     <div class="traje-card rv">
       <div class="traje-card-hdr">
-        <p class="traje-card-hdr-label">Pré-Wedding</p>
+        <p class="traje-card-hdr-label">Pré-Wedding <span class="traje-card-hdr-date">11/12/2026</span></p>
         <h3 class="traje-card-hdr-title">Luau Chic</h3>
         <p class="traje-card-hdr-color">Cor obrigatória: Branco</p>
       </div>
@@ -1327,7 +1328,7 @@
     </div>
     <div class="traje-card rv d1">
       <div class="traje-card-hdr">
-        <p class="traje-card-hdr-label">Cerimônia</p>
+        <p class="traje-card-hdr-label">Cerimônia <span class="traje-card-hdr-date">12/12/2026</span></p>
         <h3 class="traje-card-hdr-title">Praia</h3>
       </div>
       <div class="traje-card-body">
@@ -1554,7 +1555,7 @@
     <h3>Prefere enviar via PIX?</h3>
     <p>Contribua livremente com o valor que desejar. Qualquer presente é recebido com muito amor.</p>
     <div class="pix-row">
-      <span class="pix-key" id="pixKey">casamento.andre.joao@gmail.com</span>
+      <span class="pix-key" id="pixKey">drjoaolucasrocha@gmail.com</span>
       <button class="btn-copy" id="btnCopy" onclick="copyPix()">Copiar</button>
     </div>
   </div>
@@ -1737,7 +1738,7 @@
 
   /* PIX */
   function copyPix(){
-    navigator.clipboard.writeText('casamento.andre.joao@gmail.com').then(() => {
+    navigator.clipboard.writeText('drjoaolucasrocha@gmail.com').then(() => {
       const b = document.getElementById('btnCopy');
       b.textContent = '✓ Copiado'; b.classList.add('ok');
       setTimeout(()=>{ b.textContent='Copiar'; b.classList.remove('ok'); }, 2200);
@@ -1781,7 +1782,7 @@
     document.getElementById('mTitle').textContent = name;
     document.getElementById('mDesc').textContent =
       `Para nos presentear com "${name}" (${price}), copie o código PIX abaixo e cole no seu banco. Obrigado!`;
-    const pixCode = GIFT_PIX[name] || 'casamento.andre.joao@gmail.com';
+    const pixCode = GIFT_PIX[name] || 'drjoaolucasrocha@gmail.com';
     document.getElementById('mPixLbl').textContent = pixCode.startsWith('000201') ? 'Código PIX Copia e Cola' : 'Chave PIX';
     document.getElementById('mPixKey').textContent = pixCode;
     const btn = document.getElementById('btnCopyModal');

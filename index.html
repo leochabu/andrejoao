@@ -749,6 +749,7 @@
       .fg-row { grid-template-columns:1fr; }
       .countdown-photo { background-attachment:scroll; }
       .local-panel { height:65vw; min-height:260px; }
+      .local-panels { margin:10px 0; }
     }
     @media(max-width:480px){
       .hero-logo-img { height:96px; }
@@ -1120,6 +1121,9 @@
   <div class="local-panels">
     <div class="carousel-track" id="localTrack">
       <div class="local-panel rv">
+        <img src="refs/vila_entre_chaves.jpeg" alt="Vila Entre Chaves" style="object-position:center 60%" />
+      </div>
+      <div class="local-panel rv">
         <img src="imagens/local_vista_aerea.jpg" alt="Vista aérea" />
       </div>
       <div class="local-panel rv">
@@ -1130,6 +1134,21 @@
       </div>
       <div class="local-panel rv">
         <img src="imagens/fotos/onde_celebrar.jpeg" alt="André e João no coqueiral" style="object-position:center center" />
+      </div>
+      <div class="local-panel rv">
+        <img src="refs/vila_1.jpg" alt="Vila Entre Chaves" />
+      </div>
+      <div class="local-panel rv">
+        <img src="refs/vila_2.jpg" alt="Vila Entre Chaves" />
+      </div>
+      <div class="local-panel rv">
+        <img src="refs/vila_3.jpg" alt="Vila Entre Chaves" />
+      </div>
+      <div class="local-panel rv">
+        <img src="refs/vila_4.jpg" alt="Vila Entre Chaves" />
+      </div>
+      <div class="local-panel rv">
+        <img src="refs/vila_5.jpg" alt="Vila Entre Chaves" />
       </div>
     </div>
     <button class="carousel-btn carousel-btn-prev" onclick="localCarousel(-1)" aria-label="Anterior">
@@ -1143,6 +1162,12 @@
       <button class="carousel-dot" onclick="localGoTo(1)" aria-label="Painel 2"></button>
       <button class="carousel-dot" onclick="localGoTo(2)" aria-label="Painel 3"></button>
       <button class="carousel-dot" onclick="localGoTo(3)" aria-label="Painel 4"></button>
+      <button class="carousel-dot" onclick="localGoTo(4)" aria-label="Painel 5"></button>
+      <button class="carousel-dot" onclick="localGoTo(5)" aria-label="Painel 6"></button>
+      <button class="carousel-dot" onclick="localGoTo(6)" aria-label="Painel 7"></button>
+      <button class="carousel-dot" onclick="localGoTo(7)" aria-label="Painel 8"></button>
+      <button class="carousel-dot" onclick="localGoTo(8)" aria-label="Painel 9"></button>
+      <button class="carousel-dot" onclick="localGoTo(9)" aria-label="Painel 10"></button>
     </div>
   </div>
 
@@ -1357,6 +1382,14 @@
       <p class="hosp-card-name">Vila Galé Alagoas</p>
       <a class="hosp-card-ig" href="https://instagram.com/vilagale.alagoas" target="_blank" rel="noopener">@vilagale.alagoas</a>
     </div>
+    <div class="hosp-card">
+      <p class="hosp-card-name">Ventos da Barra</p>
+      <a class="hosp-card-ig" href="https://instagram.com/ventosdabarra" target="_blank" rel="noopener">@ventosdabarra</a>
+    </div>
+    <div class="hosp-card">
+      <p class="hosp-card-name">Amarilis Pousada</p>
+      <a class="hosp-card-ig" href="https://instagram.com/amarilispousada" target="_blank" rel="noopener">@amarilispousada</a>
+    </div>
   </div>
   <div class="hosp-notice rv d3">
     <p class="hosp-notice-label">Observação importante</p>
@@ -1561,8 +1594,11 @@
     <h3 id="mTitle">Presentear</h3>
     <p id="mDesc"></p>
     <div class="modal-pix">
-      <div class="modal-pix-lbl">Chave PIX</div>
-      <div class="modal-pix-key">casamento.andre.joao@gmail.com</div>
+      <div class="modal-pix-lbl" id="mPixLbl">Código PIX Copia e Cola</div>
+      <div style="display:flex;align-items:flex-start;gap:8px;margin-top:6px">
+        <div class="modal-pix-key" id="mPixKey" style="flex:1;word-break:break-all;font-size:.7rem;line-height:1.5;text-align:left"></div>
+        <button class="btn-copy" id="btnCopyModal" onclick="copyModalPix()">Copiar</button>
+      </div>
     </div>
     <button class="btn-mclose" onclick="closeModal()">Pronto — Obrigado! ✦</button>
   </div>
@@ -1604,7 +1640,7 @@
 
   /* LOCAL CAROUSEL */
   let localIdx = 0;
-  const localTotal = 4;
+  const localTotal = 10;
   function localGoTo(n) {
     localIdx = n;
     document.getElementById('localTrack').style.transform = `translateX(-${n * 100}%)`;
@@ -1709,13 +1745,57 @@
   }
 
   /* MODAL */
+  const GIFT_PIX = {
+    'Cooktop Barbecue Elettromec':              '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com52040000530398654074740.505802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***630427BC',
+    'Smart TV Samsung 55" 4K':                 '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com52040000530398654072659.055802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***63049824',
+    'Cooktop 5 Bocas Brastemp Eclipse':         '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com52040000530398654071800.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***63047AE5',
+    'Jogo 6 Taças Cristal Bohemia':             '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com5204000053039865406400.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***6304C663',
+    'Faqueiro Versailles St James':             '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com52040000530398654072500.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***6304CC7C',
+    'Smart TV Samsung 75" QLED 4K':            '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com52040000530398654075700.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***630489FC',
+    'Bowl Inox com Tampa de Vidro Le Creuset':  '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com5204000053039865406489.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***63047C06',
+    'Lixeira Tramontina Sense Square':          '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com5204000053039865406600.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***6304B38D',
+    'Lixeira Tramontina Octos':                 '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com52040000530398654071228.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***6304A0B8',
+    'Coifa Tramontina Incasso':                 '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com52040000530398654073120.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***63046B29',
+    'Liquidificador KitchenAid Pure Power':     '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com5204000053039865406899.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***6304460B',
+    'Sorveteira Ninja Creami':                  '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com52040000530398654071900.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***63044012',
+    'Ralador de Queijo Elétrico Ariete':        '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com5204000053039865406350.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***63042DCE',
+    'Mini Processador KitchenAid':              '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com5204000053039865406499.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***63046A4E',
+    'Jogo de Banhão Trussardi Fontani':         '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com5204000053039865406400.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***6304C663',
+    'Set Caneca 100ml Gift Collection Le Creuset': '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com5204000053039865406639.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***63048170',
+    'Termocirculador Sous Vide CSVC 95':        '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com52040000530398654071330.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***6304C8BD',
+    'Aparelho de Jantar Ryo Maresia':           '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com5204000053039865406800.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***6304EA26',
+    'Seladora a Vácuo Cetro CPVS 280R':         '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com5204000053039865406989.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***63046AB4',
+    'Robô Aspirador Roomba 105 Combo':          '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com52040000530398654072000.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***63041D57',
+    'Set 3 Travessas Heritage Le Creuset':      '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com52040000530398654071349.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***6304A360',
+    'Soundbar Samsung HW-B650F':                '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com52040000530398654071359.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***6304B528',
+    'Batedeira KitchenAid Artisan':             '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com52040000530398654072500.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***6304CC7C',
+    'Grelha Retangular Le Creuset':             '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com52040000530398654071430.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***63046C78',
+    'Travessa Terrine Heritage Le Creuset':     '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com5204000053039865406789.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***6304331F',
+    'Ar-Condicionado LG Artcool 24.000 BTU':    '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com52040000530398654073800.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***6304BAD7',
+    'Micro-ondas Brastemp Embutir 32L':         '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com52040000530398654072000.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***63041D57',
+    'Mesa de Jantar Orgânica Travertino':       '00020126480014br.gov.bcb.pix0126drjoaolucasrocha@gmail.com520400005303986540820000.005802BR5925JOAO LUCAS F DO NASCIMENT6008BRASILIA62070503***6304FF79',
+  };
+
   function openModal(name,img,price){
     document.getElementById('mEmoji').innerHTML = '<img src="'+img+'" alt="'+name+'" />';
     document.getElementById('mTitle').textContent = name;
     document.getElementById('mDesc').textContent =
-      `Para nos presentear com "${name}" (${price}), faça um PIX para a chave abaixo e coloque o nome do item na mensagem. Muito obrigado!`;
+      `Para nos presentear com "${name}" (${price}), copie o código PIX abaixo e cole no seu banco. Obrigado!`;
+    const pixCode = GIFT_PIX[name] || 'casamento.andre.joao@gmail.com';
+    document.getElementById('mPixLbl').textContent = pixCode.startsWith('000201') ? 'Código PIX Copia e Cola' : 'Chave PIX';
+    document.getElementById('mPixKey').textContent = pixCode;
+    const btn = document.getElementById('btnCopyModal');
+    btn.textContent = 'Copiar'; btn.classList.remove('ok');
     document.getElementById('giftModal').classList.add('open');
     document.body.style.overflow = 'hidden';
+  }
+  function copyModalPix(){
+    const code = document.getElementById('mPixKey').textContent;
+    navigator.clipboard.writeText(code).then(()=>{
+      const btn = document.getElementById('btnCopyModal');
+      btn.textContent = 'Copiado!'; btn.classList.add('ok');
+      setTimeout(()=>{ btn.textContent = 'Copiar'; btn.classList.remove('ok'); }, 2000);
+    });
   }
   function closeModal(){
     document.getElementById('giftModal').classList.remove('open');
